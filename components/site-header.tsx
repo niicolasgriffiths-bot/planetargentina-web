@@ -335,7 +335,7 @@ export function SiteHeader() {
         />
 
         <div
-          className={`relative flex min-h-screen flex-col px-8 pb-12 pt-6 text-[#f4efe8] transition-all duration-500 ${
+          className={`relative flex min-h-screen flex-col px-8 pb-14 pt-6 text-[#f4efe8] transition-all duration-500 ${
             mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
           }`}
         >
@@ -368,23 +368,28 @@ export function SiteHeader() {
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col items-center justify-center gap-7 py-16 text-center">
-            {mobileNavigation.map((item, index) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  transitionDelay: mobileMenuOpen ? `${90 + index * 55}ms` : "0ms"
-                }}
-                className={`font-serif text-[2.35rem] leading-[0.98] tracking-[-0.01em] transition-all duration-500 hover:opacity-65 ${
-                  mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-                } ${isActive(item.href) ? "text-[#f4efe8]" : "text-[#f4efe8]/88"}`}
-              >
-                {localizeText(item.label, language)}
-              </Link>
-            ))}
+          <nav className="flex flex-1 flex-col items-center justify-center gap-10 py-20 text-center">
+            {mobileNavigation.map((item, index) => {
+              const active = isActive(item.href);
+              const emphasized = active || index === 0;
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    transitionDelay: mobileMenuOpen ? `${90 + index * 55}ms` : "0ms"
+                  }}
+                  className={`font-serif text-[2.08rem] leading-[1.02] tracking-[-0.015em] transition-all duration-500 hover:opacity-65 ${
+                    mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                  } ${emphasized ? "font-medium tracking-[-0.02em] text-[#f4efe8]" : "font-normal text-[#f4efe8]/88"}`}
+                >
+                  {localizeText(item.label, language)}
+                </Link>
+              );
+            })}
           </nav>
 
           <div

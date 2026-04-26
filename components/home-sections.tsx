@@ -21,16 +21,26 @@ export function HomeHero() {
         fill
         priority
         quality={92}
-        className="soft-photo object-cover"
+        className="soft-photo object-cover md:hidden"
+        style={{ objectPosition: "72% center" }}
+      />
+      <Image
+        src="/home/hero.jpg"
+        alt={text(language, "Paisaje de Planeta Argentina", "Planeta Argentina landscape")}
+        fill
+        priority
+        quality={92}
+        className="hidden soft-photo object-cover md:block"
         style={{ objectPosition: "center center" }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_72%,rgba(246,240,231,0.44),transparent_38%),linear-gradient(180deg,rgba(244,239,232,0.16)_0%,transparent_34%,rgba(244,239,232,0.08)_100%)]" />
-      <div className="absolute inset-0 flex items-start px-7 pb-16 pt-20 text-black md:px-14 md:pt-24 lg:px-16">
+      <div className="absolute inset-0 md:hidden bg-[linear-gradient(90deg,rgba(244,239,232,0.24)_0%,rgba(244,239,232,0.14)_30%,rgba(244,239,232,0.02)_60%),linear-gradient(180deg,rgba(244,239,232,0.12)_0%,rgba(244,239,232,0.03)_32%,rgba(244,239,232,0.06)_100%)]" />
+      <div className="absolute inset-0 hidden md:block bg-[radial-gradient(circle_at_18%_72%,rgba(246,240,231,0.44),transparent_38%),linear-gradient(180deg,rgba(244,239,232,0.16)_0%,transparent_34%,rgba(244,239,232,0.08)_100%)]" />
+      <div className="absolute inset-0 flex items-start px-8 pb-14 pt-24 text-black md:px-14 md:pb-16 md:pt-20 lg:px-16 lg:pt-24">
         <FadeIn className="max-w-5xl">
-          <h1 className="w-fit whitespace-pre-line font-serif text-[4rem] leading-[0.93] text-black/96 md:text-[6.75rem] lg:text-[7.3rem]">
+          <h1 className="w-fit whitespace-pre-line font-serif text-[3.45rem] leading-[0.92] text-black/96 md:text-[6.75rem] lg:text-[7.3rem]">
             {text(language, "Una Forma\nde mirar\nel país", "A way\nof looking\nat the country")}
           </h1>
-          <p className="mt-10 w-fit whitespace-pre-line font-serif text-[2.15rem] leading-[1] text-black/86 md:mt-12 md:text-[3.15rem] lg:text-[3.45rem]">
+          <p className="mt-8 w-fit whitespace-pre-line font-serif text-[1.8rem] leading-[1.02] text-black/84 md:mt-12 md:text-[3.15rem] lg:text-[3.45rem]">
             {text(language, "Más amplia.\nMás profunda", "Wider.\nDeeper")}
           </p>
         </FadeIn>
