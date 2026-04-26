@@ -43,7 +43,7 @@ export default function ExperiencesPage() {
 
             <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/9]">
               <Image
-                src="/editorial/fn56-night-camp.jpg"
+                src="/experiences/night-domes.jpg"
                 alt={
                   language === "es"
                     ? "Domos en la noche dentro del paisaje andino"
@@ -51,7 +51,7 @@ export default function ExperiencesPage() {
                 }
                 fill
                 className="soft-photo object-cover"
-                style={{ objectPosition: "center 54%" }}
+                style={{ objectPosition: "center center" }}
               />
             </div>
           </div>
