@@ -56,9 +56,16 @@ export default function TerritoriesPage() {
                   <div className="image-mask rounded-[1.5rem]">
                     <div className="relative aspect-[16/11] md:h-full md:min-h-[28rem] md:aspect-auto">
                       <Image
-                        src={territory.image}
+                        src={territory.listingImage ?? territory.image}
                         alt={localizeText(territory.name, language)}
                         fill
+                        style={
+                          territory.listingImagePosition
+                            ? { objectPosition: territory.listingImagePosition }
+                            : territory.heroPosition
+                              ? { objectPosition: territory.heroPosition }
+                              : undefined
+                        }
                         className="soft-photo object-cover transition-transform duration-[1600ms] group-hover:scale-[1.03]"
                       />
                     </div>

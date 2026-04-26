@@ -68,12 +68,9 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
 
       <div className="mt-8">
         {isLocked ? (
-          <Link
-            href="/club"
-            className="text-[11px] uppercase tracking-editorial transition-opacity duration-500 hover:opacity-60"
-          >
-            {language === "es" ? "Ir al Club" : "See the Club"}
-          </Link>
+          <span className="text-[11px] uppercase tracking-editorial text-paper/42">
+            {language === "es" ? "Más adelante" : "Later"}
+          </span>
         ) : (
           <Link
             href={`/territories/${experience.territory}`}

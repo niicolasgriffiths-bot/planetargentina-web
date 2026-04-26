@@ -27,6 +27,7 @@ export type StoryProfile = {
   place: LocalizedText;
   summary: LocalizedText;
   image: string;
+  cardImage?: string;
 };
 
 export type Experience = {
@@ -51,6 +52,12 @@ export type Territory = {
   heroPosition?: string;
   intro: LocalizedText;
   image: string;
+  homeImage?: string;
+  homeImagePosition?: string;
+  listingImage?: string;
+  listingImagePosition?: string;
+  collectionImage?: string;
+  collectionImagePosition?: string;
   narrative: LocalizedText;
   highlights: LocalizedText[];
   gallery: TerritoryGalleryItem[];
@@ -104,7 +111,8 @@ export const archiveCategories: ArchiveCategory[] = [
       es: "Regiones, mapas y recorridos de cada etapa.",
       en: "Regions, maps and routes for each stage."
     },
-    image: "/archive/territorios.jpg",
+    image: "/editorial/fn38-salt-shadows.jpg",
+    imagePosition: "center center",
     href: "/territories"
   },
   {
@@ -113,8 +121,8 @@ export const archiveCategories: ArchiveCategory[] = [
       es: "Vivir el proyecto en campo.",
       en: "Live the project in the field."
     },
-    image: "/stages/cuyo/gallery-mountain-layers.jpg",
-    imagePosition: "center center",
+    image: "/editorial/fn56-night-camp.jpg",
+    imagePosition: "center 58%",
     href: "/experiences"
   }
 ];
@@ -128,7 +136,8 @@ export const storyProfiles: StoryProfile[] = [
       es: "Gabriela nació en Santa Ana, en altura, donde el frío forma parte de la vida cotidiana. Desde muy joven aprendió a leer el clima, cuidar animales y organizar el año según el movimiento del ganado entre la puna y las yungas. Más tarde salió de su pueblo, trabajó en otras provincias y volvió con otra mirada: entendió que abrir la puerta al visitante no tenía por qué significar perder la identidad. Con el tiempo convirtió su casa en el primer hospedaje para turistas de Santa Ana y abrió una nueva forma de relación entre el pueblo y el exterior.",
       en: "Gabriela was born in Santa Ana, at altitude, where cold is part of daily life. From an early age she learned to read the weather, care for animals and organize the year around the movement of livestock between the puna and the yungas. Later she left her town, worked in other provinces and returned with a different perspective: she understood that opening the door to visitors did not have to mean losing identity. In time she turned her home into Santa Ana’s first lodging for travelers and opened a new relationship between the town and the outside world."
     },
-    image: "/stories/gabriela-zapana.jpg"
+    image: "/stories/gabriela-zapana.jpg",
+    cardImage: "/stories/listing/gabriela-zapana.jpg"
   },
   {
     slug: "juana-quiroga",
@@ -138,7 +147,8 @@ export const storyProfiles: StoryProfile[] = [
       es: "Juana aparece como una de esas presencias que condensan permanencia, trabajo y una relación íntima con el paisaje andino. Su retrato abre la puerta a una memoria silenciosa del territorio, donde la vida cotidiana, los afectos y el tiempo compartido forman parte de la manera en que la puna se sostiene y se transmite.",
       en: "Juana appears as one of those presences that condense continuity, work and an intimate relationship with the Andean landscape. Her portrait opens the door to a quiet memory of the territory, where daily life, affection and shared time are part of how the puna is sustained and passed on."
     },
-    image: "/stories/juana-quiroga.jpg"
+    image: "/stories/juana-quiroga.jpg",
+    cardImage: "/stories/listing/juana-quiroga.jpg"
   },
   {
     slug: "petrona-correa",
@@ -148,7 +158,8 @@ export const storyProfiles: StoryProfile[] = [
       es: "Petrona aprendió a hilar a los cinco años, cuando su abuela le enseñó el proceso completo de trabajar la lana, desde el animal hasta el hilo. A lo largo de su vida convirtió ese aprendizaje en una práctica cotidiana y luego en un oficio, reconociendo con las manos cada fibra, limpiándola, cardándola y transformándola con el huso. Sus tejidos no son piezas separadas de la vida: forman parte de su casa, de su abrigo y de su memoria. Hoy sigue siendo una referencia viva para quienes quieren aprender ese saber en Fiambalá.",
       en: "Petrona learned to spin at the age of five, when her grandmother taught her the full process of working wool, from the animal to the thread. Throughout her life she turned that learning into a daily practice and then into a craft, recognizing each fiber with her hands, cleaning it, carding it and transforming it with the spindle. Her textiles are not separate objects from life: they are part of her home, her warmth and her memory. Today she remains a living reference for those who want to learn that knowledge in Fiambala."
     },
-    image: "/stories/petrona-correa.jpg"
+    image: "/stories/petrona-correa.jpg",
+    cardImage: "/stories/listing/petrona-correa.jpg"
   },
   {
     slug: "roberto-puca",
@@ -158,7 +169,8 @@ export const storyProfiles: StoryProfile[] = [
       es: "Roberto nació en la puna salteña y dejó su casa siendo apenas un adolescente, cruzando a caballo grandes distancias hasta llegar a Humahuaca. Allí trabajó, aprendió oficios y más tarde encontró en el telar una práctica que marcaría su vida. Con el tiempo se convirtió en maestro tejedor y llevó ese saber a escuelas y comunidades de la puna, enseñando a preparar la lana, armar el telar y sostener el ritmo del tejido. Su historia muestra cómo un oficio puede convertirse en trabajo, transmisión y permanencia cultural.",
       en: "Roberto was born in the Salta puna and left home as a teenager, crossing great distances on horseback until he reached Humahuaca. There he worked, learned trades and later found in weaving a practice that would shape his life. In time he became a weaving teacher and carried that knowledge to schools and communities across the puna, teaching how to prepare wool, set up the loom and sustain the rhythm of weaving. His story shows how a craft can become work, transmission and cultural continuity."
     },
-    image: "/stories/roberto-puca.jpg"
+    image: "/stories/roberto-puca.jpg",
+    cardImage: "/stories/listing/roberto-puca.jpg"
   },
   {
     slug: "feliza-catalina-rajido",
@@ -168,7 +180,8 @@ export const storyProfiles: StoryProfile[] = [
       es: "Catalina pasó gran parte de su vida en una estancia aislada de la puna, donde el trabajo estaba organizado alrededor de la recolección de sal en altura y su intercambio por alimentos. Durante años hizo esos viajes con caballos y mulas, sosteniendo un sistema de trueque que fue esencial para la subsistencia en regiones donde el dinero circulaba poco. Su historia conserva la memoria de una práctica casi desaparecida y de una forma de vida marcada por el esfuerzo, la distancia y la adaptación al territorio.",
       en: "Catalina spent much of her life on an isolated estancia in the puna, where work was organized around collecting salt at altitude and exchanging it for food. For years she made those journeys with horses and mules, sustaining a barter system essential for survival in regions where money circulated little. Her story preserves the memory of a nearly vanished practice and of a way of life shaped by effort, distance and adaptation to the land."
     },
-    image: "/stories/feliza-catalina-rajido.jpg"
+    image: "/stories/feliza-catalina-rajido.jpg",
+    cardImage: "/stories/listing/feliza-catalina-rajido.jpg"
   },
   {
     slug: "felipe-morales",
@@ -178,7 +191,8 @@ export const storyProfiles: StoryProfile[] = [
       es: "Felipe creció en el campo puneño, en un paisaje de frío, viento y grandes distancias. Desde niño conoció el trabajo con animales, la recolección de sal y la dureza de una vida marcada por la intemperie. Más adelante encontró en la copla algo más que un canto: una forma de encuentro, memoria y comunicación en un territorio donde las distancias separan a las personas. Hoy su historia permite entender cómo esa tradición sigue viva como parte profunda de la cultura de la puna.",
       en: "Felipe grew up in the puna countryside, in a landscape of cold, wind and great distances. From childhood he knew work with animals, salt gathering and the harshness of a life marked by exposure. Later he found in copla more than a song: a form of encounter, memory and communication in a territory where distance separates people. Today his story helps explain how that tradition remains alive as a deep part of puna culture."
     },
-    image: "/stories/felipe-morales.jpg"
+    image: "/stories/felipe-morales.jpg",
+    cardImage: "/stories/listing/felipe-morales.jpg"
   }
 ];
 
@@ -264,6 +278,10 @@ export const territories: Territory[] = [
       en: "A high plateau between 3,500 and 5,000 meters, with volcanoes, salt flats and one of the continent’s most extreme landscapes."
     },
     image: "/stages/puna/hero-sg1.jpg",
+    homeImage: "/stages/puna/gallery-landscape.jpg",
+    listingImage: "/stages/puna/gallery-presence.jpg",
+    collectionImage: "/collection/intro-saltforms.jpg",
+    collectionImagePosition: "center 54%",
     narrative: {
       es: "La primera etapa de Planeta Argentina está dedicada a La Puna, uno de los territorios más extraordinarios y singulares del país. Un paisaje de altura donde volcanes, salares y extensiones abiertas conforman uno de los entornos naturales más extremos de Sudamérica. En este territorio, las comunidades han desarrollado una relación profunda con el paisaje, construyendo formas de vida, tradiciones y culturas estrechamente ligadas al entorno.",
       en: "The first stage of Planeta Argentina is devoted to the Puna, one of the country’s most extraordinary and singular territories. A high-altitude landscape where volcanoes, salt flats and open expanses create one of South America’s most extreme natural environments. Here, communities have forged a deep relationship with the land, building ways of life, traditions and cultures closely tied to their surroundings."
@@ -284,20 +302,20 @@ export const territories: Territory[] = [
     ],
     gallery: [
       {
-        image: "/stages/puna/gallery-landscape.jpg",
-        kind: { es: "Paisaje", en: "Landscape" }
-      },
-      {
-        image: "/stages/puna/gallery-presence.jpg",
-        kind: { es: "Presencia", en: "Presence" }
-      },
-      {
         image: "/stages/puna/gallery-detail-salt.jpg",
         kind: { es: "Detalle", en: "Detail" }
       },
       {
         image: "/stages/puna/gallery-detail-cactus.jpg",
         kind: { es: "Detalle", en: "Detail" }
+      },
+      {
+        image: "/stages/puna/gallery-territory-cactus.jpg",
+        kind: { es: "Territorio", en: "Territory" }
+      },
+      {
+        image: "/stages/puna/gallery-territory-mountain-texture.jpg",
+        kind: { es: "Territorio", en: "Territory" }
       }
     ],
     experiences: ["salt-traverse", "night-altitude"]
@@ -310,12 +328,14 @@ export const territories: Territory[] = [
     status: { es: "Próximamente...", en: "Upcoming stage" },
     route: { es: "Misiones, Corrientes y Chaco", en: "Misiones, Corrientes and Chaco" },
     mapImage: "/maps/selvas-humedales-map.png",
-    heroPosition: "center 46%",
     intro: {
       es: "Selvas cerradas y humedales abiertos que cambian con las estaciones y concentran una de las mayores biodiversidades del país.",
       en: "Closed jungle and open wetlands that shift with the seasons and hold some of the country’s greatest biodiversity."
     },
-    image: "/stages/selvas-humedales/gallery-capybara-resting.jpg",
+    image: "/stages/selvas-humedales/hero-monkey.jpg",
+    homeImage: "/stages/selvas-humedales/gallery-capybara-resting.jpg",
+    listingImage: "/stages/selvas-humedales/gallery-capybara-water.jpg",
+    heroPosition: "center 46%",
     narrative: {
       es: "Selvas y Humedales reúne ecosistemas donde la densidad de vida cambia el ritmo de la observación. Es una región atravesada por selvas subtropicales, corredores de aves migratorias, esteros abiertos y comunidades que viven en relación íntima con el monte y el agua.",
       en: "Jungles and Wetlands brings together ecosystems where the density of life changes the rhythm of observation. It is a region shaped by subtropical jungle, migratory bird corridors, open marshes and communities living in intimate relationship with forest and water."
@@ -336,20 +356,8 @@ export const territories: Territory[] = [
     ],
     gallery: [
       {
-        image: "/stages/selvas-humedales/gallery-capybara-resting.jpg",
-        kind: { es: "Presencia", en: "Presence" }
-      },
-      {
         image: "/stages/selvas-humedales/gallery-capybara-blackbird.jpg",
         kind: { es: "Presencia", en: "Presence" }
-      },
-      {
-        image: "/stages/selvas-humedales/gallery-capybara-water.jpg",
-        kind: { es: "Presencia", en: "Presence" }
-      },
-      {
-        image: "/stages/selvas-humedales/hero-monkey.jpg",
-        kind: { es: "Detalle", en: "Detail" }
       }
     ],
     experiences: ["wetland-residency"]
@@ -366,7 +374,9 @@ export const territories: Territory[] = [
       es: "Montaña, desierto y altura en una región donde la escala del paisaje redefine el cuerpo y la mirada.",
       en: "Mountain, desert and altitude in a region where the scale of the landscape redefines body and gaze."
     },
-    image: "/stages/cuyo/gallery-high-altitude-lagoon.jpg",
+    image: "/stages/cuyo/hero.jpg",
+    homeImage: "/stages/cuyo/gallery-high-altitude-lagoon.jpg",
+    listingImage: "/stages/cuyo/gallery-desert-forms.jpg",
     heroPosition: "center center",
     narrative: {
       es: "Cuyo condensa algunas de las geografías más radicales del país: desiertos abiertos, valles de altura, poblados nacidos a la sombra de la montaña y cielos atravesados por el vuelo del cóndor. Es una región donde la montaña ordena la escala y el tiempo.",
@@ -388,7 +398,7 @@ export const territories: Territory[] = [
     ],
     gallery: [
       {
-        image: "/stages/cuyo/gallery-desert-forms.jpg",
+        image: "/stages/cuyo/gallery-mountain-layers.jpg",
         kind: { es: "Desierto", en: "Desert" }
       }
     ],
@@ -407,6 +417,8 @@ export const territories: Territory[] = [
       en: "Summits, glaciers and rock valleys where cold and silence define the experience."
     },
     image: "/stages/patagonia-cordillerana/hero.jpg",
+    homeImage: "/stages/patagonia-cordillerana/gallery-landscape.jpg",
+    listingImage: "/stages/patagonia-cordillerana/gallery-winter-road.jpg",
     narrative: {
       es: "La Patagonia Cordillerana abre una geografía de cumbres vírgenes, glaciares eternos y agujas de granito. Es el territorio del puma silencioso, de los gauchos curtidos por el viento y de una intemperie que exige preparación y lectura fina del paisaje.",
       en: "Andean Patagonia opens into a geography of virgin summits, eternal glaciers and granite spires. It is the territory of the silent puma, of gauchos weathered by wind and of exposure that demands preparation and a fine reading of the land."
@@ -427,10 +439,6 @@ export const territories: Territory[] = [
     ],
     gallery: [
       {
-        image: "/stages/patagonia-cordillerana/gallery-landscape.jpg",
-        kind: { es: "Paisaje", en: "Landscape" }
-      },
-      {
         image: "/stages/patagonia-cordillerana/gallery-mountain-lake.jpg",
         kind: { es: "Territorio", en: "Territory" }
       },
@@ -445,10 +453,6 @@ export const territories: Territory[] = [
       {
         image: "/stages/patagonia-cordillerana/gallery-snow-range.jpg",
         kind: { es: "Nieve", en: "Snow" }
-      },
-      {
-        image: "/stages/patagonia-cordillerana/gallery-winter-road.jpg",
-        kind: { es: "Detalle", en: "Detail" }
       }
     ],
     experiences: ["stone-circle"]
@@ -467,6 +471,8 @@ export const territories: Territory[] = [
       en: "Waves, wind, marine wildlife and communities shaped by coast and artisan fishing."
     },
     image: "/stages/patagonia-atlantica/hero.jpg",
+    homeImage: "/stages/patagonia-atlantica/gallery-whale-aerial.jpg",
+    listingImage: "/stages/patagonia-atlantica/gallery-sea-lions.jpg",
     narrative: {
       es: "La Patagonia Atlántica se define por costas abiertas, viento constante y una fauna marina que vuelve cada temporada. Orcas, ballenas, pingüinos, toninas, lobos y elefantes marinos conviven con comunidades que todavía sostienen una relación directa con el océano y la pesca artesanal.",
       en: "Atlantic Patagonia is defined by open coasts, constant wind and marine wildlife returning every season. Orcas, whales, penguins, dolphins, sea lions and elephant seals coexist with communities that still sustain a direct relationship with the ocean and artisan fishing."
@@ -489,14 +495,6 @@ export const territories: Territory[] = [
       {
         image: "/stages/patagonia-atlantica/gallery-whale-tail.jpg",
         kind: { es: "Paisaje", en: "Landscape" }
-      },
-      {
-        image: "/stages/patagonia-atlantica/gallery-whale-aerial.jpg",
-        kind: { es: "Presencia", en: "Presence" }
-      },
-      {
-        image: "/stages/patagonia-atlantica/gallery-sea-lions.jpg",
-        kind: { es: "Detalle", en: "Detail" }
       }
     ],
     experiences: ["southern-winter"]

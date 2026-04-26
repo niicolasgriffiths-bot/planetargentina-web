@@ -38,13 +38,12 @@ const expeditionLayers = [
         tone: "current" as const
       },
       {
-        label: { es: "Club", en: "Club" },
+        label: { es: "Más adelante", en: "Later on" },
         body: {
           es: "Todavía no se deja ver completa.",
           en: "It does not yet fully show itself."
         },
-        tone: "later" as const,
-        href: "/club"
+        tone: "later" as const
       }
     ]
   },
@@ -76,13 +75,12 @@ const expeditionLayers = [
         href: "/coleccion"
       },
       {
-        label: { es: "Club", en: "Club" },
+        label: { es: "Más adelante", en: "Later on" },
         body: {
           es: "Esta parte permanece más atrás.",
           en: "This part remains further back."
         },
-        tone: "later" as const,
-        href: "/club"
+        tone: "later" as const
       }
     ]
   }
@@ -446,19 +444,13 @@ export default function MyJourneyPage() {
                             <p className="mt-3 max-w-xl text-sm leading-8 md:text-base md:leading-9">
                               {localizeText(layer.body, language)}
                             </p>
-                            {layer.href ? (
+                            {"href" in layer && layer.href ? (
                               <div className="mt-5 text-[11px] uppercase tracking-editorial">
                                 <Link
                                   href={layer.href}
                                   className="inline-flex text-black/45 transition-opacity duration-500 hover:opacity-70"
                                 >
-                                  {layer.href === "/coleccion"
-                                    ? language === "es"
-                                      ? "Ver libro"
-                                      : "See book"
-                                    : language === "es"
-                                      ? "Ir al Club"
-                                      : "Go to Club"}
+                                  {language === "es" ? "Ver libro" : "See book"}
                                 </Link>
                               </div>
                             ) : null}

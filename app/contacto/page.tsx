@@ -1,37 +1,59 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { FadeIn } from "@/components/fade-in";
 import { PageIntro } from "@/components/page-intro";
 import { useLanguage } from "@/components/language-provider";
 
-function buildMailto(form: FormData) {
-  const name = String(form.get("name") ?? "").trim();
-  const email = String(form.get("email") ?? "").trim();
-  const subject = String(form.get("subject") ?? "").trim();
-  const message = String(form.get("message") ?? "").trim();
-
-  const body = [
-    ["Nombre", name],
-    ["Email", email],
-    ["Mensaje", message]
-  ]
-    .map(([label, value]) => `${label}\n${value}`)
-    .join("\n\n");
-
-  return `mailto:hola@planetargentina.com?subject=${encodeURIComponent(
-    subject || "Contacto - Planeta Argentina"
-  )}&body=${encodeURIComponent(body)}`;
-}
+type SubmitStatus = "idle" | "sending" | "success" | "error";
 
 export default function ContactPage() {
   const { language } = useLanguage();
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    window.location.href = buildMailto(form);
+    setSubmitStatus("sending");
+    setSubmitMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mwvaabko", {
+        method: "POST",
+        headers: {
+          Accept: "application/json"
+        },
+        body: formData
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          result?.errors?.[0]?.message ??
+            (language === "es" ? "Error al enviar." : "Error sending message.")
+        );
+      }
+
+      form.reset();
+      setSubmitStatus("success");
+      setSubmitMessage(
+        language === "es" ? "Mensaje enviado." : "Message sent."
+      );
+    } catch (error) {
+      setSubmitStatus("error");
+      setSubmitMessage(
+        error instanceof Error
+          ? error.message
+          : language === "es"
+            ? "Error al enviar."
+            : "Error sending message."
+      );
+    }
   }
 
   return (
@@ -84,6 +106,11 @@ export default function ContactPage() {
 
           <FadeIn delay={0.08}>
             <form onSubmit={handleSubmit} className="grid gap-6">
+              <input
+                type="hidden"
+                name="_subject"
+                value="Nuevo mensaje desde Planeta Argentina"
+              />
               <div className="grid gap-6 md:grid-cols-2">
                 <label className="grid gap-3">
                   <span className="text-[11px] uppercase tracking-editorial text-stone">
@@ -140,11 +167,24 @@ export default function ContactPage() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72"
+                  disabled={submitStatus === "sending"}
+                  className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                 >
-                  {language === "es" ? "Enviar mensaje" : "Send message"}
+                  {submitStatus === "sending"
+                    ? language === "es"
+                      ? "Enviando..."
+                      : "Sending..."
+                    : language === "es"
+                      ? "Enviar mensaje"
+                      : "Send message"}
                 </button>
               </div>
+
+              {submitStatus === "success" || submitStatus === "error" ? (
+                <p className="text-sm leading-8 text-black/56 md:text-base md:leading-9">
+                  {submitMessage}
+                </p>
+              ) : null}
             </form>
           </FadeIn>
         </div>

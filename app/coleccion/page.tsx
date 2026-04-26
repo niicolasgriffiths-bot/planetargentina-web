@@ -41,11 +41,17 @@ export default function CollectionPage() {
         <FadeIn delay={0.08} className="mt-16 md:mt-20">
           <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/7]">
             <Image
-              src={firstBook.image}
+              src={firstBook.collectionImage ?? firstBook.image}
               alt={localizeText(firstBook.name, language)}
               fill
               priority
-              style={firstBook.heroPosition ? { objectPosition: firstBook.heroPosition } : undefined}
+              style={
+                firstBook.collectionImagePosition
+                  ? { objectPosition: firstBook.collectionImagePosition }
+                  : firstBook.heroPosition
+                    ? { objectPosition: firstBook.heroPosition }
+                    : undefined
+              }
               className="soft-photo object-cover"
             />
           </div>
@@ -95,30 +101,30 @@ export default function CollectionPage() {
             <div className="grid gap-5">
               <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/8]">
                 <Image
-                  src="/stages/puna/gallery-landscape.jpg"
-                  alt={text(language, "Paisaje de la Puna", "Puna landscape")}
+                  src="/editorial/sana3-rose-valley.jpg"
+                  alt={text(language, "Relieve puneño al atardecer", "Puna relief at dusk")}
                   fill
                   className="soft-photo object-cover"
-                  style={{ objectPosition: "center center" }}
+                  style={{ objectPosition: "center 58%" }}
                 />
               </div>
               <div className="grid gap-5 md:grid-cols-[1.15fr_0.85fr]">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
-                    src="/stages/puna/gallery-detail-salt.jpg"
-                    alt={text(language, "Detalle de sal en la Puna", "Salt detail in the Puna")}
+                    src="/editorial/sana5-green-ranges.jpg"
+                    alt={text(language, "Laderas abiertas en altura", "Open slopes at altitude")}
                     fill
                     className="soft-photo object-cover"
-                    style={{ objectPosition: "center center" }}
+                    style={{ objectPosition: "center 54%" }}
                   />
                 </div>
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
-                    src="/stages/puna/gallery-presence.jpg"
-                    alt={text(language, "Vida en la Puna", "Life in the Puna")}
+                    src="/club/mountain-layers.jpg"
+                    alt={text(language, "Relieve montañoso en capas", "Layered mountain relief")}
                     fill
                     className="soft-photo object-cover"
-                    style={{ objectPosition: "center center" }}
+                    style={{ objectPosition: "center 54%" }}
                   />
                 </div>
               </div>
@@ -149,8 +155,8 @@ export default function CollectionPage() {
 
           <FadeIn delay={0.08} className="w-full max-w-xl justify-self-end opacity-85">
             <BookCoverPreview
-              image={firstBook.image}
-              imagePosition={firstBook.heroPosition}
+              image="/club/road-dusk.jpg"
+              imagePosition="center 56%"
               author="Nicolás Griffiths"
               collectionTitle="Planeta"
               territory={localizeText(firstBook.name, language)}

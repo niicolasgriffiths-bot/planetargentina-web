@@ -1,8 +1,10 @@
 import {
   HomeClosing,
-  HomeEntryPoints,
+  HomeExperiences,
   HomeHero,
+  HomeSupport,
   HomeStatement,
+  HomeTerritories,
   HomeWork
 } from "@/components/home-sections";
 
@@ -11,8 +13,10 @@ export default function HomePage() {
     <main className="bg-[#f4efe8] text-ink">
       <HomeHero />
       <HomeStatement />
-      <HomeEntryPoints />
+      <HomeTerritories />
       <HomeWork />
+      <HomeExperiences />
+      <HomeSupport />
       <HomeClosing />
     </main>
   );

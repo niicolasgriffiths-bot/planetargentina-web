@@ -143,7 +143,7 @@ export default function TerritoryPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 md:px-10">
-        <div className="mb-10 flex items-end justify-between gap-4">
+        <div className="mb-10">
           <div>
             <p className="text-[11px] uppercase tracking-editorial text-stone">
               {language === "es" ? "Experiencias relacionadas" : "Related experiences"}
@@ -152,12 +152,6 @@ export default function TerritoryPage() {
               {language === "es" ? "Lo que se abre desde aqui" : "What opens from here"}
             </h2>
           </div>
-          <Link
-            href="/club"
-            className="text-[11px] uppercase tracking-editorial text-black/50 transition-opacity duration-500 hover:opacity-60"
-          >
-            {language === "es" ? "Ir al Club" : "See the Club"}
-          </Link>
         </div>
 
         {relatedExperiences.length > 0 ? (

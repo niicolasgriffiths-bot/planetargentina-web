@@ -10,8 +10,7 @@ import { pageCopy, t } from "@/data/site-content";
 export default function ExperienceAccessDetailPage() {
   const { language } = useLanguage();
   const params = useParams<{ slug: string }>();
-  const normalizedSlug =
-    params.slug === "libro" || params.slug === "club" ? "inmersion" : params.slug;
+  const normalizedSlug = params.slug === "libro" ? "inmersion" : params.slug;
   const access = pageCopy.experiences.accessDetails.find((item) => item.id === normalizedSlug);
 
   if (!access) {

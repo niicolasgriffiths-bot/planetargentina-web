@@ -74,7 +74,7 @@ export default function StoriesPage() {
                 <Link href={`/stories/${story.slug}`} className="group block">
                   <div className="relative aspect-[4/5]">
                     <Image
-                      src={story.image}
+                      src={story.cardImage ?? story.image}
                       alt={localizeText(story.name, language)}
                       fill
                       className="soft-photo object-cover transition-transform duration-[1400ms] group-hover:scale-[1.03]"

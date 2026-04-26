@@ -454,8 +454,8 @@ export function CinematicHome() {
       image:
         "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=80",
       alt: "Patagonian landscape",
-      title: "This is where visibility ends.",
-      href: "/club",
+      title: "The country keeps opening outward.",
+      href: `/territories/${territories[3].slug}`,
       variant: "hold",
       concealment: "veil",
       temper: "calm",

@@ -6,7 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: "Planeta Argentina",
-  description: "A contemplative digital gallery and restricted access platform."
+  description:
+    "Plataforma editorial y documental sobre Argentina, construida a través de expediciones reales."
 };
 
 export default function RootLayout({

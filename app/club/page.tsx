@@ -27,15 +27,16 @@ export default function ClubPage() {
         <FadeIn className="overflow-hidden rounded-[2.5rem] border border-white/8">
           <div className="relative aspect-[16/8] md:aspect-[16/7]">
             <Image
-              src="/club/night-threshold-web.jpg"
+              src="/editorial/fn19-snow-dusk.jpg"
               alt={
                 language === "es"
-                  ? "Campamento nocturno en la puna"
-                  : "Night camp in the puna"
+                  ? "Cordillera nevada al atardecer"
+                  : "Snowy range at dusk"
               }
               fill
               priority
               className="object-cover"
+              style={{ objectPosition: "center 54%" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-shadow/70 via-shadow/20 to-shadow/10" />
           </div>
@@ -85,14 +86,15 @@ export default function ClubPage() {
           <FadeIn className="overflow-hidden rounded-[2rem] border border-white/8">
             <div className="relative min-h-[300px] md:min-h-full">
               <Image
-                src="/club/mountain-layers-web.jpg"
+                src="/editorial/vg1-turquoise-lagoon.jpg"
                 alt={
                   language === "es"
-                    ? "Capas de montaña en la puna"
-                    : "Mountain layers in the puna"
+                    ? "Laguna turquesa en altura"
+                    : "Turquoise high-altitude lagoon"
                 }
                 fill
                 className="object-cover"
+                style={{ objectPosition: "center center" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-shadow/40 via-transparent to-transparent" />
             </div>
@@ -147,14 +149,15 @@ export default function ClubPage() {
         <FadeIn className="overflow-hidden rounded-[2.5rem] border border-white/8">
           <div className="relative aspect-[16/7]">
             <Image
-              src="/club/road-dusk-web.jpg"
+              src="/editorial/vg4-desert-road.jpg"
               alt={
                 language === "es"
-                  ? "Camino de altura al atardecer"
-                  : "High-altitude road at dusk"
+                  ? "Camino abierto en desierto de altura"
+                  : "Open road in the high desert"
               }
               fill
               className="object-cover"
+              style={{ objectPosition: "center 56%" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-shadow/35 via-transparent to-transparent" />
           </div>

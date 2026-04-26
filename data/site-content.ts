@@ -61,22 +61,6 @@ export const homeCopy = {
     es: "El territorio sostiene la forma del proyecto.",
     en: "The territory sustains the shape of the project."
   },
-  clubEyebrow: {
-    es: "Club",
-    en: "Club"
-  },
-  clubTitle: {
-    es: "Algo que aparece después.",
-    en: "Something that appears later."
-  },
-  clubBody: {
-    es: "El Club no organiza el proyecto. Aparece cuando la relación con él ya es más cercana.",
-    en: "The Club does not organize the project. It appears once the relationship with it has grown closer."
-  },
-  clubLink: {
-    es: "Ir al Club",
-    en: "See this layer"
-  },
   collectionEyebrow: {
     es: "Colección",
     en: "Collection"
