@@ -114,9 +114,12 @@ export function SiteHeader() {
   const headerTone = isClubPage
     ? "border-b border-white/12 bg-[#0f0f0f]/92 text-white"
     : "border-b border-black/8 bg-[#f4efe8]/88 text-black";
+  const mobileOpenTone = mobileMenuOpen
+    ? "border-b border-transparent bg-transparent text-[#f4efe8] backdrop-blur-none"
+    : `${headerTone} backdrop-blur-md`;
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 backdrop-blur-md ${headerTone}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 ${mobileOpenTone}`}>
       <div
         className={`mx-auto hidden max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-x-6 px-6 py-5 text-[11px] uppercase tracking-editorial md:grid md:gap-x-10 md:px-10 ${
           isClubPage ? "text-white" : "text-black"
@@ -322,16 +325,18 @@ export function SiteHeader() {
 
       <div
         id="mobile-navigation-overlay"
-        className={`fixed inset-0 z-[60] md:hidden transition-opacity duration-500 ${
+        className={`fixed inset-0 z-[80] bg-[#0a0a09] text-[#f4efe8] md:hidden transition-opacity duration-500 ${
           mobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden={!mobileMenuOpen}
       >
+        <div className="absolute inset-0 bg-[#0a0a09]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0%,rgba(255,255,255,0.012)_18%,rgba(0,0,0,0.12)_100%)]" />
         <button
           type="button"
           aria-label={language === "es" ? "Cerrar menú" : "Close menu"}
           onClick={() => setMobileMenuOpen(false)}
-          className="absolute inset-0 bg-[#11110f]/92 backdrop-blur-2xl"
+          className="absolute inset-0"
         />
 
         <div
@@ -368,7 +373,7 @@ export function SiteHeader() {
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col items-center justify-center gap-5 py-12 text-center">
+          <nav className="flex flex-1 flex-col items-center justify-center gap-7 py-16 text-center">
             {mobileNavigation.map((item, index) => (
               <Link
                 key={item.href}
@@ -378,7 +383,7 @@ export function SiteHeader() {
                 style={{
                   transitionDelay: mobileMenuOpen ? `${90 + index * 55}ms` : "0ms"
                 }}
-                className={`font-serif text-[2.25rem] leading-[0.98] tracking-[-0.01em] transition-all duration-500 hover:opacity-65 ${
+                className={`font-serif text-[2.35rem] leading-[0.98] tracking-[-0.01em] transition-all duration-500 hover:opacity-65 ${
                   mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
                 } ${isActive(item.href) ? "text-[#f4efe8]" : "text-[#f4efe8]/88"}`}
               >
