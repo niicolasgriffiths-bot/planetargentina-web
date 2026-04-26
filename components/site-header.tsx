@@ -57,12 +57,7 @@ export function SiteHeader() {
   const isClubPage = pathname?.startsWith("/club");
   const primaryNavigation = navigation.filter((item) => item.tier === "primary");
   const secondaryNavigation = navigation.filter((item) => item.tier === "secondary");
-  const mobileNavigation: MobileNavigationItem[] = [
-    ...primaryNavigation,
-    ...secondaryNavigation,
-    { href: "/club", label: { es: "Club", en: "Club" } },
-    { href: "/foundation", label: { es: "Fundación", en: "Foundation" } }
-  ];
+  const mobileNavigation: MobileNavigationItem[] = [...primaryNavigation, ...secondaryNavigation];
   const authHref = user ? "/mi-recorrido" : "/entrar";
   const authActive = pathname === "/entrar" || pathname?.startsWith("/mi-recorrido");
   const authLabel = loading
