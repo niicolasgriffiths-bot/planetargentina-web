@@ -1,11 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
 import { useLanguage } from "@/components/language-provider";
-import { navigation } from "@/data/site";
-import { localizeText } from "@/data/site";
+import { localizeText, navigation, type LocalizedText } from "@/data/site";
 
 function LanguageFlag({
   code,
@@ -43,13 +43,26 @@ function LanguageFlag({
   );
 }
 
+type MobileNavigationItem = {
+  href: string;
+  label: LocalizedText;
+};
+
 export function SiteHeader() {
   const { language, setLanguage } = useLanguage();
   const { loading, user } = useAuth();
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const isClubPage = pathname?.startsWith("/club");
   const primaryNavigation = navigation.filter((item) => item.tier === "primary");
   const secondaryNavigation = navigation.filter((item) => item.tier === "secondary");
+  const mobileNavigation: MobileNavigationItem[] = [
+    ...primaryNavigation,
+    ...secondaryNavigation,
+    { href: "/club", label: { es: "Club", en: "Club" } },
+    { href: "/foundation", label: { es: "Fundación", en: "Foundation" } }
+  ];
   const authHref = user ? "/mi-recorrido" : "/entrar";
   const authActive = pathname === "/entrar" || pathname?.startsWith("/mi-recorrido");
   const authLabel = loading
@@ -62,23 +75,50 @@ export function SiteHeader() {
         ? "Entrar"
         : "Enter";
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
+
   const isActive = (href: string) => {
     if (!pathname) return false;
     if (href === "/") return pathname === "/";
-    if (href === "/explore") return pathname === "/explore" || pathname.startsWith("/territories") || pathname.startsWith("/stories");
+    if (href === "/explore") {
+      return (
+        pathname === "/explore" ||
+        pathname.startsWith("/territories") ||
+        pathname.startsWith("/stories")
+      );
+    }
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
+  const headerTone = isClubPage
+    ? "border-b border-white/12 bg-[#0f0f0f]/92 text-white"
+    : "border-b border-black/8 bg-[#f4efe8]/88 text-black";
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 backdrop-blur-md ${
-        isClubPage
-          ? "border-b border-white/12 bg-[#0f0f0f]/92"
-          : "border-b border-black/8 bg-[#f4efe8]/88"
-      }`}
-    >
+    <header className={`fixed inset-x-0 top-0 z-50 backdrop-blur-md ${headerTone}`}>
       <div
-        className={`mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-x-6 px-6 py-5 text-[11px] uppercase tracking-editorial md:gap-x-10 md:px-10 ${
+        className={`mx-auto hidden max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-x-6 px-6 py-5 text-[11px] uppercase tracking-editorial md:grid md:gap-x-10 md:px-10 ${
           isClubPage ? "text-white" : "text-black"
         }`}
       >
@@ -90,7 +130,8 @@ export function SiteHeader() {
         >
           Planeta Argentina
         </Link>
-        <nav className="hidden min-w-0 items-center justify-center md:flex">
+
+        <nav className="min-w-0 items-center justify-center md:flex">
           <div className="flex items-center gap-1">
             {primaryNavigation.map((item) => (
               <Link
@@ -219,6 +260,178 @@ export function SiteHeader() {
               <LanguageFlag code="en" inverse={isClubPage} />
               <span className="sr-only">English</span>
             </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6 py-5 md:hidden ${
+          isClubPage ? "text-white" : "text-black"
+        }`}
+      >
+        <div aria-hidden="true" className="h-8" />
+        <Link
+          href="/"
+          className={`justify-self-center font-serif text-xl normal-case tracking-[0.08em] transition-opacity duration-500 hover:opacity-70 ${
+            isClubPage ? "text-white" : "text-black"
+          }`}
+        >
+          Planeta Argentina
+        </Link>
+        <button
+          type="button"
+          aria-label={
+            mobileMenuOpen
+              ? language === "es"
+                ? "Cerrar menú"
+                : "Close menu"
+              : language === "es"
+                ? "Abrir menú"
+                : "Open menu"
+          }
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation-overlay"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className={`relative justify-self-end rounded-full p-2 transition-opacity duration-300 hover:opacity-70 ${
+            isClubPage ? "text-white" : "text-black"
+          }`}
+        >
+          <span className="sr-only">{language === "es" ? "Menú" : "Menu"}</span>
+          <span className="relative block h-4 w-5">
+            <span
+              aria-hidden="true"
+              className={`absolute left-0 top-0 block h-px w-5 origin-center transition-all duration-300 ${
+                isClubPage ? "bg-white" : "bg-black"
+              } ${mobileMenuOpen ? "translate-y-[7px] rotate-45" : ""}`}
+            />
+            <span
+              aria-hidden="true"
+              className={`absolute left-0 top-[7px] block h-px w-5 transition-all duration-300 ${
+                isClubPage ? "bg-white" : "bg-black"
+              } ${mobileMenuOpen ? "opacity-0" : "opacity-100"}`}
+            />
+            <span
+              aria-hidden="true"
+              className={`absolute left-0 top-[14px] block h-px w-5 origin-center transition-all duration-300 ${
+                isClubPage ? "bg-white" : "bg-black"
+              } ${mobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+            />
+          </span>
+        </button>
+      </div>
+
+      <div
+        id="mobile-navigation-overlay"
+        className={`fixed inset-0 z-[60] md:hidden transition-opacity duration-500 ${
+          mobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <button
+          type="button"
+          aria-label={language === "es" ? "Cerrar menú" : "Close menu"}
+          onClick={() => setMobileMenuOpen(false)}
+          className="absolute inset-0 bg-[#11110f]/92 backdrop-blur-2xl"
+        />
+
+        <div
+          className={`relative flex min-h-screen flex-col px-8 pb-12 pt-6 text-[#f4efe8] transition-all duration-500 ${
+            mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+        >
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+            <div aria-hidden="true" className="h-8" />
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="justify-self-center font-serif text-xl normal-case tracking-[0.08em] text-[#f4efe8] transition-opacity duration-300 hover:opacity-70"
+            >
+              Planeta Argentina
+            </Link>
+            <button
+              type="button"
+              aria-label={language === "es" ? "Cerrar menú" : "Close menu"}
+              onClick={() => setMobileMenuOpen(false)}
+              className="relative justify-self-end rounded-full p-2 text-[#f4efe8] transition-opacity duration-300 hover:opacity-70"
+            >
+              <span className="sr-only">{language === "es" ? "Cerrar" : "Close"}</span>
+              <span className="relative block h-4 w-5">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-[7px] block h-px w-5 rotate-45 bg-[#f4efe8]"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-[7px] block h-px w-5 -rotate-45 bg-[#f4efe8]"
+                />
+              </span>
+            </button>
+          </div>
+
+          <nav className="flex flex-1 flex-col items-center justify-center gap-5 py-12 text-center">
+            {mobileNavigation.map((item, index) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  transitionDelay: mobileMenuOpen ? `${90 + index * 55}ms` : "0ms"
+                }}
+                className={`font-serif text-[2.25rem] leading-[0.98] tracking-[-0.01em] transition-all duration-500 hover:opacity-65 ${
+                  mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                } ${isActive(item.href) ? "text-[#f4efe8]" : "text-[#f4efe8]/88"}`}
+              >
+                {localizeText(item.label, language)}
+              </Link>
+            ))}
+          </nav>
+
+          <div
+            className={`border-t border-white/10 pt-8 transition-all duration-500 ${
+              mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+            style={{ transitionDelay: mobileMenuOpen ? `${90 + mobileNavigation.length * 55}ms` : "0ms" }}
+          >
+            <div className="flex flex-col items-center gap-8">
+              {!loading ? (
+                <Link
+                  href={authHref}
+                  aria-current={authActive ? "page" : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-[11px] uppercase tracking-editorial text-[#f4efe8]/72 transition-opacity duration-300 hover:opacity-65"
+                >
+                  {authLabel}
+                </Link>
+              ) : null}
+
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setLanguage("es")}
+                  aria-label="Cambiar a español"
+                  aria-pressed={language === "es"}
+                  className={`inline-flex rounded-[0.65rem] p-[4px] transition-all duration-300 ${
+                    language === "es" ? "bg-white/10 opacity-100" : "opacity-45 hover:opacity-75"
+                  }`}
+                >
+                  <LanguageFlag code="es" inverse />
+                  <span className="sr-only">Español</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("en")}
+                  aria-label="Switch to English"
+                  aria-pressed={language === "en"}
+                  className={`inline-flex rounded-[0.65rem] p-[4px] transition-all duration-300 ${
+                    language === "en" ? "bg-white/10 opacity-100" : "opacity-45 hover:opacity-75"
+                  }`}
+                >
+                  <LanguageFlag code="en" inverse />
+                  <span className="sr-only">English</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

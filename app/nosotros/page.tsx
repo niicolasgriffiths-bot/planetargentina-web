@@ -97,7 +97,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-24 md:px-10">
-        <FadeIn className="overflow-hidden rounded-[1.5rem]">
+        <FadeIn className="overflow-hidden">
           <div className="relative aspect-[16/9] md:aspect-[16/7]">
             <Image
               src="/editorial/fn1-salt-clouds.jpg"
@@ -139,7 +139,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="mt-14 overflow-hidden rounded-[1.25rem] bg-black md:mt-16">
+          <div className="mt-14 overflow-hidden bg-black md:mt-16">
             <video
               className="block aspect-video h-full w-full object-cover"
               controls
@@ -173,7 +173,7 @@ export default function AboutPage() {
           </FadeIn>
 
           <FadeIn className="mt-14 max-w-sm md:mt-16 md:ml-auto">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
+            <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="/about/founder-portrait.jpg"
                 alt={

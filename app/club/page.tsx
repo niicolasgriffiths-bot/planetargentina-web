@@ -24,7 +24,7 @@ export default function ClubPage() {
       />
 
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-20 md:px-10">
-        <FadeIn className="overflow-hidden rounded-[2.5rem] border border-white/8">
+        <FadeIn className="overflow-hidden border border-white/8">
           <div className="relative aspect-[16/8] md:aspect-[16/7]">
             <Image
               src="/editorial/fn19-snow-dusk.jpg"
@@ -83,7 +83,7 @@ export default function ClubPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-20 md:px-10">
         <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr]">
-          <FadeIn className="overflow-hidden rounded-[2rem] border border-white/8">
+          <FadeIn className="overflow-hidden border border-white/8">
             <div className="relative min-h-[300px] md:min-h-full">
               <Image
                 src="/editorial/vg1-turquoise-lagoon.jpg"
@@ -146,7 +146,7 @@ export default function ClubPage() {
       </section>
 
       <section className="mx-auto mt-16 max-w-6xl px-6 md:mt-20 md:px-10">
-        <FadeIn className="overflow-hidden rounded-[2.5rem] border border-white/8">
+        <FadeIn className="overflow-hidden border border-white/8">
           <div className="relative aspect-[16/7]">
             <Image
               src="/editorial/vg4-desert-road.jpg"

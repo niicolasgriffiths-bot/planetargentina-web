@@ -69,7 +69,7 @@ export default function StoriesPage() {
               <FadeIn
                 key={story.image}
                 delay={index * 0.08}
-                className="overflow-hidden rounded-[2rem] border border-black/8 bg-white/70"
+                className="overflow-hidden border border-black/8 bg-white/70"
               >
                 <Link href={`/stories/${story.slug}`} className="group block">
                   <div className="relative aspect-[4/5]">

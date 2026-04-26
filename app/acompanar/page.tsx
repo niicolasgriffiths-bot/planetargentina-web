@@ -136,7 +136,7 @@ export default function SupportPage() {
 
       <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-28 md:px-10">
         <FadeIn delay={0.08}>
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] md:aspect-[16/6]">
+          <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/6]">
             <Image
               src="/collection/intro-lagoon.jpg"
               alt={

@@ -109,7 +109,7 @@ export default function TerritoryPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 md:px-10">
-        <FadeIn className="rounded-[2rem] border border-black/10 bg-[#111111] p-6 text-paper shadow-haze md:p-10">
+        <FadeIn className="border border-black/10 bg-[#111111] p-6 text-paper shadow-haze md:p-10">
           <div className="grid gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
             <div>
               <p className="text-[11px] uppercase tracking-editorial text-paper/45">
@@ -128,7 +128,7 @@ export default function TerritoryPage() {
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/40">
+            <div className="overflow-hidden border border-white/10 bg-black/40">
               <div className="relative aspect-[16/10]">
                 <Image
                   src={territory.mapImage}

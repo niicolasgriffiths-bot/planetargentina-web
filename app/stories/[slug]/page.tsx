@@ -33,7 +33,7 @@ export default function StoryDetailPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start">
-          <FadeIn className="overflow-hidden rounded-[2rem]">
+          <FadeIn className="overflow-hidden">
             <div className="relative aspect-[4/5]">
               <Image
                 src={story.image}

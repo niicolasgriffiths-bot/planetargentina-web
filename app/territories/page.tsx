@@ -45,7 +45,7 @@ export default function TerritoriesPage() {
             <FadeIn
               key={territory.slug}
               delay={index * 0.08}
-              className="rounded-[2rem] border border-black/10 bg-white/70 p-5 shadow-haze md:p-7"
+              className="border border-black/10 bg-white/70 p-5 shadow-haze md:p-7"
             >
               <Link href={`/territories/${territory.slug}`} className="group block">
                 <div
@@ -53,7 +53,7 @@ export default function TerritoriesPage() {
                     index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                   }`}
                 >
-                  <div className="image-mask rounded-[1.5rem]">
+                  <div className="image-mask">
                     <div className="relative aspect-[16/11] md:h-full md:min-h-[28rem] md:aspect-auto">
                       <Image
                         src={territory.listingImage ?? territory.image}
@@ -71,7 +71,7 @@ export default function TerritoriesPage() {
                     </div>
                   </div>
 
-                  <div className="flex h-full flex-col justify-between rounded-[1.5rem] bg-black/[0.02] p-5 md:p-8">
+                  <div className="flex h-full flex-col justify-between bg-black/[0.02] p-5 md:p-8">
                     <div>
                       <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-editorial text-stone">
                         <span>{localizeText(territory.stage, language)}</span>

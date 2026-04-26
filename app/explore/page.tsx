@@ -66,7 +66,7 @@ export default function ExplorePage() {
               delay={index * 0.08}
             >
               <Link href={item.href} className="group block">
-                <div className="overflow-hidden rounded-[2rem] transition-transform duration-500 hover:-translate-y-1">
+                <div className="overflow-hidden transition-transform duration-500 hover:-translate-y-1">
                   <div className="relative aspect-[16/11]">
                     <Image
                       src={item.image}

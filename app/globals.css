@@ -45,7 +45,6 @@ img {
 .image-mask {
   position: relative;
   overflow: hidden;
-  border-radius: 2rem;
 }
 
 .image-mask::after {
