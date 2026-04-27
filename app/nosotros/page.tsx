@@ -8,7 +8,7 @@ import { FadeIn } from "@/components/fade-in";
 const aboutCopy = {
   motivation: {
     es: [
-      "La forma en la que Argentina se muestra,\nTanto hacia afuera como hacia adentro,\nsuele quedar reducida a un relato limitado.",
+      "La forma en la que Argentina se muestra,\ntanto hacia afuera como hacia adentro,\nsuele quedar reducida a un relato limitado.",
       "Gran parte del país —su escala, su diversidad y las formas de vida que lo sostienen— no aparece en ese discurso.",
       "Planeta Argentina surge para trabajar sobre esa distancia.",
       "No para construir una nueva versión, sino para ampliar la mirada: recorrer el territorio en profundidad y dar lugar a aquello que queda fuera de los relatos más visibles."
@@ -72,9 +72,9 @@ export default function AboutPage() {
   const closing = aboutCopy.closing[language];
 
   return (
-    <main className="pb-24 pt-32 md:pb-32 md:pt-40">
+    <main className="pb-28 pt-32 md:pb-32 md:pt-40">
       <section className="mx-auto max-w-7xl px-6 md:px-10">
-        <div className="border-t border-black/8 pt-10">
+        <div className="border-t border-black/8 pt-12 md:pt-16">
           <FadeIn>
             <Breadcrumbs
               items={[
@@ -96,7 +96,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-24 md:px-10">
+      <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
         <FadeIn className="overflow-hidden">
           <div className="relative aspect-[16/9] md:aspect-[16/7]">
             <Image
@@ -116,7 +116,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
-        <FadeIn className="mx-auto max-w-4xl border-t border-black/8 pt-12 text-center md:pt-14">
+        <FadeIn className="mx-auto max-w-4xl border-t border-black/8 pt-12 text-center md:pt-16">
           <p className="mx-auto max-w-[15ch] whitespace-pre-line font-serif text-[2.2rem] leading-[1.12] text-black/88 md:max-w-[14ch] md:text-[2.85rem] md:leading-[1.08]">
             {work[0]}
           </p>
@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-12 md:pt-14">
+        <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
           <div className="mx-auto max-w-xl text-center">
             <p className="mx-auto max-w-[16ch] whitespace-pre-line font-serif text-[2.2rem] leading-[1.12] text-black/88 md:max-w-[15ch] md:text-[2.85rem] md:leading-[1.08]">
               {output[0]}
@@ -154,7 +154,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
-        <div className="border-t border-black/8 pt-12 md:pt-14">
+        <div className="border-t border-black/8 pt-12 md:pt-16">
           <FadeIn>
             <div className="mx-auto max-w-3xl space-y-8 text-sm leading-8 text-black/68 md:text-[1rem] md:leading-9">
               {history.map((paragraph, index) => (
@@ -191,7 +191,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
-        <FadeIn className="mx-auto max-w-4xl border-t border-black/8 pt-12 text-center md:pt-14">
+        <FadeIn className="mx-auto max-w-4xl border-t border-black/8 pt-12 text-center md:pt-16">
           <p className="whitespace-pre-line font-serif text-[1.9rem] leading-[1.3] text-black/92 md:text-[2.95rem] md:leading-[1.18]">
             {closing}
           </p>

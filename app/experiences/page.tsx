@@ -10,7 +10,7 @@ export default function ExperiencesPage() {
   const { language } = useLanguage();
 
   return (
-    <main className="pb-28 pt-32 md:pb-40 md:pt-40">
+    <main className="pb-28 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-5xl px-6 md:px-10">
         <Breadcrumbs
           items={[
@@ -26,17 +26,17 @@ export default function ExperiencesPage() {
         </h1>
       </div>
 
-      <section className="mx-auto mt-28 max-w-7xl px-6 md:mt-40 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-20 md:pt-28">
-          <div className="grid gap-16 md:grid-cols-[0.82fr_1.18fr] md:items-center md:gap-24">
+      <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
+        <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
+          <div className="grid gap-12 md:grid-cols-[0.82fr_1.18fr] md:items-center md:gap-20">
             <div className="max-w-xl">
               <p className="whitespace-pre-line font-serif text-4xl leading-[1.08] text-black/92 md:text-6xl">
                 {t(pageCopy.experiences.statement, language)}
               </p>
-              <p className="mt-16 max-w-lg whitespace-pre-line text-sm leading-9 text-black/66 md:mt-20 md:text-base md:leading-10">
+              <p className="mt-12 max-w-lg whitespace-pre-line text-sm leading-9 text-black/66 md:mt-16 md:text-base md:leading-10">
                 {t(pageCopy.experiences.note, language)}
               </p>
-              <p className="mt-16 text-[11px] uppercase tracking-editorial text-black/42 md:mt-20">
+              <p className="mt-12 text-[11px] uppercase tracking-editorial text-black/42 md:mt-16">
                 {t(pageCopy.experiences.status, language)}
               </p>
             </div>

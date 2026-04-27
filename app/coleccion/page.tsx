@@ -17,9 +17,9 @@ export default function CollectionPage() {
   const firstBook = territories[0];
 
   return (
-    <main className="pb-24 pt-32 md:pb-32 md:pt-40">
+    <main className="pb-28 pt-32 md:pb-32 md:pt-40">
       <section className="mx-auto max-w-7xl px-6 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-10">
+        <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
           <Breadcrumbs
             items={[
               { label: language === "es" ? "Home" : "Home", href: "/" },
@@ -38,7 +38,7 @@ export default function CollectionPage() {
           </h1>
         </FadeIn>
 
-        <FadeIn delay={0.08} className="mt-16 md:mt-20">
+        <FadeIn delay={0.08} className="mt-12 md:mt-16">
           <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/7]">
             <Image
               src={firstBook.collectionImage ?? firstBook.image}
@@ -58,20 +58,20 @@ export default function CollectionPage() {
         </FadeIn>
       </section>
 
-      <section className="px-6 py-28 md:px-10 md:py-40">
+      <section className="px-6 py-24 md:px-10 md:py-32">
         <FadeIn className="mx-auto max-w-2xl text-center">
           <p className="whitespace-pre-line font-serif text-3xl leading-[1.2] text-black/88 md:text-5xl">
             {text(
               language,
-              "Cada territorio se transforma en una obra.\nUna mirada del país a través de cinco libros y un documental",
-              "Each territory becomes a work.\nA gaze on the country through five books and a documentary"
+              "Cada territorio se transforma en una obra.\nUna mirada del país a través de cinco libros y un documental.",
+              "Each territory becomes a work.\nA gaze on the country through five books and a documentary."
             )}
           </p>
         </FadeIn>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 md:px-10">
-        <div className="grid gap-14 border-t border-black/8 pt-14 md:grid-cols-[0.62fr_1.38fr] md:items-center md:gap-20">
+        <div className="grid gap-14 border-t border-black/8 pt-12 md:grid-cols-[0.62fr_1.38fr] md:items-center md:gap-20 md:pt-16">
           <FadeIn>
             <p className="text-[11px] uppercase tracking-editorial text-stone">
               {text(language, "Primera instancia", "First instance")}
@@ -79,7 +79,7 @@ export default function CollectionPage() {
             <h2 className="mt-5 font-serif text-5xl leading-none md:text-7xl">
               {localizeText(firstBook.name, language)}
             </h2>
-            <div className="mt-10 max-w-xl space-y-7 text-sm leading-8 text-black/66 md:text-base md:leading-9">
+            <div className="mt-8 max-w-xl space-y-7 text-sm leading-8 text-black/66 md:mt-10 md:text-base md:leading-9">
               <p>
                 {text(
                   language,
@@ -133,8 +133,8 @@ export default function CollectionPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-28 max-w-7xl px-6 md:mt-40 md:px-10">
-        <div className="grid gap-14 border-t border-black/8 pt-14 md:grid-cols-[1fr_0.52fr] md:items-end md:gap-20">
+      <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
+        <div className="grid gap-14 border-t border-black/8 pt-12 md:grid-cols-[1fr_0.52fr] md:items-end md:gap-20 md:pt-16">
           <FadeIn>
             <p className="max-w-3xl font-serif text-4xl leading-[1.08] md:text-6xl">
               {text(
@@ -165,8 +165,8 @@ export default function CollectionPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-28 max-w-5xl px-6 md:mt-40 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-16 text-center md:pt-24">
+      <section className="mx-auto mt-24 max-w-5xl px-6 md:mt-32 md:px-10">
+        <FadeIn className="border-t border-black/8 pt-12 text-center md:pt-16">
           <p className="whitespace-pre-line font-serif text-4xl leading-[1.08] md:text-6xl">
             {text(
               language,
@@ -177,8 +177,8 @@ export default function CollectionPage() {
         </FadeIn>
       </section>
 
-      <section className="mx-auto mt-28 max-w-5xl px-6 md:mt-40 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-16 text-center md:pt-24">
+      <section className="mx-auto mt-24 max-w-5xl px-6 md:mt-32 md:px-10">
+        <FadeIn className="border-t border-black/8 pt-12 text-center md:pt-16">
           <p className="font-serif text-4xl leading-tight md:text-6xl">
             {text(language, "Esto es solo el comienzo.", "This is only the beginning.")}
           </p>

@@ -38,10 +38,10 @@ export function HomeHero() {
       <div className="absolute inset-0 flex items-start px-8 pb-14 pt-24 text-black md:px-14 md:pb-16 md:pt-20 lg:px-16 lg:pt-24">
         <FadeIn className="max-w-5xl">
           <h1 className="w-fit whitespace-pre-line font-serif text-[3.45rem] leading-[0.92] text-black/96 md:text-[6.75rem] lg:text-[7.3rem]">
-            {text(language, "Una Forma\nde mirar\nel país", "A way\nof looking\nat the country")}
+            {text(language, "Una forma\nde mirar\nel país", "A way\nof looking\nat the country")}
           </h1>
           <p className="mt-8 w-fit whitespace-pre-line font-serif text-[1.8rem] leading-[1.02] text-black/84 md:mt-12 md:text-[3.15rem] lg:text-[3.45rem]">
-            {text(language, "Más amplia.\nMás profunda", "Wider.\nDeeper")}
+            {text(language, "Más amplia.\nMás profunda.", "Wider.\nDeeper")}
           </p>
         </FadeIn>
       </div>
@@ -53,7 +53,7 @@ export function HomeStatement() {
   const { language } = useLanguage();
 
   return (
-    <section className="px-6 py-36 md:px-10 md:py-52">
+    <section className="px-6 py-32 md:px-10 md:py-44">
       <FadeIn className="mx-auto max-w-4xl text-center">
         <p className="mx-auto max-w-[12ch] font-serif text-4xl leading-[1.04] text-black/90 md:text-[4.7rem] md:leading-[1.01]">
           {text(
@@ -220,7 +220,7 @@ export function HomeWork() {
           <h2 className="mt-4 font-serif text-5xl leading-none text-black/92 md:text-[5.3rem]">
             {localizeText(firstBook.name, language)}
           </h2>
-          <div className="mt-9 max-w-md space-y-7 text-sm leading-8 text-black/62 md:text-[1rem] md:leading-9">
+          <div className="mt-8 max-w-md space-y-7 text-sm leading-8 text-black/62 md:mt-10 md:text-[1rem] md:leading-9">
             <p>
               {text(
                 language,
@@ -236,7 +236,7 @@ export function HomeWork() {
               )}
             </p>
           </div>
-          <div className="mt-14 text-[11px] uppercase tracking-editorial">
+          <div className="mt-12 text-[11px] uppercase tracking-editorial md:mt-16">
             <Link
               href="/coleccion"
               className="inline-flex text-black/52 transition-opacity duration-500 hover:opacity-72"
@@ -277,7 +277,7 @@ export function HomeExperiences() {
           <h2 className="mt-4 max-w-[9ch] font-serif text-4xl leading-[1.02] text-black/90 md:text-[4.65rem] md:leading-[0.98]">
             {text(language, "Dejar de mirar y empezar a vivir", "Stop looking and begin to live")}
           </h2>
-          <div className="mt-10 max-w-lg space-y-7 text-sm leading-8 text-black/62 md:text-[1rem] md:leading-9">
+          <div className="mt-8 max-w-lg space-y-7 text-sm leading-8 text-black/62 md:mt-10 md:text-[1rem] md:leading-9">
             <p>{text(language, "Algunos lugares no se entienden desde afuera.", "Some places cannot be understood from outside.")}</p>
             <p>
               {text(
@@ -287,7 +287,7 @@ export function HomeExperiences() {
               )}
             </p>
           </div>
-          <p className="mt-14 text-[11px] uppercase tracking-editorial text-black/42">
+          <p className="mt-12 text-[11px] uppercase tracking-editorial text-black/42 md:mt-16">
             {text(language, "Primeras experiencias en desarrollo", "First experiences in development")}
           </p>
         </FadeIn>
@@ -314,7 +314,7 @@ export function HomeSupport() {
   const { language } = useLanguage();
 
   return (
-    <section className="border-t border-black/8 px-6 py-32 md:px-10 md:py-44">
+    <section className="border-t border-black/8 px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
         <FadeIn className="max-w-3xl">
           <p className="text-[11px] uppercase tracking-editorial text-stone">
@@ -341,7 +341,7 @@ export function HomeSupport() {
           </div>
         </FadeIn>
 
-        <FadeIn className="mt-16 max-w-4xl border-t border-black/8 pt-10 md:mt-20">
+        <FadeIn className="mt-20 max-w-4xl border-t border-black/8 pt-12 md:mt-24 md:pt-16">
           <p className="max-w-[14ch] whitespace-pre-line font-serif text-3xl leading-[1.14] text-black/86 md:text-[3.85rem] md:leading-[1.06]">
             {text(
               language,
@@ -359,7 +359,7 @@ export function HomeClosing() {
   const { language } = useLanguage();
 
   return (
-    <section className="border-t border-black/8 px-6 py-36 md:px-10 md:py-52">
+    <section className="border-t border-black/8 px-6 py-32 md:px-10 md:py-44">
       <FadeIn className="mx-auto max-w-5xl text-center">
         <p className="whitespace-pre-line font-serif text-[2.35rem] leading-[1.08] text-black/88 md:text-[4rem] md:leading-[1.03]">
           {text(

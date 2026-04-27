@@ -107,7 +107,7 @@ export default function SupportPage() {
   const visibility = supportCopy.visibility[language];
 
   return (
-    <main className="pb-24 pt-32 md:pb-32 md:pt-40">
+    <main className="pb-28 pt-32 md:pb-32 md:pt-40">
       <section className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="border-t border-black/8 pt-10">
           <FadeIn>
@@ -121,7 +121,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-10 max-w-7xl px-6 md:mt-16 md:px-10">
+      <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-20 md:px-10">
         <FadeIn className="mx-auto max-w-[42rem] text-center">
           <p className="mx-auto max-w-[18ch] whitespace-pre-line font-serif text-[2.25rem] leading-[1.12] text-black/92 md:max-w-[17ch] md:text-[3.05rem] md:leading-[1.06]">
             {identity[0]}
@@ -134,7 +134,7 @@ export default function SupportPage() {
         </FadeIn>
       </section>
 
-      <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-28 md:px-10">
+      <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
         <FadeIn delay={0.08}>
           <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/6]">
             <Image
@@ -153,7 +153,7 @@ export default function SupportPage() {
         </FadeIn>
       </section>
 
-      <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-28 md:px-10">
+      <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-24 md:px-10">
         <FadeIn className="mx-auto max-w-[30rem] text-center">
           <p className="text-sm leading-8 text-black/44 md:text-[1rem] md:leading-9">
             {supportCopy.bridge[language]}
@@ -161,20 +161,20 @@ export default function SupportPage() {
         </FadeIn>
       </section>
 
-      <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-20 md:px-10">
-        <div className="grid gap-x-16 gap-y-20 md:grid-cols-2 md:gap-y-28">
+      <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-24 md:px-10">
+        <div className="grid gap-x-16 gap-y-24 md:grid-cols-2 md:gap-y-32">
           {integration.map((item, index) => (
             <FadeIn
               key={item.title}
               delay={index * 0.06}
-              className={`border-t border-black/8 pt-8 ${
+              className={`border-t border-black/8 pt-10 md:pt-12 ${
                 index % 2 === 1 ? "md:mt-14 md:ml-auto" : ""
               } ${index < 2 ? "md:max-w-[26rem]" : "md:max-w-[29rem]"}`}
             >
               <h2 className="text-center font-serif text-[1.85rem] leading-[1.08] text-black/88 md:text-[2.35rem] md:leading-[1.04]">
                 {item.title}
               </h2>
-              <div className="mx-auto mt-7 max-w-[24rem] space-y-7 text-sm leading-8 text-black/68 md:max-w-[25rem] md:text-[1rem] md:leading-[1.75]">
+              <div className="mx-auto mt-8 max-w-[24rem] space-y-7 text-sm leading-8 text-black/68 md:max-w-[25rem] md:text-[1rem] md:leading-[1.75]">
                 {item.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -184,8 +184,8 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-32 max-w-7xl px-6 md:mt-44 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-14 md:pt-20">
+      <section className="mx-auto mt-28 max-w-7xl px-6 md:mt-36 md:px-10">
+        <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
           <div className="mx-auto max-w-[32rem] space-y-7 text-sm leading-8 text-black/62 md:text-[0.98rem] md:leading-[1.75]">
             <p>{visibility[0]}</p>
             <p>{visibility[1]}</p>

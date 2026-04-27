@@ -13,10 +13,10 @@ export default function ExplorePage() {
   const featuredCategories = [archiveCategories[1], archiveCategories[0], archiveCategories[2]];
 
   return (
-    <main className="pb-24 pt-40 md:pb-32 md:pt-48">
+    <main className="pb-24 pt-32 md:pb-32 md:pt-40">
       <section className="mx-auto max-w-7xl px-6 md:px-10">
         {t(pageCopy.explore.body, language) ? (
-          <div className="grid gap-14 border-t border-black/8 pt-12 md:grid-cols-[0.9fr_1.1fr] md:items-start md:gap-24 md:pt-16">
+          <div className="grid gap-12 border-t border-black/8 pt-12 md:grid-cols-[0.9fr_1.1fr] md:items-start md:gap-20 md:pt-16">
             <FadeIn>
               <Breadcrumbs
                 items={[
@@ -58,8 +58,8 @@ export default function ExplorePage() {
         )}
       </section>
 
-      <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-28 md:px-10">
-        <div className="grid gap-12 md:grid-cols-3 md:items-start md:gap-10">
+      <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-20 md:px-10">
+        <div className="grid gap-10 md:grid-cols-3 md:items-start md:gap-8">
           {featuredCategories.map((item, index) => (
             <FadeIn
               key={item.href}
