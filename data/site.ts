@@ -313,11 +313,11 @@ export const territories: Territory[] = [
         kind: { es: "Detalle", en: "Detail" }
       },
       {
-        image: "/stages/puna/gallery-territory-cactus.jpg",
+        image: "/stages/puna/gallery-territory-landscape-vertical.jpg",
         kind: { es: "Territorio", en: "Territory" }
       },
       {
-        image: "/stages/puna/gallery-territory-mountain-texture.jpg",
+        image: "/stages/puna/gallery-territory-presence-vertical.jpg",
         kind: { es: "Territorio", en: "Territory" }
       }
     ],
