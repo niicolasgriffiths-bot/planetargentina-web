@@ -21,7 +21,7 @@ export function Breadcrumbs({
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`mb-5 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-editorial ${
+      className={`mb-5 flex flex-wrap items-center gap-2 text-[12px] uppercase tracking-editorial ${
         inverse ? "text-paper/55" : "text-stone"
       }`}
     >

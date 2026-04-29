@@ -9,11 +9,12 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
   const isLocked = experience.visibility === "locked";
   const isPartial = experience.visibility === "partial";
   const visibilityCopy = {
-    visible: { es: "Visible", en: "Open" },
-    partial: { es: "Vista restringida", en: "Restricted preview" },
+    visible: { es: "Visible", en: "Open", pt: "Visível" },
+    partial: { es: "Vista restringida", en: "Restricted preview", pt: "Vista restrita" },
     locked: {
       es: "Disponible más adelante",
-      en: "Available later"
+      en: "Available later",
+      pt: "Disponível mais tarde"
     }
   } as const;
 
@@ -27,13 +28,13 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[11px] uppercase tracking-editorial opacity-50">
-            {visibilityCopy[experience.visibility][language]}
+          <p className="text-[12px] uppercase tracking-editorial opacity-50">
+            {visibilityCopy[experience.visibility][language] ?? visibilityCopy[experience.visibility].es}
           </p>
           <h3 className="mt-4 font-serif text-3xl">{localizeText(experience.title, language)}</h3>
         </div>
         <span
-          className={`rounded-full px-3 py-1 text-[10px] uppercase tracking-editorial ${
+          className={`rounded-full px-3 py-1 text-[11px] uppercase tracking-editorial ${
             isLocked ? "border border-white/15" : "bg-black/5"
           }`}
         >
@@ -45,38 +46,44 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
         {isLocked
           ? language === "es"
             ? "Algunos detalles no se muestran en esta etapa."
-            : "Some details are not shown at this stage."
+            : language === "pt"
+              ? "Alguns detalhes não são mostrados nesta fase."
+              : "Some details are not shown at this stage."
           : localizeText(experience.summary, language)}
       </p>
 
-      <div className="mt-8 flex gap-6 text-[11px] uppercase tracking-editorial opacity-60">
+      <div className="mt-8 flex gap-6 text-[12px] uppercase tracking-editorial opacity-60">
         <span>
           {isPartial
             ? language === "es"
               ? "Duración a pedido"
-              : "Duration on request"
+              : language === "pt"
+                ? "Duração sob pedido"
+                : "Duration on request"
             : localizeText(experience.duration, language)}
         </span>
         <span>
           {isLocked
             ? language === "es"
               ? "Dificultad no visible"
-              : "Difficulty undisclosed"
+              : language === "pt"
+                ? "Dificuldade não visível"
+                : "Difficulty undisclosed"
             : localizeText(experience.difficulty, language)}
         </span>
       </div>
 
       <div className="mt-8">
         {isLocked ? (
-          <span className="text-[11px] uppercase tracking-editorial text-paper/42">
-            {language === "es" ? "Más adelante" : "Later"}
+          <span className="text-[12px] uppercase tracking-editorial text-paper/42">
+            {language === "es" ? "Más adelante" : language === "pt" ? "Mais tarde" : "Later"}
           </span>
         ) : (
           <Link
             href={`/territories/${experience.territory}`}
-            className="text-[11px] uppercase tracking-editorial transition-opacity duration-500 hover:opacity-60"
+            className="text-[12px] uppercase tracking-editorial transition-opacity duration-500 hover:opacity-60"
           >
-            {language === "es" ? "Ver territorio" : "Enter territory"}
+            {language === "es" ? "Ver territorio" : language === "pt" ? "Ver território" : "Enter territory"}
           </Link>
         )}
       </div>

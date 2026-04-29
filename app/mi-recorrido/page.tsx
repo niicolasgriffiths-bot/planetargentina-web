@@ -131,7 +131,7 @@ export default function MyJourneyPage() {
       <main className="pb-24 pt-32 md:pb-32 md:pt-40">
         <section className="mx-auto max-w-5xl px-6 md:px-10">
           <FadeIn className="border-t border-black/8 pt-12">
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
               {language === "es" ? "Mi recorrido" : "My journey"}
             </p>
             <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-none md:text-6xl">
@@ -142,7 +142,7 @@ export default function MyJourneyPage() {
                 ? "Entra con tu correo para ver tus libros registrados, tu avance y lo que ya empieza a dejarse ver."
                 : "Enter with your email to see your registered books, your progress and what is already starting to show itself."}
             </p>
-            <div className="mt-12 text-[11px] uppercase tracking-editorial">
+            <div className="mt-12 text-[12px] uppercase tracking-editorial">
               <Link
                 href="/entrar"
                 className="inline-flex rounded-full bg-black px-5 py-3 text-paper transition-opacity duration-500 hover:opacity-82"
@@ -162,7 +162,7 @@ export default function MyJourneyPage() {
         <div className="grid gap-16 md:grid-cols-[220px_minmax(0,1fr)] md:gap-20">
           <aside className="md:sticky md:top-32 md:self-start">
             <FadeIn className="border-t border-black/8 pt-8">
-              <nav className="grid gap-3 text-[11px] uppercase tracking-editorial">
+              <nav className="grid gap-3 text-[12px] uppercase tracking-editorial">
                 <a href="#codigo" className="text-black/48 transition-opacity duration-500 hover:opacity-70">
                   {language === "es" ? "Registrar código" : "Register code"}
                 </a>
@@ -180,7 +180,7 @@ export default function MyJourneyPage() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="mt-12 text-[11px] uppercase tracking-editorial text-black/34 transition-opacity duration-500 hover:opacity-70"
+                className="mt-12 text-[12px] uppercase tracking-editorial text-black/34 transition-opacity duration-500 hover:opacity-70"
               >
                 {language === "es" ? "Salir" : "Sign out"}
               </button>
@@ -191,7 +191,7 @@ export default function MyJourneyPage() {
             <FadeIn className="border-t border-black/8 pt-10">
               <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
                 <div className="max-w-2xl">
-                  <p className="text-[11px] uppercase tracking-editorial text-stone">
+                  <p className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es" ? "Mi recorrido" : "My journey"}
                   </p>
                   <h1 className="mt-4 font-serif text-4xl leading-none md:text-6xl">
@@ -207,7 +207,7 @@ export default function MyJourneyPage() {
                     <p className="font-serif text-4xl leading-none md:text-5xl">
                       {registeredCount} / {territories.length}
                     </p>
-                    <p className="mt-2 text-[11px] uppercase tracking-editorial text-black/42">
+                    <p className="mt-2 text-[12px] uppercase tracking-editorial text-black/42">
                       {language === "es" ? "Libros registrados" : "Registered books"}
                     </p>
                   </div>
@@ -218,7 +218,7 @@ export default function MyJourneyPage() {
 
             <section id="codigo" className="border-t border-black/8 pt-10">
               <FadeIn>
-                <p className="text-[11px] uppercase tracking-editorial text-stone">
+                <p className="text-[12px] uppercase tracking-editorial text-stone">
                   {language === "es" ? "Registrar código" : "Register code"}
                 </p>
                 <h2 className="mt-4 max-w-3xl font-serif text-4xl md:text-6xl">
@@ -234,7 +234,7 @@ export default function MyJourneyPage() {
 
                 <form onSubmit={handleCodeSubmit} className="mt-10 max-w-2xl">
                   <label className="block">
-                    <span className="text-[11px] uppercase tracking-editorial text-black/42">
+                    <span className="text-[12px] uppercase tracking-editorial text-black/42">
                       {language === "es" ? "Código del libro" : "Book code"}
                     </span>
                     <input
@@ -257,7 +257,7 @@ export default function MyJourneyPage() {
                       : "You will find it printed inside the book."}
                   </p>
 
-                  <div className="mt-10 text-[11px] uppercase tracking-editorial">
+                  <div className="mt-10 text-[12px] uppercase tracking-editorial">
                     <button
                       type="submit"
                       className="inline-flex rounded-full border border-black/12 px-5 py-3 text-black transition-opacity duration-500 hover:opacity-72"
@@ -287,7 +287,7 @@ export default function MyJourneyPage() {
 
             <section id="libros" className="border-t border-black/8 pt-10">
               <FadeIn>
-                <p className="text-[11px] uppercase tracking-editorial text-stone">
+                <p className="text-[12px] uppercase tracking-editorial text-stone">
                   {language === "es" ? "Libros registrados" : "Registered books"}
                 </p>
                 {hasRegisteredBooks ? (
@@ -296,7 +296,7 @@ export default function MyJourneyPage() {
                       <h2 className="font-serif text-5xl leading-none md:text-7xl">
                         {localizeText(registeredBooks[0].name, language)}
                       </h2>
-                      <p className="mt-3 text-[11px] uppercase tracking-editorial text-black/42">
+                      <p className="mt-3 text-[12px] uppercase tracking-editorial text-black/42">
                         {language === "es" ? "Primera etapa" : "First stage"}
                       </p>
                       <div className="mt-10 grid gap-2 text-black/58">
@@ -307,7 +307,7 @@ export default function MyJourneyPage() {
                           {language === "es" ? "Próximamente disponible" : "Available soon"}
                         </p>
                       </div>
-                      <div className="mt-14 text-[11px] uppercase tracking-editorial">
+                      <div className="mt-14 text-[12px] uppercase tracking-editorial">
                         <Link
                           href={`/territories/${registeredBooks[0].slug}`}
                           className="inline-flex text-black/48 transition-opacity duration-500 hover:opacity-72"
@@ -343,7 +343,7 @@ export default function MyJourneyPage() {
                         ? "El recorrido empieza con el primero. Cuando registres un libro, esta parte cambiará y empezará a guardar lo que ya forma parte de tu relación con el proyecto."
                         : "The journey begins with the first one. Once you register a book, this section will change and begin to keep what already forms part of your relationship with the project."}
                     </p>
-                    <div className="mt-12 text-[11px] uppercase tracking-editorial">
+                    <div className="mt-12 text-[12px] uppercase tracking-editorial">
                       <Link
                         href="/coleccion"
                         className="inline-flex rounded-full bg-black px-5 py-3 text-paper transition-opacity duration-500 hover:opacity-82"
@@ -358,7 +358,7 @@ export default function MyJourneyPage() {
 
             <section id="recorrido" className="border-t border-black/8 pt-10">
               <FadeIn>
-                <p className="text-[11px] uppercase tracking-editorial text-stone">
+                <p className="text-[12px] uppercase tracking-editorial text-stone">
                   {language === "es" ? "Mi recorrido" : "My journey"}
                 </p>
                 <h2 className="mt-4 max-w-3xl font-serif text-4xl md:text-6xl">
@@ -379,7 +379,7 @@ export default function MyJourneyPage() {
                       ? "Aquí se guardará lo que ya forma parte de tu vínculo con el proyecto. El primer libro cambia este estado."
                       : "This is where what already forms part of your relationship with the project will be kept. The first book changes this state."}
                 </p>
-                <div className="mt-10 text-[11px] uppercase tracking-editorial">
+                <div className="mt-10 text-[12px] uppercase tracking-editorial">
                   <Link
                     href="/coleccion"
                     className="inline-flex rounded-full bg-black px-5 py-3 text-paper transition-opacity duration-500 hover:opacity-82"
@@ -398,7 +398,7 @@ export default function MyJourneyPage() {
 
             <section id="experiencias" className="border-t border-black/8 pt-10">
               <FadeIn className="max-w-3xl">
-                <p className="text-[11px] uppercase tracking-editorial text-stone">
+                <p className="text-[12px] uppercase tracking-editorial text-stone">
                   {language === "es" ? "Experiencias" : "Experiences"}
                 </p>
                 <h2 className="mt-4 font-serif text-4xl md:text-6xl">
@@ -438,14 +438,14 @@ export default function MyJourneyPage() {
                               layer.tone === "later" ? "text-black/44" : "text-black/82"
                             }`}
                           >
-                            <p className="text-[11px] uppercase tracking-editorial">
+                            <p className="text-[12px] uppercase tracking-editorial">
                               {localizeText(layer.label, language)}
                             </p>
                             <p className="mt-3 max-w-xl text-sm leading-8 md:text-base md:leading-9">
                               {localizeText(layer.body, language)}
                             </p>
                             {"href" in layer && layer.href ? (
-                              <div className="mt-5 text-[11px] uppercase tracking-editorial">
+                              <div className="mt-5 text-[12px] uppercase tracking-editorial">
                                 <Link
                                   href={layer.href}
                                   className="inline-flex text-black/45 transition-opacity duration-500 hover:opacity-70"

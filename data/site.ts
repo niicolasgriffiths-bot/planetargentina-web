@@ -1,7 +1,7 @@
 import { Language } from "@/components/language-provider";
 
 export type ExperienceVisibility = "visible" | "partial" | "locked";
-export type LocalizedText = { es: string; en: string };
+export type LocalizedText = { es: string; en: string; pt?: string };
 export type TerritoryGalleryItem = {
   image: string;
   kind: LocalizedText;
@@ -65,12 +65,12 @@ export type Territory = {
 };
 
 export const navigation: NavigationItem[] = [
-  { href: "/explore", label: { es: "Explorar", en: "Explore" }, tier: "primary" },
-  { href: "/coleccion", label: { es: "Colección", en: "Collection" }, tier: "primary" },
-  { href: "/experiences", label: { es: "Experiencias", en: "Experiences" }, tier: "primary" },
-  { href: "/nosotros", label: { es: "Nosotros", en: "About" }, tier: "secondary" },
-  { href: "/acompanar", label: { es: "Acompañan", en: "Support" }, tier: "secondary" },
-  { href: "/contacto", label: { es: "Contacto", en: "Contact" }, tier: "secondary" }
+  { href: "/explore", label: { es: "Explorar", en: "Explore", pt: "Explorar" }, tier: "primary" },
+  { href: "/coleccion", label: { es: "Colección", en: "Collection", pt: "Coleção" }, tier: "primary" },
+  { href: "/experiences", label: { es: "Experiencias", en: "Experiences", pt: "Experiências" }, tier: "primary" },
+  { href: "/nosotros", label: { es: "Nosotros", en: "About", pt: "Sobre" }, tier: "secondary" },
+  { href: "/acompanar", label: { es: "Acompañan", en: "Support", pt: "Acompanham" }, tier: "secondary" },
+  { href: "/contacto", label: { es: "Contacto", en: "Contact", pt: "Contacto" }, tier: "secondary" }
 ];
 
 export const homeStory = [
@@ -96,30 +96,33 @@ export const homeStory = [
 
 export const archiveCategories: ArchiveCategory[] = [
   {
-    name: { es: "Historias", en: "Stories" },
+    name: { es: "Historias", en: "Stories", pt: "Histórias" },
     description: {
       es: "Historias de vida, retratos y oficios.",
-      en: "Life stories, portraits and craft."
+      en: "Life stories, portraits and craft.",
+      pt: "Histórias de vida, retratos e ofícios."
     },
     image: "/archive/historias-persona.jpg",
     imagePosition: "center 18%",
     href: "/stories"
   },
   {
-    name: { es: "Territorios", en: "Territories" },
+    name: { es: "Territorios", en: "Territories", pt: "Territórios" },
     description: {
       es: "Regiones, mapas y recorridos de cada etapa.",
-      en: "Regions, maps and routes for each stage."
+      en: "Regions, maps and routes for each stage.",
+      pt: "Regiões, mapas e percursos de cada etapa."
     },
     image: "/editorial/fn38-salt-shadows.jpg",
     imagePosition: "center center",
     href: "/territories"
   },
   {
-    name: { es: "Experiencias", en: "Experiences" },
+    name: { es: "Experiencias", en: "Experiences", pt: "Experiências" },
     description: {
       es: "Vivir el proyecto en campo.",
-      en: "Live the project in the field."
+      en: "Live the project in the field.",
+      pt: "Viver o projeto em campo."
     },
     image: "/editorial/fn56-night-camp.jpg",
     imagePosition: "center 58%",
@@ -508,5 +511,5 @@ export const foundationStats = [
 ];
 
 export function localizeText(text: LocalizedText, language: Language) {
-  return text[language];
+  return text[language] ?? text.es ?? text.en;
 }

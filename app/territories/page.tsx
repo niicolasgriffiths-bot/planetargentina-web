@@ -23,7 +23,7 @@ export default function TerritoriesPage() {
                 { label: language === "es" ? "Territorios" : "Territories" }
               ]}
             />
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
               {t(pageCopy.territories.eyebrow, language)}
             </p>
             <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-none md:text-6xl">
@@ -73,7 +73,7 @@ export default function TerritoriesPage() {
 
                   <div className="flex h-full flex-col justify-between bg-black/[0.02] p-5 md:p-8">
                     <div>
-                      <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-editorial text-stone">
+                      <div className="flex flex-wrap items-center gap-3 text-[12px] uppercase tracking-editorial text-stone">
                         <span>{localizeText(territory.stage, language)}</span>
                         <span className="h-1 w-1 rounded-full bg-black/20" />
                         <span>{localizeText(territory.status, language)}</span>
@@ -82,7 +82,7 @@ export default function TerritoriesPage() {
                         <h2 className="font-serif text-3xl md:text-5xl">
                           {localizeText(territory.name, language)}
                         </h2>
-                        <span className="text-[11px] uppercase tracking-editorial text-stone">
+                        <span className="text-[12px] uppercase tracking-editorial text-stone">
                           {t(pageCopy.territories.enter, language)}
                         </span>
                       </div>
@@ -90,7 +90,7 @@ export default function TerritoriesPage() {
                         {localizeText(territory.intro, language)}
                       </p>
                     </div>
-                    <p className="mt-8 text-[11px] uppercase tracking-editorial text-black/40">
+                    <p className="mt-8 text-[12px] uppercase tracking-editorial text-black/40">
                       {localizeText(territory.route, language)}
                     </p>
                   </div>

@@ -31,7 +31,7 @@ export default function StoriesPage() {
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <FadeIn className="grid gap-8 border-t border-black/8 pt-8 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div>
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
               {language === "es" ? "Historias de vida" : "Life stories"}
             </p>
             <p className="mt-5 max-w-xl font-serif text-3xl leading-tight md:text-5xl">
@@ -46,7 +46,7 @@ export default function StoriesPage() {
                 ? "Historias argentinas reúne una primera selección de retratos y encuentros que aparecen en el libro y en el archivo de Planeta Argentina. No busca explicar el territorio desde afuera, sino acercarse a quienes lo habitan, lo trabajan y lo sostienen en el tiempo."
                 : "Meeting Argentinians gathers an initial selection of portraits and encounters that appear in the book and in the Planeta Argentina archive. It does not explain the territory from the outside, but moves closer to the people who inhabit, work and sustain it over time."}
             </p>
-            <div className="mt-8 text-[11px] uppercase tracking-editorial">
+            <div className="mt-8 text-[12px] uppercase tracking-editorial">
               <Link
                 href="https://www.instagram.com/conociendo.argentinos?igsh=bGdic2w2bm8xcDRz"
                 target="_blank"
@@ -83,7 +83,7 @@ export default function StoriesPage() {
                 </Link>
                 <div className="p-6 md:p-8">
                   {storyPlace ? (
-                    <p className="text-[11px] uppercase tracking-editorial text-stone">
+                    <p className="text-[12px] uppercase tracking-editorial text-stone">
                       {storyPlace}
                     </p>
                   ) : null}
@@ -93,7 +93,7 @@ export default function StoriesPage() {
                   <div className="mt-5">
                     <Link
                       href={`/stories/${story.slug}`}
-                      className="text-[11px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
+                      className="text-[12px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
                     >
                       {language === "es" ? "Leer historia" : "Read story"}
                     </Link>
@@ -108,7 +108,7 @@ export default function StoriesPage() {
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <FadeIn className="flex flex-wrap items-center justify-between gap-6 border-t border-black/8 pt-8">
           <div>
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
               {language === "es" ? "Más adelante" : "Further on"}
             </p>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-black/65 md:text-base md:leading-8">
@@ -117,7 +117,7 @@ export default function StoriesPage() {
                 : "These stories coexist with territories and future experiences: the same gaze told through people, geography and journeys."}
             </p>
           </div>
-          <div className="flex gap-6 text-[11px] uppercase tracking-editorial text-black/45">
+          <div className="flex gap-6 text-[12px] uppercase tracking-editorial text-black/45">
             <Link href="/territories" className="transition-opacity duration-500 hover:opacity-60">
               {language === "es" ? "Entrar por territorios" : "See territories"}
             </Link>

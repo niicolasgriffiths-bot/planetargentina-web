@@ -29,13 +29,13 @@ export function BookCoverPreview({
           <div className="absolute inset-0 bg-gradient-to-b from-black/18 via-transparent to-black/14" />
 
           <div className="absolute left-1/2 top-[11%] w-[90%] -translate-x-1/2 text-center text-paper/78">
-            <p className="text-[10px] uppercase tracking-[0.3em] md:text-[11px]">{author}</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] md:text-[12px]">{author}</p>
           </div>
 
           <div className="absolute inset-x-[8%] top-[28%] text-center text-paper">
             <div className="flex items-center gap-4 md:gap-6">
               <span className="h-px flex-1 bg-paper/28" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-paper/70 md:text-[11px]">
+              <span className="text-[11px] uppercase tracking-[0.28em] text-paper/70 md:text-[12px]">
                 {collectionTitle}
               </span>
               <span className="h-px flex-1 bg-paper/28" />

@@ -45,7 +45,7 @@ export default function ClubPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <FadeIn className="max-w-4xl border-t border-white/10 pt-10">
-          <p className="text-[11px] uppercase tracking-editorial text-paper/55">
+          <p className="text-[12px] uppercase tracking-editorial text-paper/55">
             {t(pageCopy.club.accessEyebrow, language)}
           </p>
           <h2 className="mt-4 max-w-3xl font-serif text-4xl md:text-6xl">
@@ -67,7 +67,7 @@ export default function ClubPage() {
                 {t(item.body, language)}
               </p>
               {"actionLabel" in item && "actionHref" in item ? (
-                <div className="mt-8 text-[11px] uppercase tracking-editorial text-paper/52">
+                <div className="mt-8 text-[12px] uppercase tracking-editorial text-paper/52">
                   <Link
                     href={item.actionHref}
                     className="transition-opacity duration-500 hover:opacity-60"
@@ -101,14 +101,14 @@ export default function ClubPage() {
           </FadeIn>
 
           <FadeIn className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 md:p-10">
-            <p className="text-[11px] uppercase tracking-editorial text-paper/55">
+            <p className="text-[12px] uppercase tracking-editorial text-paper/55">
               {t(pageCopy.club.stateEyebrow, language)}
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <p className="font-serif text-4xl leading-none md:text-6xl">
                 {t(pageCopy.club.stateCount, language)}
               </p>
-              <p className="text-sm uppercase tracking-editorial text-paper/58 md:text-[11px]">
+              <p className="text-sm uppercase tracking-editorial text-paper/58 md:text-[12px]">
                 {t(pageCopy.club.stateStatus, language)}
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function ClubPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <FadeIn className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 md:p-12">
-          <p className="text-[11px] uppercase tracking-editorial text-paper/55">
+          <p className="text-[12px] uppercase tracking-editorial text-paper/55">
             {t(pageCopy.club.changeEyebrow, language)}
           </p>
           <h2 className="mt-4 max-w-3xl font-serif text-4xl md:text-5xl">
@@ -166,7 +166,7 @@ export default function ClubPage() {
 
       <section className="mx-auto mt-16 max-w-5xl px-6 md:mt-24 md:px-10">
         <FadeIn className="border-t border-white/10 pt-10 text-left md:pt-12">
-          <p className="text-[11px] uppercase tracking-editorial text-paper/55">
+          <p className="text-[12px] uppercase tracking-editorial text-paper/55">
             {t(pageCopy.club.closingEyebrow, language)}
           </p>
           <h2 className="mt-4 max-w-3xl font-serif text-4xl md:text-6xl">
@@ -177,7 +177,7 @@ export default function ClubPage() {
               {t(pageCopy.club.closingBody, language)}
             </p>
           ) : null}
-          <div className="mt-10 flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-editorial">
+          <div className="mt-10 flex flex-wrap items-center gap-4 text-[12px] uppercase tracking-editorial">
             <Link
               href="/territories"
               className="inline-flex rounded-full border border-paper/20 bg-paper px-5 py-3 text-shadow transition-opacity duration-500 hover:opacity-82"

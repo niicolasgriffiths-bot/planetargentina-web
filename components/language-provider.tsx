@@ -9,7 +9,13 @@ import {
   useState
 } from "react";
 
-export type Language = "es" | "en";
+export type Language = "es" | "en" | "pt";
+
+export const languageOptions = [
+  { code: "es", label: "Español" },
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português" }
+] as const;
 
 type LanguageContextValue = {
   language: Language;
@@ -23,7 +29,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = window.localStorage.getItem("planeta-language");
-    if (saved === "es" || saved === "en") {
+    if (saved === "es" || saved === "en" || saved === "pt") {
       setLanguage(saved);
       document.documentElement.lang = saved;
     } else {

@@ -18,11 +18,18 @@ const supportCopy = {
       "That gaze fails to account for its scale, or for the diversity of territories and ways of life that compose it.",
       "Expanding that perception is not only the task of this project.",
       "It is part of a broader construction that implies looking at the country again with greater depth."
+    ],
+    pt: [
+      "A forma como a Argentina é percebida,\npara fora e para dentro,\ncostuma ficar reduzida.",
+      "Esse olhar não consegue dimensionar a sua escala, nem a diversidade de territórios e formas de vida que a compõem.",
+      "Ampliar essa perceção não é apenas uma tarefa deste projeto.",
+      "É uma construção mais ampla, que implica voltar a olhar o país com maior profundidade."
     ]
   },
   bridge: {
     es: "Este trabajo en el territorio requiere condiciones concretas.",
-    en: "This work in the territory requires concrete conditions."
+    en: "This work in the territory requires concrete conditions.",
+    pt: "Este trabalho no território exige condições concretas."
   },
   integration: {
     es: [
@@ -84,6 +91,36 @@ const supportCopy = {
           "Cameras, capture systems and technical support are part of the process."
         ]
       }
+    ],
+    pt: [
+      {
+        title: "Mobilidade",
+        paragraphs: [
+          "O percurso exige deslocações constantes em condições variáveis.",
+          "Os veículos fazem parte do desenvolvimento de cada etapa em campo."
+        ]
+      },
+      {
+        title: "Equipamento",
+        paragraphs: [
+          "As condições de cada região exigem vestuário e equipamento técnico específico.",
+          "Cada elemento é utilizado em condições reais, durante todo o processo de trabalho."
+        ]
+      },
+      {
+        title: "Energia",
+        paragraphs: [
+          "O projeto sustenta-se ao longo de milhares de quilómetros.",
+          "O abastecimento e a autonomia são parte central de cada expedição."
+        ]
+      },
+      {
+        title: "Tecnologia",
+        paragraphs: [
+          "O registo do projeto depende de ferramentas que operam em condições exigentes.",
+          "Câmaras, sistemas de captação e apoio técnico fazem parte do processo."
+        ]
+      }
     ]
   },
   visibility: {
@@ -96,15 +133,20 @@ const supportCopy = {
       "Each collaboration becomes part of the project’s development.",
       "Not as an external presence, but integrated into the field work and the content that emerges from each stage.",
       "Visibility is a consequence of that process."
+    ],
+    pt: [
+      "Cada colaboração faz parte do desenvolvimento do projeto.",
+      "Não como presença externa, mas integrada no trabalho em campo e nos conteúdos que surgem de cada etapa.",
+      "A visibilidade é\nconsequência\ndesse processo."
     ]
   }
 } as const;
 
 export default function SupportPage() {
   const { language } = useLanguage();
-  const identity = supportCopy.identity[language];
-  const integration = supportCopy.integration[language];
-  const visibility = supportCopy.visibility[language];
+  const identity = supportCopy.identity[language] ?? supportCopy.identity.es;
+  const integration = supportCopy.integration[language] ?? supportCopy.integration.es;
+  const visibility = supportCopy.visibility[language] ?? supportCopy.visibility.es;
 
   return (
     <main className="pb-28 pt-32 md:pb-32 md:pt-40">
@@ -113,8 +155,8 @@ export default function SupportPage() {
           <FadeIn>
             <Breadcrumbs
               items={[
-                { label: language === "es" ? "Home" : "Home", href: "/" },
-                { label: language === "es" ? "Acompañan" : "Support" }
+                { label: language === "pt" ? "Início" : "Home", href: "/" },
+                { label: language === "es" ? "Acompañan" : language === "pt" ? "Acompanham" : "Support" }
               ]}
             />
           </FadeIn>
@@ -126,7 +168,7 @@ export default function SupportPage() {
           <p className="mx-auto max-w-[18ch] whitespace-pre-line font-serif text-[2.25rem] leading-[1.12] text-black/92 md:max-w-[17ch] md:text-[3.05rem] md:leading-[1.06]">
             {identity[0]}
           </p>
-          <div className="mx-auto mt-14 max-w-[27rem] space-y-8 text-sm leading-8 text-black/60 md:text-[0.98rem] md:leading-[1.75]">
+          <div className="mx-auto mt-14 max-w-[27rem] space-y-8 text-[0.98rem] leading-8 text-black/60 md:text-[1.04rem] md:leading-[1.75]">
             {identity.slice(1).map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -142,7 +184,9 @@ export default function SupportPage() {
               alt={
                 language === "es"
                   ? "Laguna de altura en un paisaje andino"
-                  : "High-altitude lagoon in an Andean landscape"
+                  : language === "pt"
+                    ? "Lagoa de altitude numa paisagem andina"
+                    : "High-altitude lagoon in an Andean landscape"
               }
               fill
               sizes="(min-width: 1024px) 88vw, 100vw"
@@ -155,8 +199,8 @@ export default function SupportPage() {
 
       <section className="mx-auto mt-20 max-w-7xl px-6 md:mt-24 md:px-10">
         <FadeIn className="mx-auto max-w-[30rem] text-center">
-          <p className="text-sm leading-8 text-black/44 md:text-[1rem] md:leading-9">
-            {supportCopy.bridge[language]}
+          <p className="text-[0.98rem] leading-8 text-black/44 md:text-[1.04rem] md:leading-9">
+            {supportCopy.bridge[language] ?? supportCopy.bridge.es}
           </p>
         </FadeIn>
       </section>
@@ -174,7 +218,7 @@ export default function SupportPage() {
               <h2 className="text-center font-serif text-[1.85rem] leading-[1.08] text-black/88 md:text-[2.35rem] md:leading-[1.04]">
                 {item.title}
               </h2>
-              <div className="mx-auto mt-8 max-w-[24rem] space-y-7 text-sm leading-8 text-black/68 md:max-w-[25rem] md:text-[1rem] md:leading-[1.75]">
+              <div className="mx-auto mt-8 max-w-[24rem] space-y-7 text-[0.98rem] leading-8 text-black/68 md:max-w-[25rem] md:text-[1.04rem] md:leading-[1.75]">
                 {item.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -186,7 +230,7 @@ export default function SupportPage() {
 
       <section className="mx-auto mt-28 max-w-7xl px-6 md:mt-36 md:px-10">
         <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
-          <div className="mx-auto max-w-[32rem] space-y-7 text-sm leading-8 text-black/62 md:text-[0.98rem] md:leading-[1.75]">
+          <div className="mx-auto max-w-[32rem] space-y-7 text-[0.98rem] leading-8 text-black/62 md:text-[1.04rem] md:leading-[1.75]">
             <p>{visibility[0]}</p>
             <p>{visibility[1]}</p>
           </div>

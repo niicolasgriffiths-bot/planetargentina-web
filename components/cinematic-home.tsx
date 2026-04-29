@@ -248,7 +248,7 @@ function CinematicFrame({
   const title = (
     <motion.div className="max-w-lg" style={{ y: textY, opacity: textOpacity, skewY: textSkew }}>
       {label ? (
-        <p className="text-[10px] uppercase tracking-editorial text-paper/30">{label}</p>
+        <p className="text-[11px] uppercase tracking-editorial text-paper/30">{label}</p>
       ) : null}
       <h2 className="mt-3 font-serif text-4xl leading-[0.92] text-paper md:text-7xl">
         {moment.title}

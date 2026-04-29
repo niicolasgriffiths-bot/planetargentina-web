@@ -35,7 +35,7 @@ export default function ExperienceAccessDetailPage() {
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <div className="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-start">
           <FadeIn className="rounded-[2rem] border border-black/10 bg-white/72 p-8 shadow-haze md:p-10">
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
               {language === "es" ? "Clave" : "Key note"}
             </p>
             <p className="mt-5 max-w-lg font-serif text-3xl leading-tight text-black/88 md:text-5xl">
@@ -48,7 +48,7 @@ export default function ExperienceAccessDetailPage() {
               delay={0.08}
               className="rounded-[2rem] border border-black/10 bg-white/72 p-8 shadow-haze md:p-10"
             >
-              <p className="text-[11px] uppercase tracking-editorial text-stone">
+              <p className="text-[12px] uppercase tracking-editorial text-stone">
                 {language === "es" ? "Lo que abre" : "What it opens"}
               </p>
               <div className="mt-6 grid gap-5">
@@ -64,7 +64,7 @@ export default function ExperienceAccessDetailPage() {
               delay={0.14}
               className="rounded-[2rem] border border-black/10 bg-white/72 p-8 shadow-haze md:p-10"
             >
-              <p className="text-[11px] uppercase tracking-editorial text-stone">
+              <p className="text-[12px] uppercase tracking-editorial text-stone">
                 {language === "es" ? "Desde aquí" : "From here"}
               </p>
               <p className="mt-5 max-w-2xl text-sm leading-8 text-black/68 md:text-base md:leading-9">
@@ -73,7 +73,7 @@ export default function ExperienceAccessDetailPage() {
                   : "Each of these layers brings the project closer in a different way. From here you can return to the general view or continue toward the part that develops this possibility more clearly."}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-6 text-[11px] uppercase tracking-editorial text-black/45">
+              <div className="mt-8 flex flex-wrap gap-6 text-[12px] uppercase tracking-editorial text-black/45">
                 {isExternalAction ? (
                   <a
                     href={access.actionHref}

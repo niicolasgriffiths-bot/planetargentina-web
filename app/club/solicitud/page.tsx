@@ -2,11 +2,11 @@
 
 import { FormEvent } from "react";
 import { FadeIn } from "@/components/fade-in";
-import { useLanguage } from "@/components/language-provider";
+import { type Language, useLanguage } from "@/components/language-provider";
 import { PageIntro } from "@/components/page-intro";
 import { pageCopy, t } from "@/data/site-content";
 
-function buildMailto(language: "es" | "en", form: FormData) {
+function buildMailto(language: Language, form: FormData) {
   const fields = pageCopy.clubRequest.fields;
   const entries = [
     [t(fields.name, language), String(form.get("name") ?? "").trim()],
@@ -20,7 +20,9 @@ function buildMailto(language: "es" | "en", form: FormData) {
   const subject =
     language === "es"
       ? "Solicitud Club - Planeta Argentina"
-      : "Club Request - Planeta Argentina";
+      : language === "pt"
+        ? "Pedido Clube - Planeta Argentina"
+        : "Club Request - Planeta Argentina";
 
   const body = entries.map(([label, value]) => `${label}\n${value}`).join("\n\n");
 
@@ -46,8 +48,8 @@ export default function ClubRequestPage() {
         body={t(pageCopy.clubRequest.body, language)}
         inverse
         breadcrumbs={[
-          { label: language === "es" ? "Home" : "Home", href: "/" },
-          { label: language === "es" ? "Club" : "Club", href: "/club" },
+          { label: language === "pt" ? "Início" : "Home", href: "/" },
+          { label: "Club", href: "/club" },
           { label: t(pageCopy.clubRequest.title, language) }
         ]}
       />
@@ -66,7 +68,7 @@ export default function ClubRequestPage() {
           <form className="grid gap-6" onSubmit={handleSubmit}>
             <div className="grid gap-6 md:grid-cols-2">
               <label className="grid gap-3">
-                <span className="text-[11px] uppercase tracking-editorial text-paper/58">
+                <span className="text-[12px] uppercase tracking-editorial text-paper/58">
                   {t(fields.name, language)}
                 </span>
                 <input
@@ -79,7 +81,7 @@ export default function ClubRequestPage() {
               </label>
 
               <label className="grid gap-3">
-                <span className="text-[11px] uppercase tracking-editorial text-paper/58">
+                <span className="text-[12px] uppercase tracking-editorial text-paper/58">
                   {t(fields.email, language)}
                 </span>
                 <input
@@ -93,7 +95,7 @@ export default function ClubRequestPage() {
             </div>
 
             <label className="grid gap-3">
-              <span className="text-[11px] uppercase tracking-editorial text-paper/58">
+              <span className="text-[12px] uppercase tracking-editorial text-paper/58">
                 {t(fields.location, language)}
               </span>
               <input
@@ -106,7 +108,7 @@ export default function ClubRequestPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-[11px] uppercase tracking-editorial text-paper/58">
+              <span className="text-[12px] uppercase tracking-editorial text-paper/58">
                 {t(fields.discovery, language)}
               </span>
               <textarea
@@ -118,7 +120,7 @@ export default function ClubRequestPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-[11px] uppercase tracking-editorial text-paper/58">
+              <span className="text-[12px] uppercase tracking-editorial text-paper/58">
                 {t(fields.connection, language)}
               </span>
               <textarea
@@ -130,7 +132,7 @@ export default function ClubRequestPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-[11px] uppercase tracking-editorial text-paper/58">
+              <span className="text-[12px] uppercase tracking-editorial text-paper/58">
                 {t(fields.reason, language)}
               </span>
               <textarea
@@ -144,7 +146,7 @@ export default function ClubRequestPage() {
             <div className="pt-2">
               <button
                 type="submit"
-                className="inline-flex rounded-full border border-paper/20 bg-paper px-5 py-3 text-[11px] uppercase tracking-editorial text-shadow transition-opacity duration-500 hover:opacity-82"
+                className="inline-flex rounded-full border border-paper/20 bg-paper px-5 py-3 text-[12px] uppercase tracking-editorial text-shadow transition-opacity duration-500 hover:opacity-82"
               >
                 {t(pageCopy.clubRequest.submit, language)}
               </button>

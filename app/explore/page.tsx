@@ -24,7 +24,7 @@ export default function ExplorePage() {
                   { label: language === "es" ? "Explorar" : "Explore" }
                 ]}
               />
-              <p className="text-[11px] uppercase tracking-editorial text-stone">
+              <p className="text-[12px] uppercase tracking-editorial text-stone">
                 {t(pageCopy.explore.eyebrow, language)}
               </p>
               <h1 className="mt-7 max-w-2xl font-serif text-4xl leading-[1.02] md:text-6xl">
@@ -33,7 +33,7 @@ export default function ExplorePage() {
             </FadeIn>
 
             <FadeIn delay={0.08}>
-              <p className="max-w-3xl whitespace-pre-line text-sm leading-9 text-black/68 md:pt-20 md:text-base md:leading-10">
+              <p className="max-w-3xl whitespace-pre-line text-[1rem] leading-9 text-black/68 md:pt-20 md:text-[1.08rem] md:leading-10">
                 {t(pageCopy.explore.body, language)}
               </p>
             </FadeIn>
@@ -47,7 +47,7 @@ export default function ExplorePage() {
                   { label: language === "es" ? "Explorar" : "Explore" }
                 ]}
               />
-              <p className="text-[11px] uppercase tracking-editorial text-stone">
+              <p className="text-[12px] uppercase tracking-editorial text-stone">
                 {t(pageCopy.explore.eyebrow, language)}
               </p>
               <h1 className="mt-7 max-w-2xl font-serif text-4xl leading-[1.02] md:text-6xl">
@@ -83,10 +83,10 @@ export default function ExplorePage() {
                   <h3 className="font-serif text-4xl leading-none md:text-5xl">
                     {t(pageCopy.explore.options[index].title, language)}
                   </h3>
-                  <p className="mt-6 max-w-sm text-sm leading-8 text-black/68 md:text-base md:leading-9">
+                  <p className="mt-6 max-w-sm text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
                     {t(pageCopy.explore.options[index].body, language)}
                   </p>
-                  <span className="mt-8 inline-flex text-[11px] uppercase tracking-editorial text-black/40 transition-opacity duration-500 group-hover:opacity-70">
+                  <span className="mt-8 inline-flex text-[12px] uppercase tracking-editorial text-black/40 transition-opacity duration-500 group-hover:opacity-70">
                     {t(pageCopy.explore.options[index].cta, language)}
                   </span>
                 </div>

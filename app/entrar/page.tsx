@@ -137,7 +137,7 @@ export default function SignInPage() {
   return (
     <main className="pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-5xl px-6 md:px-10">
-        <p className="mb-5 text-[11px] uppercase tracking-editorial text-stone">
+        <p className="mb-5 text-[12px] uppercase tracking-editorial text-stone">
           {language === "es" ? "Mi recorrido" : "My journey"}
         </p>
         <h1 className="max-w-4xl font-serif text-4xl leading-[0.94] md:text-6xl">
@@ -163,7 +163,7 @@ export default function SignInPage() {
                 ? "Desde aquí puedes volver a tu recorrido y seguir lo que el proyecto ya deja ver."
                 : "From here you can return to your journey and continue with what the project already lets you see."}
             </p>
-            <div className="mt-14 text-[11px] uppercase tracking-editorial">
+            <div className="mt-14 text-[12px] uppercase tracking-editorial">
               <Link
                 href="/mi-recorrido"
                 className="inline-flex text-black/48 transition-opacity duration-500 hover:opacity-72"
@@ -176,7 +176,7 @@ export default function SignInPage() {
           <div className="grid gap-16 border-t border-black/8 pt-12 md:grid-cols-[0.72fr_1.28fr] md:gap-20">
             <FadeIn>
               <div>
-                <p className="text-[11px] uppercase tracking-editorial text-stone">
+                <p className="text-[12px] uppercase tracking-editorial text-stone">
                   {language === "es" ? "Ya tengo mi recorrido" : "I already have my journey"}
                 </p>
                 <h2 className="mt-4 max-w-md font-serif text-3xl leading-tight text-black/92 md:text-5xl">
@@ -193,7 +193,7 @@ export default function SignInPage() {
 
               <form className="mt-12 grid gap-6 md:max-w-md" onSubmit={handleSignIn}>
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     Email
                   </span>
                   <input
@@ -208,7 +208,7 @@ export default function SignInPage() {
                 </label>
 
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es" ? "Contraseña" : "Password"}
                   </span>
                   <input
@@ -225,7 +225,7 @@ export default function SignInPage() {
                   <button
                     type="submit"
                     disabled={signInStatus === "sending"}
-                    className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
+                    className="inline-flex text-[12px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                   >
                     {signInStatus === "sending"
                       ? language === "es"
@@ -238,7 +238,7 @@ export default function SignInPage() {
                 </div>
               </form>
 
-              <div className="mt-8 text-[11px] uppercase tracking-editorial">
+              <div className="mt-8 text-[12px] uppercase tracking-editorial">
                 <button
                   type="button"
                   onClick={() => {
@@ -262,7 +262,7 @@ export default function SignInPage() {
                   </p>
 
                   <label className="grid gap-3">
-                    <span className="text-[11px] uppercase tracking-editorial text-stone">
+                    <span className="text-[12px] uppercase tracking-editorial text-stone">
                       Email
                     </span>
                     <input
@@ -280,7 +280,7 @@ export default function SignInPage() {
                     <button
                       type="submit"
                       disabled={recoveryStatus === "sending"}
-                      className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
+                      className="inline-flex text-[12px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                     >
                       {recoveryStatus === "sending"
                         ? language === "es"
@@ -329,7 +329,7 @@ export default function SignInPage() {
 
             <FadeIn delay={0.08}>
               <div>
-                <p className="text-[11px] uppercase tracking-editorial text-stone">
+                <p className="text-[12px] uppercase tracking-editorial text-stone">
                   {language === "es" ? "Quiero registrarme" : "I want to register"}
                 </p>
                 <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight text-black/92 md:text-5xl">
@@ -347,7 +347,7 @@ export default function SignInPage() {
               <form className="mt-12 grid gap-6 md:max-w-2xl" onSubmit={handleSignUp}>
                 <div className="grid gap-6 md:grid-cols-2">
                   <label className="grid gap-3">
-                    <span className="text-[11px] uppercase tracking-editorial text-stone">
+                    <span className="text-[12px] uppercase tracking-editorial text-stone">
                       {language === "es" ? "Nombre" : "Name"}
                     </span>
                     <input
@@ -361,7 +361,7 @@ export default function SignInPage() {
                   </label>
 
                   <label className="grid gap-3">
-                    <span className="text-[11px] uppercase tracking-editorial text-stone">
+                    <span className="text-[12px] uppercase tracking-editorial text-stone">
                       Email
                     </span>
                     <input
@@ -377,7 +377,7 @@ export default function SignInPage() {
                 </div>
 
                 <label className="grid gap-3 md:max-w-md">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es" ? "Ciudad / país" : "City / country"}
                   </span>
                   <input
@@ -391,7 +391,7 @@ export default function SignInPage() {
                 </label>
 
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es"
                       ? "Cómo llegaste a Planeta Argentina"
                       : "How did you come across Planeta Argentina"}
@@ -405,7 +405,7 @@ export default function SignInPage() {
                 </label>
 
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es"
                       ? "Qué vínculo sientes con el proyecto"
                       : "What connection do you feel with the project"}
@@ -420,7 +420,7 @@ export default function SignInPage() {
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <label className="grid gap-3">
-                    <span className="text-[11px] uppercase tracking-editorial text-stone">
+                    <span className="text-[12px] uppercase tracking-editorial text-stone">
                       {language === "es" ? "Contraseña" : "Password"}
                     </span>
                     <input
@@ -434,7 +434,7 @@ export default function SignInPage() {
                   </label>
 
                   <label className="grid gap-3">
-                    <span className="text-[11px] uppercase tracking-editorial text-stone">
+                    <span className="text-[12px] uppercase tracking-editorial text-stone">
                       {language === "es" ? "Confirmación de contraseña" : "Confirm password"}
                     </span>
                     <input
@@ -452,7 +452,7 @@ export default function SignInPage() {
                   <button
                     type="submit"
                     disabled={signUpStatus === "sending"}
-                    className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
+                    className="inline-flex text-[12px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                   >
                     {signUpStatus === "sending"
                       ? language === "es"

@@ -1,17 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
-import { useLanguage } from "@/components/language-provider";
+import {
+  languageOptions,
+  type Language,
+  useLanguage
+} from "@/components/language-provider";
 import { localizeText, navigation, type LocalizedText } from "@/data/site";
 
 function LanguageFlag({
   code,
   inverse
 }: {
-  code: "es" | "en";
+  code: Language;
   inverse: boolean;
 }) {
   const frameClass = inverse
@@ -32,6 +36,19 @@ function LanguageFlag({
     );
   }
 
+  if (code === "pt") {
+    return (
+      <span
+        aria-hidden="true"
+        className={`relative block h-3.5 w-5 overflow-hidden rounded-[3px] ${frameClass}`}
+      >
+        <span className="absolute inset-y-0 left-0 w-[38%] bg-[#1e6a45]" />
+        <span className="absolute inset-y-0 right-0 w-[62%] bg-[#c83c3c]" />
+        <span className="absolute left-[38%] top-1/2 h-[34%] w-[22%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e0b447]" />
+      </span>
+    );
+  }
+
   return (
     <span
       aria-hidden="true"
@@ -48,11 +65,114 @@ type MobileNavigationItem = {
   label: LocalizedText;
 };
 
+function languageText(code: Language) {
+  return languageOptions.find((option) => option.code === code)?.label ?? "Español";
+}
+
+function LanguageSelector({
+  language,
+  setLanguage,
+  inverse,
+  open,
+  onToggle,
+  onClose,
+  align = "right"
+}: {
+  language: Language;
+  setLanguage: (language: Language) => void;
+  inverse: boolean;
+  open: boolean;
+  onToggle: () => void;
+  onClose: () => void;
+  align?: "right" | "center";
+}) {
+  const panelTone = inverse
+    ? "border-white/10 bg-[#111111] text-[#f4efe8]"
+    : "border-black/10 bg-[#f4efe8] text-black";
+  const buttonTone = inverse ? "text-[#f4efe8]" : "text-black";
+  const panelAlign =
+    align === "center"
+      ? "left-1/2 -translate-x-1/2"
+      : "right-0";
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-label={language === "es" ? "Elegir idioma" : language === "pt" ? "Escolher idioma" : "Choose language"}
+        aria-expanded={open}
+        className={`inline-flex items-center gap-2 rounded-full px-2 py-1.5 text-[11px] uppercase tracking-editorial transition-opacity duration-300 hover:opacity-72 ${buttonTone}`}
+      >
+        <LanguageFlag code={language} inverse={inverse} />
+        <span className="sr-only">{languageText(language)}</span>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 10 6"
+          className={`h-[7px] w-[11px] transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          fill="none"
+        >
+          <path
+            d="M1 1.25 5 4.75l4-3.5"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      <div
+        className={`absolute top-[calc(100%+0.8rem)] z-[120] min-w-[12rem] rounded-[1.15rem] border p-2 shadow-[0_10px_35px_rgba(0,0,0,0.08)] transition-all duration-300 ${panelTone} ${panelAlign} ${
+          open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
+        }`}
+      >
+        {languageOptions.map((option) => {
+          const active = option.code === language;
+
+          return (
+            <button
+              key={option.code}
+              type="button"
+              onClick={() => {
+                setLanguage(option.code);
+                onClose();
+              }}
+              className={`flex w-full items-center justify-between gap-3 rounded-[0.9rem] px-3 py-2.5 text-left transition-colors duration-300 ${
+                active
+                  ? inverse
+                    ? "bg-white/8 text-[#f4efe8]"
+                    : "bg-black/5 text-black"
+                  : inverse
+                    ? "text-[#f4efe8]/84 hover:bg-white/6"
+                    : "text-black/76 hover:bg-black/4"
+              }`}
+            >
+              <span className="inline-flex items-center gap-3">
+                <LanguageFlag code={option.code} inverse={inverse} />
+                <span className="text-[0.92rem] tracking-[0.01em]">{option.label}</span>
+              </span>
+              {active ? (
+                <span className="text-[11px] uppercase tracking-editorial">
+                  {language === "es" ? "Activo" : language === "pt" ? "Ativo" : "Active"}
+                </span>
+              ) : null}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function SiteHeader() {
   const { language, setLanguage } = useLanguage();
   const { loading, user } = useAuth();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const desktopLanguageMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileLanguageMenuRef = useRef<HTMLDivElement | null>(null);
 
   const isClubPage = pathname?.startsWith("/club");
   const primaryNavigation = navigation.filter((item) => item.tier === "primary");
@@ -65,14 +185,24 @@ export function SiteHeader() {
     : user
       ? language === "es"
         ? "Mi recorrido"
+        : language === "pt"
+          ? "O meu percurso"
         : "My journey"
       : language === "es"
         ? "Entrar"
+        : language === "pt"
+          ? "Entrar"
         : "Enter";
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setLanguageMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) return;
+    setLanguageMenuOpen(false);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -92,6 +222,23 @@ export function SiteHeader() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!languageMenuOpen) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      const target = event.target as Node;
+      const insideDesktop = desktopLanguageMenuRef.current?.contains(target);
+      const insideMobile = mobileLanguageMenuRef.current?.contains(target);
+
+      if (!insideDesktop && !insideMobile) {
+        setLanguageMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, [languageMenuOpen]);
 
   const isActive = (href: string) => {
     if (!pathname) return false;
@@ -225,39 +372,15 @@ export function SiteHeader() {
             className={`hidden h-4 w-px md:block ${isClubPage ? "bg-white/14" : "bg-black/10"}`}
           />
 
-          <div className="flex items-center gap-2 text-[10px] tracking-editorial">
-            <button
-              type="button"
-              onClick={() => setLanguage("es")}
-              aria-label="Cambiar a español"
-              aria-pressed={language === "es"}
-              className={`inline-flex rounded-[0.55rem] p-[3px] transition-all duration-300 ${
-                language === "es"
-                  ? isClubPage
-                    ? "bg-white/12 opacity-100"
-                    : "bg-black/6 opacity-100"
-                  : "opacity-45 hover:opacity-75"
-              }`}
-            >
-              <LanguageFlag code="es" inverse={isClubPage} />
-              <span className="sr-only">Español</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setLanguage("en")}
-              aria-label="Switch to English"
-              aria-pressed={language === "en"}
-              className={`inline-flex rounded-[0.55rem] p-[3px] transition-all duration-300 ${
-                language === "en"
-                  ? isClubPage
-                    ? "bg-white/12 opacity-100"
-                    : "bg-black/6 opacity-100"
-                  : "opacity-45 hover:opacity-75"
-              }`}
-            >
-              <LanguageFlag code="en" inverse={isClubPage} />
-              <span className="sr-only">English</span>
-            </button>
+          <div ref={desktopLanguageMenuRef}>
+            <LanguageSelector
+              language={language}
+              setLanguage={setLanguage}
+              inverse={isClubPage}
+              open={languageMenuOpen}
+              onToggle={() => setLanguageMenuOpen((value) => !value)}
+              onClose={() => setLanguageMenuOpen(false)}
+            />
           </div>
         </div>
       </div>
@@ -282,10 +405,14 @@ export function SiteHeader() {
             mobileMenuOpen
               ? language === "es"
                 ? "Cerrar menú"
-                : "Close menu"
+                : language === "pt"
+                  ? "Fechar menu"
+                  : "Close menu"
               : language === "es"
                 ? "Abrir menú"
-                : "Open menu"
+                : language === "pt"
+                  ? "Abrir menu"
+                  : "Open menu"
           }
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation-overlay"
@@ -294,7 +421,9 @@ export function SiteHeader() {
             isClubPage ? "text-white" : "text-black"
           }`}
         >
-          <span className="sr-only">{language === "es" ? "Menú" : "Menu"}</span>
+          <span className="sr-only">
+            {language === "es" ? "Menú" : language === "pt" ? "Menu" : "Menu"}
+          </span>
           <span className="relative block h-4 w-5">
             <span
               aria-hidden="true"
@@ -329,7 +458,7 @@ export function SiteHeader() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0%,rgba(255,255,255,0.012)_18%,rgba(0,0,0,0.12)_100%)]" />
         <button
           type="button"
-          aria-label={language === "es" ? "Cerrar menú" : "Close menu"}
+          aria-label={language === "es" ? "Cerrar menú" : language === "pt" ? "Fechar menu" : "Close menu"}
           onClick={() => setMobileMenuOpen(false)}
           className="absolute inset-0"
         />
@@ -350,11 +479,13 @@ export function SiteHeader() {
             </Link>
             <button
               type="button"
-              aria-label={language === "es" ? "Cerrar menú" : "Close menu"}
+              aria-label={language === "es" ? "Cerrar menú" : language === "pt" ? "Fechar menu" : "Close menu"}
               onClick={() => setMobileMenuOpen(false)}
               className="relative justify-self-end rounded-full p-2 text-[#f4efe8] transition-opacity duration-300 hover:opacity-70"
             >
-              <span className="sr-only">{language === "es" ? "Cerrar" : "Close"}</span>
+              <span className="sr-only">
+                {language === "es" ? "Cerrar" : language === "pt" ? "Fechar" : "Close"}
+              </span>
               <span className="relative block h-4 w-5">
                 <span
                   aria-hidden="true"
@@ -404,37 +535,22 @@ export function SiteHeader() {
                   href={authHref}
                   aria-current={authActive ? "page" : undefined}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-[11px] uppercase tracking-editorial text-[#f4efe8]/72 transition-opacity duration-300 hover:opacity-65"
+                  className="text-[12px] uppercase tracking-editorial text-[#f4efe8]/72 transition-opacity duration-300 hover:opacity-65"
                 >
                   {authLabel}
                 </Link>
               ) : null}
 
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setLanguage("es")}
-                  aria-label="Cambiar a español"
-                  aria-pressed={language === "es"}
-                  className={`inline-flex rounded-[0.65rem] p-[4px] transition-all duration-300 ${
-                    language === "es" ? "bg-white/10 opacity-100" : "opacity-45 hover:opacity-75"
-                  }`}
-                >
-                  <LanguageFlag code="es" inverse />
-                  <span className="sr-only">Español</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLanguage("en")}
-                  aria-label="Switch to English"
-                  aria-pressed={language === "en"}
-                  className={`inline-flex rounded-[0.65rem] p-[4px] transition-all duration-300 ${
-                    language === "en" ? "bg-white/10 opacity-100" : "opacity-45 hover:opacity-75"
-                  }`}
-                >
-                  <LanguageFlag code="en" inverse />
-                  <span className="sr-only">English</span>
-                </button>
+              <div ref={mobileLanguageMenuRef}>
+                <LanguageSelector
+                  language={language}
+                  setLanguage={setLanguage}
+                  inverse
+                  open={languageMenuOpen}
+                  onToggle={() => setLanguageMenuOpen((value) => !value)}
+                  onClose={() => setLanguageMenuOpen(false)}
+                  align="center"
+                />
               </div>
             </div>
           </div>

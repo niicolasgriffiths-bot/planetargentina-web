@@ -8,8 +8,10 @@ import { FadeIn } from "@/components/fade-in";
 import { useLanguage, type Language } from "@/components/language-provider";
 import { localizeText, territories } from "@/data/site";
 
-function text(language: Language, es: string, en: string) {
-  return language === "es" ? es : en;
+function text(language: Language, es: string, en: string, pt?: string) {
+  if (language === "es") return es;
+  if (language === "pt") return pt ?? es;
+  return en;
 }
 
 export default function CollectionPage() {
@@ -22,18 +24,19 @@ export default function CollectionPage() {
         <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
           <Breadcrumbs
             items={[
-              { label: language === "es" ? "Home" : "Home", href: "/" },
-              { label: language === "es" ? "Colección" : "Collection" }
+              { label: language === "pt" ? "Início" : "Home", href: "/" },
+              { label: text(language, "Colección", "Collection", "Coleção") }
             ]}
           />
-          <p className="text-[11px] uppercase tracking-editorial text-stone">
-            {text(language, "Colección", "Collection")}
+          <p className="text-[12px] uppercase tracking-editorial text-stone">
+            {text(language, "Colección", "Collection", "Coleção")}
           </p>
           <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.98] md:text-[5.2rem]">
             {text(
               language,
               "La obra de Planeta Argentina toma forma.",
-              "The work of Planeta Argentina takes shape."
+              "The work of Planeta Argentina takes shape.",
+              "A obra do Planeta Argentina toma forma."
             )}
           </h1>
         </FadeIn>
@@ -64,7 +67,8 @@ export default function CollectionPage() {
             {text(
               language,
               "Cada territorio se transforma en una obra.\nUna mirada del país a través de cinco libros y un documental.",
-              "Each territory becomes a work.\nA gaze on the country through five books and a documentary."
+              "Each territory becomes a work.\nA gaze on the country through five books and a documentary.",
+              "Cada território transforma-se numa obra.\nUma visão do país através de cinco livros e um documentário."
             )}
           </p>
         </FadeIn>
@@ -73,26 +77,28 @@ export default function CollectionPage() {
       <section className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="grid gap-14 border-t border-black/8 pt-12 md:grid-cols-[0.62fr_1.38fr] md:items-center md:gap-20 md:pt-16">
           <FadeIn>
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
-              {text(language, "Primera instancia", "First instance")}
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
+              {text(language, "Primera instancia", "First instance", "Primeira instância")}
             </p>
             <h2 className="mt-5 font-serif text-5xl leading-none md:text-7xl">
               {localizeText(firstBook.name, language)}
             </h2>
-            <div className="mt-8 max-w-xl space-y-7 text-sm leading-8 text-black/66 md:mt-10 md:text-base md:leading-9">
+            <div className="mt-8 max-w-xl space-y-7 text-[0.98rem] leading-8 text-black/66 md:mt-10 md:text-[1.08rem] md:leading-9">
               <p>
                 {text(
-                  language,
-                  "Altura, salares y vida en uno de los entornos más extremos del país.",
-                  "Altitude, salt flats and life in one of the country’s most extreme environments."
-                )}
+                language,
+                "Altura, salares y vida en uno de los entornos más extremos del país.",
+                "Altitude, salt flats and life in one of the country’s most extreme environments.",
+                "Altitude, salares e vida num dos ambientes mais extremos do país."
+              )}
               </p>
               <p>
                 {text(
-                  language,
-                  "La primera etapa del proyecto ya está terminada.",
-                  "The first stage of the project is already completed."
-                )}
+                language,
+                "La primera etapa del proyecto ya está terminada.",
+                "The first stage of the project is already completed.",
+                "A primeira etapa do projeto já está concluída."
+              )}
               </p>
             </div>
           </FadeIn>
@@ -102,7 +108,7 @@ export default function CollectionPage() {
               <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/8]">
                 <Image
                   src="/editorial/sana3-rose-valley.jpg"
-                  alt={text(language, "Relieve puneño al atardecer", "Puna relief at dusk")}
+                  alt={text(language, "Relieve puneño al atardecer", "Puna relief at dusk", "Relevo da Puna ao entardecer")}
                   fill
                   className="soft-photo object-cover"
                   style={{ objectPosition: "center 58%" }}
@@ -112,7 +118,7 @@ export default function CollectionPage() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src="/editorial/sana5-green-ranges.jpg"
-                    alt={text(language, "Laderas abiertas en altura", "Open slopes at altitude")}
+                    alt={text(language, "Laderas abiertas en altura", "Open slopes at altitude", "Encostas abertas em altitude")}
                     fill
                     className="soft-photo object-cover"
                     style={{ objectPosition: "center 54%" }}
@@ -121,7 +127,7 @@ export default function CollectionPage() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src="/club/mountain-layers.jpg"
-                    alt={text(language, "Relieve montañoso en capas", "Layered mountain relief")}
+                    alt={text(language, "Relieve montañoso en capas", "Layered mountain relief", "Relevo montanhoso em camadas")}
                     fill
                     className="soft-photo object-cover"
                     style={{ objectPosition: "center 54%" }}
@@ -138,17 +144,18 @@ export default function CollectionPage() {
           <FadeIn>
             <p className="max-w-3xl font-serif text-4xl leading-[1.08] md:text-6xl">
               {text(
-                language,
-                "De este territorio nace la primera obra.",
-                "From this territory, the first work is born."
-              )}
+              language,
+              "De este territorio nace la primera obra.",
+              "From this territory, the first work is born.",
+              "Deste território nasce a primeira obra."
+            )}
             </p>
-            <div className="mt-14 text-[11px] uppercase tracking-editorial">
+            <div className="mt-14 text-[12px] uppercase tracking-editorial">
               <Link
                 href="/contacto"
                 className="inline-flex text-black/52 transition-opacity duration-500 hover:opacity-72"
               >
-                {text(language, "Ser parte de la primera edición", "Be part of the first edition")}
+                {text(language, "Ser parte de la primera edición", "Be part of the first edition", "Fazer parte da primeira edição")}
               </Link>
             </div>
           </FadeIn>
@@ -171,7 +178,8 @@ export default function CollectionPage() {
             {text(
               language,
               "Cinco territorios.\nCinco libros.\nUn documental.\n\nUna forma de construir una mirada completa del país.",
-              "Five territories.\nFive books.\nA documentary.\n\nA way of building a complete gaze on the country."
+              "Five territories.\nFive books.\nA documentary.\n\nA way of building a complete gaze on the country.",
+              "Cinco territórios.\nCinco livros.\nUm documentário.\n\nUma forma de construir uma visão completa do país."
             )}
           </p>
         </FadeIn>
@@ -180,7 +188,7 @@ export default function CollectionPage() {
       <section className="mx-auto mt-24 max-w-5xl px-6 md:mt-32 md:px-10">
         <FadeIn className="border-t border-black/8 pt-12 text-center md:pt-16">
           <p className="font-serif text-4xl leading-tight md:text-6xl">
-            {text(language, "Esto es solo el comienzo.", "This is only the beginning.")}
+            {text(language, "Esto es solo el comienzo.", "This is only the beginning.", "Isto é apenas o começo.")}
           </p>
         </FadeIn>
       </section>

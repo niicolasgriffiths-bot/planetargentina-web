@@ -70,7 +70,7 @@ export default function CollectionObjectsPage() {
         <FadeIn className="mt-12">
           <Link
             href="/coleccion"
-            className="text-[11px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
+            className="text-[12px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
           >
             {language === "es" ? "Volver a colección" : "Back to collection"}
           </Link>

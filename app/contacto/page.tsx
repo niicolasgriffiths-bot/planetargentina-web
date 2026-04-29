@@ -35,14 +35,22 @@ export default function ContactPage() {
       if (!response.ok) {
         throw new Error(
           result?.errors?.[0]?.message ??
-            (language === "es" ? "Error al enviar." : "Error sending message.")
+            (language === "es"
+              ? "Erro ao enviar."
+              : language === "pt"
+                ? "Erro ao enviar."
+                : "Error sending message.")
         );
       }
 
       form.reset();
       setSubmitStatus("success");
       setSubmitMessage(
-        language === "es" ? "Mensaje enviado." : "Message sent."
+        language === "es"
+          ? "Mensaje enviado."
+          : language === "pt"
+            ? "Mensagem enviada."
+            : "Message sent."
       );
     } catch (error) {
       setSubmitStatus("error");
@@ -51,7 +59,9 @@ export default function ContactPage() {
           ? error.message
           : language === "es"
             ? "Error al enviar."
-            : "Error sending message."
+            : language === "pt"
+              ? "Erro ao enviar."
+              : "Error sending message."
       );
     }
   }
@@ -59,45 +69,57 @@ export default function ContactPage() {
   return (
     <main className="pb-24 pt-32 md:pb-32 md:pt-40">
       <PageIntro
-        eyebrow={language === "es" ? "Contacto" : "Contact"}
-        title={language === "es" ? "Una forma directa de escribir." : "A direct way to write."}
+        eyebrow={language === "es" ? "Contacto" : language === "pt" ? "Contacto" : "Contact"}
+        title={
+          language === "es"
+            ? "Una forma directa de escribir."
+            : language === "pt"
+              ? "Uma forma direta de escrever."
+              : "A direct way to write."
+        }
         body={
           language === "es"
             ? "Para consultas, propuestas o conversaciones vinculadas al proyecto."
+            : language === "pt"
+              ? "Para perguntas, propostas ou conversas ligadas ao projeto."
             : "For questions, proposals or conversations related to the project."
         }
         breadcrumbs={[
-          { label: language === "es" ? "Home" : "Home", href: "/" },
-          { label: language === "es" ? "Contacto" : "Contact" }
+          { label: language === "pt" ? "Início" : "Home", href: "/" },
+          { label: language === "es" ? "Contacto" : language === "pt" ? "Contacto" : "Contact" }
         ]}
       />
 
       <section className="mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
         <div className="grid gap-14 border-t border-black/8 pt-10 md:grid-cols-[0.82fr_1.18fr] md:gap-20">
           <FadeIn>
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
-              {language === "es" ? "Escribir" : "Write"}
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
+              {language === "es" ? "Escribir" : language === "pt" ? "Escrever" : "Write"}
             </p>
             <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight md:text-6xl">
               {language === "es"
                 ? "El mensaje llega al equipo."
+                : language === "pt"
+                  ? "A mensagem chega à equipa."
                 : "The message reaches the team."}
             </h2>
             <p className="mt-8 max-w-md text-sm leading-8 text-black/64 md:text-base md:leading-9">
               {language === "es"
                 ? "También podés escribir directamente a hola@planetargentina.com."
+                : language === "pt"
+                  ? "Também pode escrever diretamente para hola@planetargentina.com."
                 : "You can also write directly to hola@planetargentina.com."}
             </p>
 
             <div className="mt-12 border-t border-black/8 pt-8">
-              <p className="text-[11px] uppercase tracking-editorial text-stone">
+              <p className="text-[12px] uppercase tracking-editorial text-stone">
                 Instagram
               </p>
               <Link
                 href="https://www.instagram.com/argentinaplaneta?igsh=MTdveHM5bzg5dzRxOQ=="
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-flex text-[11px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
+                className="mt-5 inline-flex text-[12px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
               >
                 Planeta Argentina
               </Link>
@@ -113,8 +135,8 @@ export default function ContactPage() {
               />
               <div className="grid gap-6 md:grid-cols-2">
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
-                    {language === "es" ? "Nombre" : "Name"}
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
+                    {language === "es" ? "Nombre" : language === "pt" ? "Nome" : "Name"}
                   </span>
                   <input
                     name="name"
@@ -126,7 +148,7 @@ export default function ContactPage() {
                 </label>
 
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     Email
                   </span>
                   <input
@@ -134,15 +156,15 @@ export default function ContactPage() {
                     type="email"
                     required
                     autoComplete="email"
-                    placeholder={language === "es" ? "tu@email.com" : "your@email.com"}
+                    placeholder={language === "es" ? "tu@email.com" : language === "pt" ? "teu@email.com" : "your@email.com"}
                     className="rounded-[1.4rem] border border-black/10 bg-transparent px-5 py-4 text-sm outline-none transition-colors duration-300 placeholder:text-black/24 focus:border-black/20 md:text-base"
                   />
                 </label>
               </div>
 
               <label className="grid gap-3">
-                <span className="text-[11px] uppercase tracking-editorial text-stone">
-                  {language === "es" ? "Asunto" : "Subject"}
+                <span className="text-[12px] uppercase tracking-editorial text-stone">
+                  {language === "es" ? "Asunto" : language === "pt" ? "Assunto" : "Subject"}
                 </span>
                 <input
                   name="subject"
@@ -153,8 +175,8 @@ export default function ContactPage() {
               </label>
 
               <label className="grid gap-3">
-                <span className="text-[11px] uppercase tracking-editorial text-stone">
-                  {language === "es" ? "Mensaje" : "Message"}
+                <span className="text-[12px] uppercase tracking-editorial text-stone">
+                  {language === "es" ? "Mensaje" : language === "pt" ? "Mensagem" : "Message"}
                 </span>
                 <textarea
                   name="message"
@@ -168,14 +190,18 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitStatus === "sending"}
-                  className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
+                  className="inline-flex text-[12px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                 >
                   {submitStatus === "sending"
                     ? language === "es"
                       ? "Enviando..."
+                      : language === "pt"
+                        ? "A enviar..."
                       : "Sending..."
                     : language === "es"
                       ? "Enviar mensaje"
+                      : language === "pt"
+                        ? "Enviar mensagem"
                       : "Send message"}
                 </button>
               </div>

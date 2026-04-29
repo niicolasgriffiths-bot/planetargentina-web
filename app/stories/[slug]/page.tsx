@@ -45,14 +45,14 @@ export default function StoryDetailPage() {
           </FadeIn>
 
           <FadeIn delay={0.08} className="border-t border-black/8 pt-8">
-            <p className="text-[11px] uppercase tracking-editorial text-stone">
+            <p className="text-[12px] uppercase tracking-editorial text-stone">
               {language === "es" ? "Resumen" : "Summary"}
             </p>
             <p className="mt-5 max-w-3xl text-sm leading-8 text-black/72 md:text-[1.02rem] md:leading-9">
               {localizeText(story.summary, language)}
             </p>
 
-            <div className="mt-10 flex gap-6 text-[11px] uppercase tracking-editorial text-black/45">
+            <div className="mt-10 flex gap-6 text-[12px] uppercase tracking-editorial text-black/45">
               <Link href="/stories" className="transition-opacity duration-500 hover:opacity-60">
                 {language === "es" ? "Volver a historias" : "Back to stories"}
               </Link>

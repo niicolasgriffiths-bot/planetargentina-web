@@ -18,7 +18,7 @@ export default function ExperiencesPage() {
             { label: language === "es" ? "Experiencias" : "Experiences" }
           ]}
         />
-        <p className="mb-4 text-[11px] uppercase tracking-editorial text-stone">
+        <p className="mb-4 text-[12px] uppercase tracking-editorial text-stone">
           {t(pageCopy.experiences.eyebrow, language)}
         </p>
         <h1 className="mt-6 max-w-2xl font-serif text-4xl leading-[1.02] md:text-6xl">
@@ -33,10 +33,10 @@ export default function ExperiencesPage() {
               <p className="whitespace-pre-line font-serif text-4xl leading-[1.08] text-black/92 md:text-6xl">
                 {t(pageCopy.experiences.statement, language)}
               </p>
-              <p className="mt-12 max-w-lg whitespace-pre-line text-sm leading-9 text-black/66 md:mt-16 md:text-base md:leading-10">
+              <p className="mt-12 max-w-lg whitespace-pre-line text-[1rem] leading-9 text-black/66 md:mt-16 md:text-[1.08rem] md:leading-10">
                 {t(pageCopy.experiences.note, language)}
               </p>
-              <p className="mt-12 text-[11px] uppercase tracking-editorial text-black/42 md:mt-16">
+              <p className="mt-12 text-[12px] uppercase tracking-editorial text-black/42 md:mt-16">
                 {t(pageCopy.experiences.status, language)}
               </p>
             </div>

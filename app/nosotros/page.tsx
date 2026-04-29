@@ -18,6 +18,12 @@ const aboutCopy = {
       "Large parts of the country—its scale, diversity and the ways of life that sustain it—do not appear in that discourse.",
       "Planeta Argentina emerges to work on that distance.",
       "Not to construct a new version, but to widen the gaze: to move through the territory in depth and make room for what remains outside the most visible narratives."
+    ],
+    pt: [
+      "A forma como a Argentina se mostra,\ntanto para fora como para dentro,\ncostuma ficar reduzida a um relato limitado.",
+      "Grande parte do país — a sua escala, a sua diversidade e as formas de vida que o sustentam — não aparece nesse discurso.",
+      "Planeta Argentina surge para trabalhar essa distância.",
+      "Não para construir uma nova versão, mas para ampliar o olhar: percorrer o território em profundidade e dar lugar àquilo que fica fora dos relatos mais visíveis."
     ]
   },
   work: {
@@ -30,6 +36,11 @@ const aboutCopy = {
       "The work is organized\nthrough expeditions.",
       "Each stage involves moving through a specific region of the country under real conditions, with extended time in each place.",
       "It is not only about landscape. It is also about the people who live in and sustain those environments, and the relationship they build with the territory."
+    ],
+    pt: [
+      "O trabalho organiza-se\nem expedições.",
+      "Cada etapa implica percorrer uma região específica do país em condições reais, com tempos prolongados em cada lugar.",
+      "Não se trata apenas da paisagem. Trata-se também das pessoas que vivem e sustentam esses ambientes, e da relação que constroem com o território."
     ]
   },
   output: {
@@ -40,6 +51,10 @@ const aboutCopy = {
     en: [
       "From each expedition come\nbooks and documentary pieces.",
       "Each stage builds its own record, combining image, territory and narrative, and becoming part of an archive in development."
+    ],
+    pt: [
+      "De cada expedição surgem\nlivros e peças documentais.",
+      "Cada etapa constrói um registo próprio, que combina imagem, território e relato, e que faz parte de um arquivo em desenvolvimento."
     ]
   },
   history: {
@@ -54,22 +69,29 @@ const aboutCopy = {
       "I was born in La Pampa and grew up in Patagonia. For years I traveled across the country with my family, moving through very different regions.",
       "Over time, that experience began to take another form: to stop passing through places and start lingering in them.",
       "The project appears from that change."
+    ],
+    pt: [
+      "O projeto foi iniciado\npor Nicolás Griffiths.",
+      "Nasci em La Pampa e cresci na Patagónia. Durante anos percorri o país viajando com a minha família, atravessando regiões muito diferentes entre si.",
+      "Com o tempo, essa experiência começou a tomar outra forma: deixar de passar pelos lugares para começar a deter-me neles.",
+      "O projeto surge a partir dessa mudança."
     ]
   },
   closing: {
     es: "No se trata de recorrer el país.\n\nSe trata de entenderlo desde adentro.",
-    en: "It is not about traveling across the country.\n\nIt is about understanding it from within."
+    en: "It is not about traveling across the country.\n\nIt is about understanding it from within.",
+    pt: "Não se trata de percorrer o país.\n\nTrata-se de entendê-lo por dentro."
   }
 } as const;
 
 export default function AboutPage() {
   const { language } = useLanguage();
 
-  const motivation = aboutCopy.motivation[language];
-  const work = aboutCopy.work[language];
-  const output = aboutCopy.output[language];
-  const history = aboutCopy.history[language];
-  const closing = aboutCopy.closing[language];
+  const motivation = aboutCopy.motivation[language] ?? aboutCopy.motivation.es;
+  const work = aboutCopy.work[language] ?? aboutCopy.work.es;
+  const output = aboutCopy.output[language] ?? aboutCopy.output.es;
+  const history = aboutCopy.history[language] ?? aboutCopy.history.es;
+  const closing = aboutCopy.closing[language] ?? aboutCopy.closing.es;
 
   return (
     <main className="pb-28 pt-32 md:pb-32 md:pt-40">
@@ -78,15 +100,15 @@ export default function AboutPage() {
           <FadeIn>
             <Breadcrumbs
               items={[
-                { label: language === "es" ? "Home" : "Home", href: "/" },
-                { label: language === "es" ? "Nosotros" : "About" }
+                { label: language === "pt" ? "Início" : "Home", href: "/" },
+                { label: language === "es" ? "Nosotros" : language === "pt" ? "Sobre" : "About" }
               ]}
             />
             <div className="mx-auto mt-12 max-w-6xl text-center md:mt-14">
               <p className="mx-auto max-w-[22ch] whitespace-pre-line font-serif text-[2.15rem] leading-[1.12] text-black/92 md:max-w-[21ch] md:text-[3rem] md:leading-[1.06]">
                 {motivation[0]}
               </p>
-              <div className="mx-auto mt-12 max-w-2xl space-y-8 text-sm leading-8 text-black/68 md:text-[1rem] md:leading-9">
+              <div className="mx-auto mt-12 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
                 {motivation.slice(1).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -104,7 +126,9 @@ export default function AboutPage() {
               alt={
                 language === "es"
                   ? "Salar abierto con nubes sobre la cordillera"
-                  : "Open salt flat with clouds over the range"
+                  : language === "pt"
+                    ? "Salar aberto com nuvens sobre a cordilheira"
+                    : "Open salt flat with clouds over the range"
               }
               fill
               className="soft-photo object-cover"
@@ -120,7 +144,7 @@ export default function AboutPage() {
           <p className="mx-auto max-w-[15ch] whitespace-pre-line font-serif text-[2.2rem] leading-[1.12] text-black/88 md:max-w-[14ch] md:text-[2.85rem] md:leading-[1.08]">
             {work[0]}
           </p>
-          <div className="mx-auto mt-10 max-w-2xl space-y-8 text-sm leading-8 text-black/68 md:text-[1rem] md:leading-9">
+          <div className="mx-auto mt-10 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
             {work.slice(1).map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -134,7 +158,7 @@ export default function AboutPage() {
             <p className="mx-auto max-w-[16ch] whitespace-pre-line font-serif text-[2.2rem] leading-[1.12] text-black/88 md:max-w-[15ch] md:text-[2.85rem] md:leading-[1.08]">
               {output[0]}
             </p>
-            <p className="mx-auto mt-10 max-w-lg text-sm leading-8 text-black/68 md:text-[1rem] md:leading-9">
+            <p className="mx-auto mt-10 max-w-lg text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
               {output[1]}
             </p>
           </div>
@@ -156,7 +180,7 @@ export default function AboutPage() {
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
         <div className="border-t border-black/8 pt-12 md:pt-16">
           <FadeIn>
-            <div className="mx-auto max-w-3xl space-y-8 text-sm leading-8 text-black/68 md:text-[1rem] md:leading-9">
+            <div className="mx-auto max-w-3xl space-y-8 text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
               {history.map((paragraph, index) => (
                 <p
                   key={paragraph}
@@ -179,7 +203,9 @@ export default function AboutPage() {
                 alt={
                   language === "es"
                     ? "Retrato del creador de Planeta Argentina"
-                    : "Portrait of the creator of Planeta Argentina"
+                    : language === "pt"
+                      ? "Retrato do criador de Planeta Argentina"
+                      : "Portrait of the creator of Planeta Argentina"
                 }
                 fill
                 className="soft-photo object-cover"

@@ -634,6 +634,6 @@ export const pageCopy = {
   }
 } as const;
 
-export function t(value: { es: string; en: string }, language: Language) {
-  return value[language];
+export function t(value: { es: string; en: string; pt?: string }, language: Language) {
+  return value[language] ?? value.es ?? value.en;
 }

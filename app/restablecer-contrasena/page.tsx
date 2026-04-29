@@ -77,7 +77,7 @@ export default function ResetPasswordPage() {
   return (
     <main className="pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-4xl px-6 md:px-10">
-        <p className="mb-5 text-[11px] uppercase tracking-editorial text-stone">
+        <p className="mb-5 text-[12px] uppercase tracking-editorial text-stone">
           {language === "es" ? "Restablecer contraseña" : "Reset password"}
         </p>
         <h1 className="max-w-4xl font-serif text-4xl leading-[0.94] md:text-6xl">
@@ -107,7 +107,7 @@ export default function ResetPasswordPage() {
                   ? "Vuelve a entrar y pide un nuevo enlace para restablecer tu contraseña."
                   : "Go back to enter and request a new link to reset your password."}
               </p>
-              <div className="mt-14 text-[11px] uppercase tracking-editorial">
+              <div className="mt-14 text-[12px] uppercase tracking-editorial">
                 <Link
                   href="/entrar"
                   className="inline-flex text-black/48 transition-opacity duration-500 hover:opacity-72"
@@ -126,7 +126,7 @@ export default function ResetPasswordPage() {
 
               <form className="mt-12 grid gap-6 md:max-w-xl" onSubmit={handleSubmit}>
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es" ? "Nueva contraseña" : "New password"}
                   </span>
                   <input
@@ -140,7 +140,7 @@ export default function ResetPasswordPage() {
                 </label>
 
                 <label className="grid gap-3">
-                  <span className="text-[11px] uppercase tracking-editorial text-stone">
+                  <span className="text-[12px] uppercase tracking-editorial text-stone">
                     {language === "es" ? "Confirmación de contraseña" : "Confirm password"}
                   </span>
                   <input
@@ -157,7 +157,7 @@ export default function ResetPasswordPage() {
                   <button
                     type="submit"
                     disabled={status === "saving"}
-                    className="inline-flex text-[11px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
+                    className="inline-flex text-[12px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                   >
                     {status === "saving"
                       ? language === "es"
