@@ -69,8 +69,7 @@ export const navigation: NavigationItem[] = [
   { href: "/coleccion", label: { es: "Colección", en: "Collection", pt: "Coleção" }, tier: "primary" },
   { href: "/experiences", label: { es: "Experiencias", en: "Experiences", pt: "Experiências" }, tier: "primary" },
   { href: "/nosotros", label: { es: "Nosotros", en: "About", pt: "Sobre" }, tier: "secondary" },
-  { href: "/acompanar", label: { es: "Acompañan", en: "Support", pt: "Acompanham" }, tier: "secondary" },
-  { href: "/contacto", label: { es: "Contacto", en: "Contact", pt: "Contacto" }, tier: "secondary" }
+  { href: "/acompanar", label: { es: "Acompañan", en: "Support", pt: "Acompanham" }, tier: "secondary" }
 ];
 
 export const homeStory = [

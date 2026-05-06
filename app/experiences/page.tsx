@@ -4,10 +4,28 @@ import Image from "next/image";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FadeIn } from "@/components/fade-in";
 import { useLanguage } from "@/components/language-provider";
-import { pageCopy, t } from "@/data/site-content";
 
 export default function ExperiencesPage() {
   const { language } = useLanguage();
+  const eyebrow = language === "es" ? "Experiencias" : language === "pt" ? "Experiências" : "Experiences";
+  const title =
+    language === "es"
+      ? "Dejar de mirar y empezar a vivir"
+      : language === "pt"
+        ? "Deixar de olhar e começar a viver"
+        : "Stop looking and begin to live";
+  const statement =
+    language === "es"
+      ? "Experiencias que ayudan a volver a conectar con lo importante."
+      : language === "pt"
+        ? "Experiências que ajudam a voltar a ligar-se ao que é importante."
+        : "Experiences that help reconnect with what matters.";
+  const status =
+    language === "es"
+      ? "Algunas aperturas todavía están en desarrollo."
+      : language === "pt"
+        ? "Algumas aberturas ainda estão em desenvolvimento."
+        : "Some openings are still in development.";
 
   return (
     <main className="pb-28 pt-32 md:pb-32 md:pt-40">
@@ -15,29 +33,26 @@ export default function ExperiencesPage() {
         <Breadcrumbs
           items={[
             { label: language === "es" ? "Home" : "Home", href: "/" },
-            { label: language === "es" ? "Experiencias" : "Experiences" }
+            { label: eyebrow }
           ]}
         />
         <p className="mb-4 text-[12px] uppercase tracking-editorial text-stone">
-          {t(pageCopy.experiences.eyebrow, language)}
+          {eyebrow}
         </p>
         <h1 className="mt-6 max-w-2xl font-serif text-4xl leading-[1.02] md:text-6xl">
-          {t(pageCopy.experiences.title, language)}
+          {title}
         </h1>
       </div>
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
         <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
           <div className="grid gap-12 md:grid-cols-[0.82fr_1.18fr] md:items-center md:gap-20">
-            <div className="max-w-xl">
-              <p className="whitespace-pre-line font-serif text-4xl leading-[1.08] text-black/92 md:text-6xl">
-                {t(pageCopy.experiences.statement, language)}
+            <div className="max-w-lg">
+              <p className="max-w-[14ch] font-serif text-4xl leading-[1.08] text-black/92 md:max-w-[13ch] md:text-6xl">
+                {statement}
               </p>
-              <p className="mt-12 max-w-lg whitespace-pre-line text-[1rem] leading-9 text-black/66 md:mt-16 md:text-[1.08rem] md:leading-10">
-                {t(pageCopy.experiences.note, language)}
-              </p>
-              <p className="mt-12 text-[12px] uppercase tracking-editorial text-black/42 md:mt-16">
-                {t(pageCopy.experiences.status, language)}
+              <p className="mt-14 text-[12px] uppercase tracking-editorial text-black/42 md:mt-20">
+                {status}
               </p>
             </div>
 

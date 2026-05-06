@@ -26,30 +26,30 @@ export default function CollectionObjectsPage() {
         <FadeIn className="max-w-4xl border-t border-black/8 pt-10">
           <p className="text-sm leading-8 text-black/68 md:text-base md:leading-9">
             {language === "es"
-              ? "Este espacio reunirá equipo y objetos utilizados durante las expediciones: piezas ligadas al trabajo de campo, al campamento y a la vida en territorio. No funciona como una tienda tradicional, sino como una extensión material del recorrido."
-              : "This space will gather equipment and objects used during the expeditions: pieces tied to field work, camp life and time in the territory. It does not function as a traditional shop, but as a material extension of the journey."}
+              ? "Este espacio reunirá prints, equipo y objetos utilizados durante las expediciones: piezas ligadas al trabajo de campo, al campamento y a la vida en territorio. No funciona como una tienda tradicional, sino como una extensión material del archivo."
+              : "This space will gather prints, equipment and objects used during the expeditions: pieces tied to field work, camp life and time in the territory. It does not function as a traditional shop, but as a material extension of the archive."}
           </p>
         </FadeIn>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {[
             {
-              es: "Abrigo y expedición",
-              en: "Shelter and expedition",
-              bodyEs: "Piezas utilizadas para sostener el trabajo en climas extremos.",
-              bodyEn: "Pieces used to sustain field work in extreme climates."
+              es: "Piezas de campo",
+              en: "Field pieces",
+              bodyEs: "Objetos que nacen de la logística, el abrigo y el trabajo sostenido en condiciones reales.",
+              bodyEn: "Objects born from logistics, shelter and sustained work under real conditions."
             },
             {
-              es: "Objetos de campo",
-              en: "Field objects",
-              bodyEs: "Elementos que acompañan la observación, la vida diaria y el campamento.",
-              bodyEn: "Elements that accompany observation, daily life and camp."
+              es: "Vida en territorio",
+              en: "Life in the territory",
+              bodyEs: "Elementos que acompañan la observación, la vida diaria y el tiempo de permanencia en cada etapa.",
+              bodyEn: "Elements that accompany observation, daily life and the time spent within each stage."
             },
             {
-              es: "Ediciones especiales",
-              en: "Special editions",
-              bodyEs: "Piezas futuras relacionadas con cada etapa del proyecto.",
-              bodyEn: "Future pieces related to each stage of the project."
+              es: "Ediciones y prints",
+              en: "Editions and prints",
+              bodyEs: "Piezas futuras vinculadas a las expediciones y a la materialidad visual del proyecto.",
+              bodyEn: "Future pieces linked to the expeditions and to the project’s visual materiality."
             }
           ].map((item, index) => (
             <FadeIn
@@ -72,7 +72,7 @@ export default function CollectionObjectsPage() {
             href="/coleccion"
             className="text-[12px] uppercase tracking-editorial text-black/45 transition-opacity duration-500 hover:opacity-60"
           >
-            {language === "es" ? "Volver a colección" : "Back to collection"}
+            {language === "es" ? "Entrar en la colección" : "Enter the collection"}
           </Link>
         </FadeIn>
       </section>

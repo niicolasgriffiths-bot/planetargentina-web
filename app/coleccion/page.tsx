@@ -34,9 +34,9 @@ export default function CollectionPage() {
           <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.98] md:text-[5.2rem]">
             {text(
               language,
-              "La obra de Planeta Argentina toma forma.",
-              "The work of Planeta Argentina takes shape.",
-              "A obra do Planeta Argentina toma forma."
+              "El archivo físico de Planeta Argentina toma forma.",
+              "The physical archive of Planeta Argentina takes shape.",
+              "O arquivo físico do Planeta Argentina toma forma."
             )}
           </h1>
         </FadeIn>
@@ -66,9 +66,9 @@ export default function CollectionPage() {
           <p className="whitespace-pre-line font-serif text-3xl leading-[1.2] text-black/88 md:text-5xl">
             {text(
               language,
-              "Cada territorio se transforma en una obra.\nUna mirada del país a través de cinco libros y un documental.",
-              "Each territory becomes a work.\nA gaze on the country through five books and a documentary.",
-              "Cada território transforma-se numa obra.\nUma visão do país através de cinco livros e um documentário."
+              "La colección reúne libros, futuras ediciones, prints y objetos vinculados a las expediciones.\nUn archivo físico del proyecto.",
+              "The collection gathers books, future editions, prints and objects tied to the expeditions.\nA physical archive of the project.",
+              "A coleção reúne livros, futuras edições, prints e objetos ligados às expedições.\nUm arquivo físico do projeto."
             )}
           </p>
         </FadeIn>
@@ -78,7 +78,7 @@ export default function CollectionPage() {
         <div className="grid gap-14 border-t border-black/8 pt-12 md:grid-cols-[0.62fr_1.38fr] md:items-center md:gap-20 md:pt-16">
           <FadeIn>
             <p className="text-[12px] uppercase tracking-editorial text-stone">
-              {text(language, "Primera instancia", "First instance", "Primeira instância")}
+              {text(language, "Primera edición", "First edition", "Primeira edição")}
             </p>
             <h2 className="mt-5 font-serif text-5xl leading-none md:text-7xl">
               {localizeText(firstBook.name, language)}
@@ -95,9 +95,9 @@ export default function CollectionPage() {
               <p>
                 {text(
                 language,
-                "La primera etapa del proyecto ya está terminada.",
-                "The first stage of the project is already completed.",
-                "A primeira etapa do projeto já está concluída."
+                "La primera edición del proyecto ya está terminada. Disponible próximamente.",
+                "The first edition of the project is already completed. Available soon.",
+                "A primeira edição do projeto já está concluída. Disponível em breve."
               )}
               </p>
             </div>
@@ -155,7 +155,7 @@ export default function CollectionPage() {
                 href="/contacto"
                 className="inline-flex text-black/52 transition-opacity duration-500 hover:opacity-72"
               >
-                {text(language, "Ser parte de la primera edición", "Be part of the first edition", "Fazer parte da primeira edição")}
+                {text(language, "Consultar la primera edición", "Inquire about the first edition", "Consultar a primeira edição")}
               </Link>
             </div>
           </FadeIn>
@@ -177,9 +177,9 @@ export default function CollectionPage() {
           <p className="whitespace-pre-line font-serif text-4xl leading-[1.08] md:text-6xl">
             {text(
               language,
-              "Cinco territorios.\nCinco libros.\nUn documental.\n\nUna forma de construir una mirada completa del país.",
-              "Five territories.\nFive books.\nA documentary.\n\nA way of building a complete gaze on the country.",
-              "Cinco territórios.\nCinco livros.\nUm documentário.\n\nUma forma de construir uma visão completa do país."
+              "Cinco territorios.\nCinco libros.\nUn documental.\n\nEl archivo físico de las expediciones empieza aquí.",
+              "Five territories.\nFive books.\nA documentary.\n\nThe physical archive of the expeditions begins here.",
+              "Cinco territórios.\nCinco livros.\nUm documentário.\n\nO arquivo físico das expedições começa aqui."
             )}
           </p>
         </FadeIn>

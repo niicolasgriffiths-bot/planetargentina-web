@@ -45,6 +45,14 @@ export function HomeHero() {
           <p className="mt-8 w-fit whitespace-pre-line font-serif text-[1.8rem] leading-[1.02] text-black/84 md:mt-12 md:text-[3.15rem] lg:text-[3.45rem]">
             {text(language, "Más amplia.\nMás profunda.", "Wider.\nDeeper", "Mais ampla.\nMais profunda.")}
           </p>
+          <p className="mt-10 max-w-[20rem] text-[0.98rem] leading-7 text-black/66 md:mt-12 md:max-w-[28rem] md:text-[1.05rem] md:leading-8">
+            {text(
+              language,
+              "Argentina suele verse desde una imagen limitada. Pero el país es mucho más amplio, diverso y profundo.",
+              "Argentina is often seen through a limited image. But the country is far broader, more diverse and deeper than that.",
+              "A Argentina costuma ser vista através de uma imagem limitada. Mas o país é muito mais amplo, diverso e profundo."
+            )}
+          </p>
         </FadeIn>
       </div>
     </section>
@@ -56,33 +64,35 @@ export function HomeStatement() {
 
   return (
     <section className="px-6 py-32 md:px-10 md:py-44">
-      <FadeIn className="mx-auto max-w-4xl text-center">
-        <p className="mx-auto max-w-[12ch] font-serif text-4xl leading-[1.04] text-black/90 md:text-[4.7rem] md:leading-[1.01]">
-          {text(
-              language,
-              "El país cambia por completo de un lugar a otro.",
-              "The country changes completely from one place to another.",
-              "O país muda por completo de um lugar para outro."
-            )}
-        </p>
-        <div className="mx-auto mt-14 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/62 md:text-[1.06rem] md:leading-9">
-          <p>
+      <FadeIn>
+        <Link href="/nosotros" className="group mx-auto block max-w-4xl text-center">
+          <p className="mx-auto max-w-[15ch] font-serif text-4xl leading-[1.04] text-black/90 transition-opacity duration-500 group-hover:opacity-74 md:text-[4.7rem] md:leading-[1.01]">
             {text(
               language,
-              "Cada territorio plantea una forma distinta de habitar, moverse y entender el entorno.",
-              "Each territory raises a different way of inhabiting, moving through and understanding the environment.",
-              "Cada território propõe uma forma diferente de habitar, mover-se e compreender o entorno."
+              "Pero muchas veces seguimos mirándola desde las mismas imágenes.",
+              "And yet we often keep looking at it through the same images.",
+              "Mas muitas vezes continuamos a olhá-la a partir das mesmas imagens."
             )}
           </p>
-          <p>
-            {text(
-              language,
-              "Planeta Argentina recorre esos espacios para acercarse a su escala real, no solo desde el paisaje, sino también desde las historias que lo sostienen.",
-              "Planeta Argentina moves through those spaces to approach their real scale, not only through landscape, but also through the stories that sustain it.",
-              "O Planeta Argentina percorre esses espaços para se aproximar da sua escala real, não apenas a partir da paisagem, mas também das histórias que a sustentam."
-            )}
-          </p>
-        </div>
+          <div className="mx-auto mt-14 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/62 transition-opacity duration-500 group-hover:opacity-74 md:text-[1.06rem] md:leading-9">
+            <p>
+              {text(
+                language,
+                "Planeta Argentina recorre territorios extremos, culturas y formas de vida que rara vez forman parte de la representación del país.",
+                "Planeta Argentina moves through extreme territories, cultures and ways of life that rarely take part in the country’s representation.",
+                "Planeta Argentina percorre territórios extremos, culturas e formas de vida que raramente fazem parte da representação do país."
+              )}
+            </p>
+            <p>
+              {text(
+                language,
+                "La primera expedición recorrió más de 8.500 km por la Puna Argentina, atravesando territorios por encima de los 4.000 metros.",
+                "The first expedition covered more than 8,500 km across the Argentine Puna, moving through territories above 4,000 meters.",
+                "A primeira expedição percorreu mais de 8.500 km pela Puna Argentina, atravessando territórios acima dos 4.000 metros."
+              )}
+            </p>
+          </div>
+        </Link>
       </FadeIn>
     </section>
   );
@@ -141,31 +151,33 @@ export function HomeTerritories() {
   return (
     <section className="border-t border-black/8 px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <FadeIn className="max-w-3xl">
-          <p className="text-[12px] uppercase tracking-editorial text-stone">
-            {text(language, "Territorios", "Territories", "Territórios")}
-          </p>
-          <h2 className="mt-4 max-w-[10ch] font-serif text-4xl leading-[1.02] text-black/90 md:text-[4.65rem] md:leading-[0.98]">
-            {text(language, "Cinco expediciones.", "Five expeditions.", "Cinco expedições.")}
-          </h2>
-          <div className="mt-10 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/62 md:text-[1.06rem] md:leading-9">
-            <p>
-              {text(
-                language,
-                "El proyecto se desarrolla a través de cinco expediciones, cada una en un entorno distinto.",
-                "The project unfolds through five expeditions, each in a different environment.",
-                "O projeto desenvolve-se através de cinco expedições, cada uma num ambiente distinto."
-              )}
+        <FadeIn>
+          <Link href="/territories" className="group block max-w-3xl">
+            <p className="text-[12px] uppercase tracking-editorial text-stone transition-opacity duration-500 group-hover:opacity-72">
+              {text(language, "Territorios", "Territories", "Territórios")}
             </p>
-            <p>
-              {text(
-                language,
-                "No como una suma de lugares, sino como distintas formas de recorrer y entender el país.",
-                "Not as a sum of places, but as different ways of moving through and understanding the country.",
-                "Não como uma soma de lugares, mas como diferentes formas de percorrer e compreender o país."
-              )}
-            </p>
-          </div>
+            <h2 className="mt-4 max-w-[10ch] font-serif text-4xl leading-[1.02] text-black/90 transition-opacity duration-500 group-hover:opacity-74 md:text-[4.65rem] md:leading-[0.98]">
+              {text(language, "Cinco expediciones.", "Five expeditions.", "Cinco expedições.")}
+            </h2>
+            <div className="mt-10 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/62 transition-opacity duration-500 group-hover:opacity-74 md:text-[1.06rem] md:leading-9">
+              <p>
+                {text(
+                  language,
+                  "El proyecto se desarrolla a través de cinco expediciones, cada una en un entorno distinto.",
+                  "The project unfolds through five expeditions, each in a different environment.",
+                  "O projeto desenvolve-se através de cinco expedições, cada uma num ambiente distinto."
+                )}
+              </p>
+              <p>
+                {text(
+                  language,
+                  "No como una suma de lugares, sino como distintas formas de recorrer y entender el país.",
+                  "Not as a sum of places, but as different ways of moving through and understanding the country.",
+                  "Não como uma soma de lugares, mas como diferentes formas de percorrer e compreender o país."
+                )}
+              </p>
+            </div>
+          </Link>
         </FadeIn>
 
         <div className="mt-20 grid gap-x-10 gap-y-16 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-12">
@@ -226,38 +238,42 @@ export function HomeWork() {
   return (
     <section className="border-t border-black/8 px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <FadeIn className="max-w-xl">
-          <p className="text-[12px] uppercase tracking-editorial text-stone">
-            {text(language, "Obra", "Work", "Obra")}
-          </p>
-          <h2 className="mt-4 font-serif text-5xl leading-none text-black/92 md:text-[5.3rem]">
-            {localizeText(firstBook.name, language)}
-          </h2>
-          <div className="mt-8 max-w-md space-y-7 text-[0.98rem] leading-8 text-black/62 md:mt-10 md:text-[1.06rem] md:leading-9">
-            <p>
-              {text(
-                language,
-                "Altura, salares y vida en uno de los entornos más extremos del país.",
-                "Altitude, salt flats and life in one of the country’s most extreme environments.",
-                "Altitude, salares e vida num dos ambientes mais extremos do país."
-              )}
-            </p>
-            <p>
-              {text(
-                language,
-                "La primera obra ya está terminada.",
-                "The first work is already completed.",
-                "A primeira obra já está concluída."
-              )}
-            </p>
-          </div>
-          <div className="mt-12 text-[12px] uppercase tracking-editorial md:mt-16">
-            <Link
-              href="/coleccion"
-              className="inline-flex text-black/52 transition-opacity duration-500 hover:opacity-72"
-            >
-              {text(language, "Ser parte de la primera edición", "Be part of the first edition", "Fazer parte da primeira edição")}
+        <FadeIn>
+          <div className="max-w-xl">
+            <Link href="/coleccion" className="group block">
+              <p className="text-[12px] uppercase tracking-editorial text-stone transition-opacity duration-500 group-hover:opacity-72">
+                {text(language, "Primera edición", "First edition", "Primeira edição")}
+              </p>
+              <h2 className="mt-4 font-serif text-5xl leading-none text-black/92 transition-opacity duration-500 group-hover:opacity-74 md:text-[5.3rem]">
+                {localizeText(firstBook.name, language)}
+              </h2>
+              <div className="mt-8 max-w-md space-y-7 text-[0.98rem] leading-8 text-black/62 transition-opacity duration-500 group-hover:opacity-74 md:mt-10 md:text-[1.06rem] md:leading-9">
+                <p>
+                  {text(
+                    language,
+                    "Altura, salares y vida en uno de los entornos más extremos del país.",
+                    "Altitude, salt flats and life in one of the country’s most extreme environments.",
+                    "Altitude, salares e vida num dos ambientes mais extremos do país."
+                  )}
+                </p>
+                <p>
+                  {text(
+                    language,
+                    "La primera edición ya está terminada. Disponible próximamente.",
+                    "The first edition is already complete. Available soon.",
+                    "A primeira edição já está concluída. Disponível em breve."
+                  )}
+                </p>
+              </div>
             </Link>
+            <div className="mt-12 text-[12px] uppercase tracking-editorial md:mt-16">
+              <Link
+                href="/contacto"
+                className="inline-flex text-black/52 transition-opacity duration-500 hover:opacity-72"
+              >
+                {text(language, "Consultar la primera edición", "Inquire about the first edition", "Consultar a primeira edição")}
+              </Link>
+            </div>
           </div>
         </FadeIn>
 
@@ -285,27 +301,29 @@ export function HomeExperiences() {
   return (
     <section className="border-t border-black/8 px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <FadeIn className="max-w-xl">
-          <p className="text-[12px] uppercase tracking-editorial text-stone">
-            {text(language, "Experiencias", "Experiences", "Experiências")}
-          </p>
-          <h2 className="mt-4 max-w-[9ch] font-serif text-4xl leading-[1.02] text-black/90 md:text-[4.65rem] md:leading-[0.98]">
-            {text(language, "Dejar de mirar y empezar a vivir", "Stop looking and begin to live", "Deixar de olhar e começar a viver")}
-          </h2>
-          <div className="mt-8 max-w-lg space-y-7 text-[0.98rem] leading-8 text-black/62 md:mt-10 md:text-[1.06rem] md:leading-9">
-            <p>{text(language, "Algunos lugares no se entienden desde afuera.", "Some places cannot be understood from outside.", "Alguns lugares não se compreendem a partir de fora.")}</p>
-            <p>
-              {text(
-                language,
-                "Las experiencias buscan abrir esa posibilidad: estar ahí, aunque sea por un momento.",
-                "The experiences seek to open that possibility: to be there, even if only for a moment.",
-                "As experiências procuram abrir essa possibilidade: estar lá, ainda que seja por um momento."
-              )}
+        <FadeIn>
+          <Link href="/experiences" className="group block max-w-xl">
+            <p className="text-[12px] uppercase tracking-editorial text-stone transition-opacity duration-500 group-hover:opacity-72">
+              {text(language, "Experiencias", "Experiences", "Experiências")}
             </p>
-          </div>
-          <p className="mt-12 text-[12px] uppercase tracking-editorial text-black/42 md:mt-16">
-            {text(language, "Primeras experiencias en desarrollo", "First experiences in development", "Primeiras experiências em desenvolvimento")}
-          </p>
+            <h2 className="mt-4 max-w-[9ch] font-serif text-4xl leading-[1.02] text-black/90 transition-opacity duration-500 group-hover:opacity-74 md:text-[4.65rem] md:leading-[0.98]">
+              {text(language, "Dejar de mirar y empezar a vivir", "Stop looking and begin to live", "Deixar de olhar e começar a viver")}
+            </h2>
+            <div className="mt-8 max-w-lg space-y-7 text-[0.98rem] leading-8 text-black/62 transition-opacity duration-500 group-hover:opacity-74 md:mt-10 md:text-[1.06rem] md:leading-9">
+              <p>{text(language, "Algunos lugares no se entienden desde afuera.", "Some places cannot be understood from outside.", "Alguns lugares não se compreendem a partir de fora.")}</p>
+              <p>
+                {text(
+                  language,
+                  "Las experiencias abren esa posibilidad: entrar en contacto con algunos de los territorios recorridos por el proyecto.",
+                  "The experiences open that possibility: entering into contact with some of the territories crossed by the project.",
+                  "As experiências abrem essa possibilidade: entrar em contacto com alguns dos territórios percorridos pelo projeto."
+                )}
+              </p>
+            </div>
+            <p className="mt-12 text-[12px] uppercase tracking-editorial text-black/42 transition-opacity duration-500 group-hover:opacity-72 md:mt-16">
+              {text(language, "Primeras aperturas en desarrollo", "First openings in development", "Primeiras aberturas em desenvolvimento")}
+            </p>
+          </Link>
         </FadeIn>
 
         <FadeIn delay={0.08} className="mt-14 md:mt-16">
@@ -332,31 +350,33 @@ export function HomeSupport() {
   return (
     <section className="border-t border-black/8 px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <FadeIn className="max-w-3xl">
-          <p className="text-[12px] uppercase tracking-editorial text-stone">
-            {text(language, "Acompañan", "Support", "Acompanham")}
-          </p>
-          <h2 className="mt-4 max-w-[10ch] font-serif text-4xl leading-[1.04] text-black/90 md:text-[4.2rem] md:leading-[1.01]">
-            {text(language, "Una forma de sostener el proyecto.", "A way to sustain the project.", "Uma forma de sustentar o projeto.")}
-          </h2>
-          <div className="mt-10 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/64 md:text-[1.06rem] md:leading-9">
-            <p>
-              {text(
-                language,
-                "Buscamos marcas argentinas que entiendan que el país es mucho más amplio de lo que se muestra.",
-                "We seek Argentine brands that understand the country is much broader than what is usually shown.",
-                "Procuramos marcas argentinas que entendam que o país é muito mais amplo do que aquilo que normalmente se mostra."
-              )}
+        <FadeIn>
+          <Link href="/acompanar" className="group block max-w-3xl">
+            <p className="text-[12px] uppercase tracking-editorial text-stone transition-opacity duration-500 group-hover:opacity-72">
+              {text(language, "Acompañan", "Support", "Acompanham")}
             </p>
-            <p>
-              {text(
-                language,
-                "Que quieran acompañar un proyecto que se construye desde los territorios, trabajando en entornos reales y documentando historias que forman parte de lo que somos.",
-                "Brands willing to accompany a project built from the territories, working in real environments and documenting stories that form part of who we are.",
-                "Marcas dispostas a acompanhar um projeto que se constrói a partir dos territórios, trabalhando em ambientes reais e documentando histórias que fazem parte daquilo que somos."
-              )}
-            </p>
-          </div>
+            <h2 className="mt-4 max-w-[10ch] font-serif text-4xl leading-[1.04] text-black/90 transition-opacity duration-500 group-hover:opacity-74 md:text-[4.2rem] md:leading-[1.01]">
+              {text(language, "Una forma de sostener el proyecto.", "A way to sustain the project.", "Uma forma de sustentar o projeto.")}
+            </h2>
+            <div className="mt-10 max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/64 transition-opacity duration-500 group-hover:opacity-74 md:text-[1.06rem] md:leading-9">
+              <p>
+                {text(
+                  language,
+                  "Algunas marcas argentinas se integran al proyecto acompañando el trabajo en campo, la logística y el desarrollo de cada etapa.",
+                  "Some Argentine brands become part of the project by accompanying the field work, logistics and development of each stage.",
+                  "Algumas marcas argentinas integram-se no projeto acompanhando o trabalho em campo, a logística e o desenvolvimento de cada etapa."
+                )}
+              </p>
+              <p>
+                {text(
+                  language,
+                  "No como presencia externa, sino como parte concreta de una manera de recorrer, registrar y mirar el país.",
+                  "Not as an external presence, but as a concrete part of a way of moving through, recording and looking at the country.",
+                  "Não como presença externa, mas como parte concreta de uma forma de percorrer, registar e olhar para o país."
+                )}
+              </p>
+            </div>
+          </Link>
         </FadeIn>
 
         <FadeIn className="mt-20 max-w-4xl border-t border-black/8 pt-12 md:mt-24 md:pt-16">

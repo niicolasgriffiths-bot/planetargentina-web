@@ -92,11 +92,16 @@ export default function TerritoryPage() {
               key={item.image}
               className={`image-mask ${index === 0 ? "md:col-span-2" : ""}`}
             >
-              <div className={`relative ${index === 0 ? "aspect-[16/9]" : "aspect-[4/5]"}`}>
+              <div
+                className={`relative overflow-hidden ${
+                  index === 0 ? "aspect-[16/9]" : "aspect-[3/4]"
+                }`}
+              >
                 <Image
                   src={item.image}
                   alt={`${localizeText(territory.name, language)} ${index + 1}`}
                   fill
+                  sizes={index === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
                   className="soft-photo object-cover"
                 />
               </div>

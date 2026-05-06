@@ -8,7 +8,7 @@ import { FadeIn } from "@/components/fade-in";
 const aboutCopy = {
   motivation: {
     es: [
-      "La forma en la que Argentina se muestra,\ntanto hacia afuera como hacia adentro,\nsuele quedar reducida a un relato limitado.",
+      "La forma en que Argentina se muestra,\ntanto hacia afuera como hacia adentro,\nsuele quedar reducida a un relato limitado.",
       "Gran parte del país —su escala, su diversidad y las formas de vida que lo sostienen— no aparece en ese discurso.",
       "Planeta Argentina surge para trabajar sobre esa distancia.",
       "No para construir una nueva versión, sino para ampliar la mirada: recorrer el territorio en profundidad y dar lugar a aquello que queda fuera de los relatos más visibles."
@@ -30,7 +30,7 @@ const aboutCopy = {
     es: [
       "El trabajo se organiza\nen expediciones.",
       "Cada etapa implica recorrer una región específica del país en condiciones reales, con tiempos prolongados en cada lugar.",
-      "No se trata solo del paisaje. También de las personas que viven y sostienen esos entornos, y de la relación que construyen con el territorio."
+      "No se trata solo del paisaje. Se trata también de las personas que viven y sostienen esos entornos, y de la relación que construyen con el territorio."
     ],
     en: [
       "The work is organized\nthrough expeditions.",
@@ -59,22 +59,22 @@ const aboutCopy = {
   },
   history: {
     es: [
-      "El proyecto fue iniciado\npor Nicolás Griffiths.",
-      "Nací en La Pampa y crecí en la Patagonia. Durante años recorrí el país viajando con mi familia, atravesando regiones muy distintas entre sí.",
-      "Con el tiempo, esa experiencia empezó a tomar otra forma: dejar de pasar por los lugares para empezar a detenerme en ellos.",
-      "El proyecto aparece a partir de ese cambio."
+      "Durante años recorrí Argentina.\nPero sentía que todavía había algo que no estábamos sabiendo mirar.",
+      "El proyecto fue iniciado por Nicolás Griffiths. Nació en La Pampa y creció en la Patagonia. Durante años recorrió el país con su familia, atravesando regiones muy distintas entre sí.",
+      "Con el tiempo, esa experiencia empezó a tomar otra forma: dejar de pasar por los lugares para empezar a detenerse en ellos.",
+      "Planeta Argentina surge de ese cambio, y del trabajo sostenido en campo que vino después."
     ],
     en: [
-      "The project was initiated\nby Nicolás Griffiths.",
-      "I was born in La Pampa and grew up in Patagonia. For years I traveled across the country with my family, moving through very different regions.",
+      "For years I traveled across Argentina.\nBut I felt there was still something we were failing to see.",
+      "The project was initiated by Nicolás Griffiths. He was born in La Pampa and grew up in Patagonia. For years he moved through the country with his family, crossing regions that were radically different from one another.",
       "Over time, that experience began to take another form: to stop passing through places and start lingering in them.",
-      "The project appears from that change."
+      "Planeta Argentina emerges from that change, and from the sustained fieldwork that followed."
     ],
     pt: [
-      "O projeto foi iniciado\npor Nicolás Griffiths.",
-      "Nasci em La Pampa e cresci na Patagónia. Durante anos percorri o país viajando com a minha família, atravessando regiões muito diferentes entre si.",
-      "Com o tempo, essa experiência começou a tomar outra forma: deixar de passar pelos lugares para começar a deter-me neles.",
-      "O projeto surge a partir dessa mudança."
+      "Durante anos percorri a Argentina.\nMas sentia que ainda havia algo que não estávamos a conseguir ver.",
+      "O projeto foi iniciado por Nicolás Griffiths. Nasceu em La Pampa e cresceu na Patagónia. Durante anos percorreu o país com a família, atravessando regiões muito diferentes entre si.",
+      "Com o tempo, essa experiência começou a tomar outra forma: deixar de passar pelos lugares para começar a demorar-se neles.",
+      "Planeta Argentina surge dessa mudança, e do trabalho continuado em campo que veio depois."
     ]
   },
   closing: {
@@ -179,38 +179,37 @@ export default function AboutPage() {
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
         <div className="border-t border-black/8 pt-12 md:pt-16">
-          <FadeIn>
-            <div className="mx-auto max-w-3xl space-y-8 text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
-              {history.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={
-                    index === 0
-                      ? "mx-auto max-w-[21ch] whitespace-pre-line text-center font-serif text-[2.2rem] leading-[1.12] text-black/88 md:max-w-[20ch] md:text-[2.85rem] md:leading-[1.08]"
-                      : ""
-                  }
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </FadeIn>
+          <div className="grid gap-14 md:grid-cols-[1.05fr_0.95fr] md:items-start md:gap-20">
+            <FadeIn className="md:pt-2">
+              <p className="max-w-[15ch] whitespace-pre-line font-serif text-[2.25rem] leading-[1.08] text-black/90 md:max-w-[12ch] md:text-[3.4rem] md:leading-[1.03]">
+                {history[0]}
+              </p>
+            </FadeIn>
 
-          <FadeIn className="mt-14 max-w-sm md:mt-16 md:ml-auto">
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <Image
-                src="/about/founder-portrait.jpg"
-                alt={
-                  language === "es"
-                    ? "Retrato del creador de Planeta Argentina"
-                    : language === "pt"
-                      ? "Retrato do criador de Planeta Argentina"
-                      : "Portrait of the creator of Planeta Argentina"
-                }
-                fill
-                className="soft-photo object-cover"
-                style={{ objectPosition: "center top" }}
-              />
+            <FadeIn delay={0.08}>
+              <div className="relative aspect-[16/11] overflow-hidden md:aspect-[5/6]">
+                <Image
+                  src="/about/founder-road-dusk-web.jpg"
+                  alt={
+                    language === "es"
+                      ? "Ruta de altura al atardecer durante una expedición"
+                      : language === "pt"
+                        ? "Estrada de altitude ao entardecer durante uma expedição"
+                        : "High-altitude road at dusk during an expedition"
+                  }
+                  fill
+                  className="soft-photo object-cover"
+                  style={{ objectPosition: "center 58%" }}
+                />
+              </div>
+            </FadeIn>
+          </div>
+
+          <FadeIn delay={0.12} className="mt-12 md:mt-16">
+            <div className="max-w-2xl space-y-8 text-[0.98rem] leading-8 text-black/68 md:text-[1.06rem] md:leading-9">
+              {history.slice(1).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           </FadeIn>
         </div>

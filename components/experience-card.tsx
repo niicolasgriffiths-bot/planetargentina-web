@@ -9,8 +9,8 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
   const isLocked = experience.visibility === "locked";
   const isPartial = experience.visibility === "partial";
   const visibilityCopy = {
-    visible: { es: "Visible", en: "Open", pt: "Visível" },
-    partial: { es: "Vista restringida", en: "Restricted preview", pt: "Vista restrita" },
+    visible: { es: "Apertura activa", en: "Current opening", pt: "Abertura ativa" },
+    partial: { es: "Apertura en desarrollo", en: "Opening in development", pt: "Abertura em desenvolvimento" },
     locked: {
       es: "Disponible más adelante",
       en: "Available later",
@@ -83,7 +83,7 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
             href={`/territories/${experience.territory}`}
             className="text-[12px] uppercase tracking-editorial transition-opacity duration-500 hover:opacity-60"
           >
-            {language === "es" ? "Ver territorio" : language === "pt" ? "Ver território" : "Enter territory"}
+            {language === "es" ? "Conocer el territorio" : language === "pt" ? "Conhecer o território" : "See the territory"}
           </Link>
         )}
       </div>
