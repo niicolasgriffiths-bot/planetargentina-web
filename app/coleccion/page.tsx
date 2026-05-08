@@ -21,7 +21,7 @@ export default function CollectionPage() {
   return (
     <main className="pb-28 pt-32 md:pb-32 md:pt-40">
       <section className="mx-auto max-w-7xl px-6 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
+        <FadeIn className="border-t border-black/8 pt-12 text-center md:pt-16">
           <Breadcrumbs
             items={[
               { label: language === "pt" ? "Início" : "Home", href: "/" },
@@ -31,7 +31,7 @@ export default function CollectionPage() {
           <p className="text-[12px] uppercase tracking-editorial text-stone">
             {text(language, "Colección", "Collection", "Coleção")}
           </p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.98] md:text-[5.2rem]">
+          <h1 className="mx-auto mt-6 max-w-4xl font-serif text-5xl leading-[0.98] md:text-[5.2rem]">
             {text(
               language,
               "El archivo físico de Planeta Argentina toma forma.",
@@ -141,7 +141,7 @@ export default function CollectionPage() {
 
       <section className="mx-auto mt-24 max-w-7xl px-6 md:mt-32 md:px-10">
         <div className="grid gap-14 border-t border-black/8 pt-12 md:grid-cols-[1fr_0.52fr] md:items-end md:gap-20 md:pt-16">
-          <FadeIn>
+          <FadeIn className="md:text-left">
             <p className="max-w-3xl font-serif text-4xl leading-[1.08] md:text-6xl">
               {text(
               language,
@@ -170,19 +170,6 @@ export default function CollectionPage() {
             />
           </FadeIn>
         </div>
-      </section>
-
-      <section className="mx-auto mt-24 max-w-5xl px-6 md:mt-32 md:px-10">
-        <FadeIn className="border-t border-black/8 pt-12 text-center md:pt-16">
-          <p className="whitespace-pre-line font-serif text-4xl leading-[1.08] md:text-6xl">
-            {text(
-              language,
-              "Cinco territorios.\nCinco libros.\nUn documental.\n\nEl archivo físico de las expediciones empieza aquí.",
-              "Five territories.\nFive books.\nA documentary.\n\nThe physical archive of the expeditions begins here.",
-              "Cinco territórios.\nCinco livros.\nUm documentário.\n\nO arquivo físico das expedições começa aqui."
-            )}
-          </p>
-        </FadeIn>
       </section>
 
       <section className="mx-auto mt-24 max-w-5xl px-6 md:mt-32 md:px-10">

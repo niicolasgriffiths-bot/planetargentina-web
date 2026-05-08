@@ -10,10 +10,10 @@ export default function ExperiencesPage() {
   const eyebrow = language === "es" ? "Experiencias" : language === "pt" ? "Experiências" : "Experiences";
   const title =
     language === "es"
-      ? "Dejar de mirar y empezar a vivir"
-      : language === "pt"
-        ? "Deixar de olhar e começar a viver"
-        : "Stop looking and begin to live";
+      ? "Dejar de mirar\ny empezar a vivir."
+    : language === "pt"
+        ? "Deixar de olhar\ne começar a viver."
+        : "Stop looking\nand begin to live.";
   const statement =
     language === "es"
       ? "Experiencias que ayudan a volver a conectar con lo importante."
@@ -29,7 +29,7 @@ export default function ExperiencesPage() {
 
   return (
     <main className="pb-28 pt-32 md:pb-32 md:pt-40">
-      <div className="mx-auto max-w-5xl px-6 md:px-10">
+      <div className="mx-auto max-w-5xl px-6 text-center md:px-10">
         <Breadcrumbs
           items={[
             { label: language === "es" ? "Home" : "Home", href: "/" },
@@ -39,7 +39,7 @@ export default function ExperiencesPage() {
         <p className="mb-4 text-[12px] uppercase tracking-editorial text-stone">
           {eyebrow}
         </p>
-        <h1 className="mt-6 max-w-2xl font-serif text-4xl leading-[1.02] md:text-6xl">
+        <h1 className="mx-auto mt-6 w-fit whitespace-pre-line font-serif text-4xl leading-[1.02] md:text-6xl">
           {title}
         </h1>
       </div>

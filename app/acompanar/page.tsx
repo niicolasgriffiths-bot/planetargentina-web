@@ -215,10 +215,10 @@ export default function SupportPage() {
                 index % 2 === 1 ? "md:mt-14 md:ml-auto" : ""
               } ${index < 2 ? "md:max-w-[26rem]" : "md:max-w-[29rem]"}`}
             >
-              <h2 className="text-center font-serif text-[1.85rem] leading-[1.08] text-black/88 md:text-[2.35rem] md:leading-[1.04]">
+              <h2 className="font-serif text-[1.85rem] leading-[1.08] text-black/88 md:text-[2.35rem] md:leading-[1.04]">
                 {item.title}
               </h2>
-              <div className="mx-auto mt-8 max-w-[24rem] space-y-7 text-[0.98rem] leading-8 text-black/68 md:max-w-[25rem] md:text-[1.04rem] md:leading-[1.75]">
+              <div className="mt-8 max-w-[24rem] space-y-7 text-[0.98rem] leading-8 text-black/68 md:max-w-[25rem] md:text-[1.04rem] md:leading-[1.75]">
                 {item.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -230,7 +230,7 @@ export default function SupportPage() {
 
       <section className="mx-auto mt-28 max-w-7xl px-6 md:mt-36 md:px-10">
         <FadeIn className="border-t border-black/8 pt-12 md:pt-16">
-          <div className="mx-auto max-w-[32rem] space-y-7 text-[0.98rem] leading-8 text-black/62 md:text-[1.04rem] md:leading-[1.75]">
+          <div className="mx-auto max-w-[32rem] space-y-7 text-center text-[0.98rem] leading-8 text-black/62 md:text-[1.04rem] md:leading-[1.75]">
             <p>{visibility[0]}</p>
             <p>{visibility[1]}</p>
           </div>
