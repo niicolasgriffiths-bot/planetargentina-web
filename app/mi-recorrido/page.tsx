@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,12 @@ import { useAuth } from "@/components/auth-provider";
 import { useLanguage } from "@/components/language-provider";
 import { localizeText, territories } from "@/data/site";
 
-const registeredBookSlugs: string[] = [];
+const FIRST_EDITION_CODE = "PUNA00-50";
+const REGISTERED_BOOKS_STORAGE_PREFIX = "planeta-registered-books";
+
+function getRegisteredBooksStorageKey(userId: string) {
+  return `${REGISTERED_BOOKS_STORAGE_PREFIX}:${userId}`;
+}
 
 const expeditionLayers = [
   {
@@ -101,7 +106,9 @@ export default function MyJourneyPage() {
   const { loading, signOut, user } = useAuth();
   const router = useRouter();
   const [bookCode, setBookCode] = useState("");
-  const [codeState, setCodeState] = useState<"idle" | "empty" | "pending">("idle");
+  const [codeState, setCodeState] = useState<"idle" | "empty" | "invalid" | "success">("idle");
+  const [registeredBookSlugs, setRegisteredBookSlugs] = useState<string[]>([]);
+  const [codesHydrated, setCodesHydrated] = useState(false);
   const registeredBooks = territories.filter((territory) =>
     registeredBookSlugs.includes(territory.slug)
   );
@@ -115,15 +122,59 @@ export default function MyJourneyPage() {
     router.refresh();
   }
 
+  useEffect(() => {
+    if (!user?.id || typeof window === "undefined") {
+      setRegisteredBookSlugs([]);
+      setCodesHydrated(false);
+      return;
+    }
+
+    try {
+      const stored = window.localStorage.getItem(getRegisteredBooksStorageKey(user.id));
+      if (!stored) {
+        setRegisteredBookSlugs([]);
+      } else {
+        const parsed = JSON.parse(stored);
+        setRegisteredBookSlugs(Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === "string") : []);
+      }
+    } catch {
+      setRegisteredBookSlugs([]);
+    } finally {
+      setCodesHydrated(true);
+    }
+  }, [user?.id]);
+
+  useEffect(() => {
+    if (!user?.id || !codesHydrated || typeof window === "undefined") {
+      return;
+    }
+
+    window.localStorage.setItem(
+      getRegisteredBooksStorageKey(user.id),
+      JSON.stringify(registeredBookSlugs)
+    );
+  }, [codesHydrated, registeredBookSlugs, user?.id]);
+
   function handleCodeSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!bookCode.trim()) {
+    const normalizedCode = bookCode.trim().toUpperCase();
+
+    if (!normalizedCode) {
       setCodeState("empty");
       return;
     }
 
-    setCodeState("pending");
+    if (normalizedCode !== FIRST_EDITION_CODE) {
+      setCodeState("invalid");
+      return;
+    }
+
+    setRegisteredBookSlugs((current) =>
+      current.includes("puna") ? current : [...current, "puna"]
+    );
+    setBookCode(normalizedCode);
+    setCodeState("success");
   }
 
   if (!loading && !user) {
@@ -235,7 +286,7 @@ export default function MyJourneyPage() {
                 <form onSubmit={handleCodeSubmit} className="mt-10 max-w-2xl">
                   <label className="block">
                     <span className="text-[12px] uppercase tracking-editorial text-black/42">
-                      {language === "es" ? "Código del libro" : "Book code"}
+                      {language === "es" ? "Código del libro" : language === "pt" ? "Código do livro" : "Book code"}
                     </span>
                     <input
                       type="text"
@@ -246,7 +297,7 @@ export default function MyJourneyPage() {
                           setCodeState("idle");
                         }
                       }}
-                      placeholder="PUNA-0001"
+                      placeholder={FIRST_EDITION_CODE}
                       className="mt-4 w-full border-b border-black/12 bg-transparent pb-4 font-serif text-2xl leading-none outline-none placeholder:text-black/24 md:text-3xl"
                     />
                   </label>
@@ -254,7 +305,9 @@ export default function MyJourneyPage() {
                   <p className="mt-4 text-sm leading-8 text-black/48 md:text-base md:leading-9">
                     {language === "es"
                       ? "Lo encuentras impreso en el interior del libro."
-                      : "You will find it printed inside the book."}
+                      : language === "pt"
+                        ? "Encontra-o impresso no interior do livro."
+                        : "You will find it printed inside the book."}
                   </p>
 
                   <div className="mt-10 text-[12px] uppercase tracking-editorial">
@@ -270,15 +323,29 @@ export default function MyJourneyPage() {
                     <p className="mt-6 text-sm leading-8 text-black/48 md:text-base md:leading-9">
                       {language === "es"
                         ? "Escribe el código cuando ya lo tengas impreso en el libro."
-                        : "Type the code once you have it printed inside the book."}
+                        : language === "pt"
+                          ? "Escreve o código quando já o tiveres impresso no livro."
+                          : "Type the code once you have it printed inside the book."}
                     </p>
                   ) : null}
 
-                  {codeState === "pending" ? (
+                  {codeState === "invalid" ? (
                     <p className="mt-6 text-sm leading-8 text-black/48 md:text-base md:leading-9">
                       {language === "es"
-                        ? "La validación de códigos se activará con la primera edición impresa. Esta entrada ya queda preparada para ese momento."
-                        : "Code validation will be activated with the first printed edition. This entry is already prepared for that moment."}
+                        ? "Ese código no coincide con la primera tirada activa."
+                        : language === "pt"
+                          ? "Esse código não coincide com a primeira tiragem ativa."
+                          : "That code does not match the active first print run."}
+                    </p>
+                  ) : null}
+
+                  {codeState === "success" ? (
+                    <p className="mt-6 text-sm leading-8 text-black/48 md:text-base md:leading-9">
+                      {language === "es"
+                        ? "El ejemplar quedó vinculado a tu recorrido."
+                        : language === "pt"
+                          ? "O exemplar ficou ligado ao teu percurso."
+                          : "That copy is now linked to your journey."}
                     </p>
                   ) : null}
                 </form>
