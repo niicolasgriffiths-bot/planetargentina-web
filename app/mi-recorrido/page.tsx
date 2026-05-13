@@ -297,7 +297,13 @@ export default function MyJourneyPage() {
                           setCodeState("idle");
                         }
                       }}
-                      placeholder={FIRST_EDITION_CODE}
+                      placeholder={
+                        language === "es"
+                          ? "Ingresa tu código"
+                          : language === "pt"
+                            ? "Introduz o teu código"
+                            : "Enter your code"
+                      }
                       className="mt-4 w-full border-b border-black/12 bg-transparent pb-4 font-serif text-2xl leading-none outline-none placeholder:text-black/24 md:text-3xl"
                     />
                   </label>
