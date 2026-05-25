@@ -263,21 +263,21 @@ export function SiteHeader() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 ${mobileOpenTone}`}>
       <div
-        className={`mx-auto hidden max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-x-6 px-6 py-5 text-[11px] uppercase tracking-editorial md:grid md:gap-x-10 md:px-10 ${
+        className={`mx-auto hidden max-w-7xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-6 px-6 py-5 text-[11px] uppercase tracking-editorial xl:grid xl:gap-x-8 xl:px-8 2xl:gap-x-10 2xl:px-10 ${
           isClubPage ? "text-white" : "text-black"
         }`}
       >
         <Link
           href="/"
-          className={`shrink-0 font-serif text-xl normal-case tracking-[0.08em] transition-opacity duration-500 hover:opacity-70 md:text-2xl ${
+          className={`shrink-0 whitespace-nowrap font-serif text-xl normal-case tracking-[0.08em] transition-opacity duration-500 hover:opacity-70 xl:text-2xl ${
             isClubPage ? "text-white" : "text-black"
           }`}
         >
           Planeta Argentina
         </Link>
 
-        <nav className="min-w-0 items-center justify-center md:flex">
-          <div className="flex items-center gap-1">
+        <nav className="min-w-0 items-center justify-center xl:flex">
+          <div className="flex items-center gap-1 whitespace-nowrap">
             {primaryNavigation.map((item) => (
               <Link
                 key={item.href}
@@ -307,7 +307,7 @@ export function SiteHeader() {
           </div>
 
           <div
-            className={`ml-5 flex items-center gap-1 pl-5 ${
+            className={`ml-5 flex items-center gap-1 whitespace-nowrap pl-5 ${
               isClubPage ? "border-l border-white/14" : "border-l border-black/10"
             }`}
           >
@@ -340,12 +340,12 @@ export function SiteHeader() {
           </div>
         </nav>
 
-        <div className="flex items-center justify-end gap-3 md:gap-4">
+        <div className="flex shrink-0 items-center justify-end gap-3 xl:gap-4">
           {!loading ? (
             <Link
               href={authHref}
               aria-current={authActive ? "page" : undefined}
-              className={`relative inline-flex shrink-0 px-1 py-2 text-[11px] uppercase tracking-editorial transition-all duration-500 hover:opacity-60 ${
+              className={`relative inline-flex shrink-0 whitespace-nowrap px-1 py-2 text-[11px] uppercase tracking-editorial transition-all duration-500 hover:opacity-60 ${
                 authActive
                   ? isClubPage
                     ? "text-white"
@@ -369,7 +369,7 @@ export function SiteHeader() {
 
           <span
             aria-hidden="true"
-            className={`hidden h-4 w-px md:block ${isClubPage ? "bg-white/14" : "bg-black/10"}`}
+            className={`hidden h-4 w-px xl:block ${isClubPage ? "bg-white/14" : "bg-black/10"}`}
           />
 
           <div ref={desktopLanguageMenuRef}>
@@ -386,7 +386,7 @@ export function SiteHeader() {
       </div>
 
       <div
-        className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6 py-5 md:hidden ${
+        className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6 py-5 xl:hidden ${
           isClubPage ? "text-white" : "text-black"
         }`}
       >
@@ -449,7 +449,7 @@ export function SiteHeader() {
 
       <div
         id="mobile-navigation-overlay"
-        className={`fixed inset-0 z-[80] bg-[#0a0a09] text-[#f4efe8] md:hidden transition-opacity duration-500 ${
+        className={`fixed inset-0 z-[80] bg-[#0a0a09] text-[#f4efe8] xl:hidden transition-opacity duration-500 ${
           mobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden={!mobileMenuOpen}
