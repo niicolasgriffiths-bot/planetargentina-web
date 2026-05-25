@@ -19,6 +19,7 @@ export const languageOptions = [
 
 type LanguageContextValue = {
   language: Language;
+  isHydrated: boolean;
   setLanguage: (language: Language) => void;
 };
 
@@ -26,6 +27,7 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("es");
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     const saved = window.localStorage.getItem("planeta-language");
@@ -35,14 +37,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     } else {
       document.documentElement.lang = "es";
     }
+
+    setIsHydrated(true);
   }, []);
 
   useEffect(() => {
+    if (!isHydrated) {
+      return;
+    }
+
     window.localStorage.setItem("planeta-language", language);
     document.documentElement.lang = language;
-  }, [language]);
+  }, [isHydrated, language]);
 
-  const value = useMemo(() => ({ language, setLanguage }), [language]);
+  const value = useMemo(() => ({ language, isHydrated, setLanguage }), [isHydrated, language]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

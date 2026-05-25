@@ -13,7 +13,7 @@ type SignUpStatus = "idle" | "sending" | "success" | "confirmed" | "error";
 type RecoveryStatus = "idle" | "sending" | "success" | "error";
 
 export default function SignInPage() {
-  const { language } = useLanguage();
+  const { language, isHydrated } = useLanguage();
   const { user } = useAuth();
   const router = useRouter();
 
@@ -33,6 +33,8 @@ export default function SignInPage() {
   const [connection, setConnection] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [receiveUpdates, setReceiveUpdates] = useState(false);
   const [signUpStatus, setSignUpStatus] = useState<SignUpStatus>("idle");
   const [signUpMessage, setSignUpMessage] = useState("");
 
@@ -61,6 +63,26 @@ export default function SignInPage() {
   async function handleSignUp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    if (!isHydrated) {
+      setSignUpStatus("error");
+      setSignUpMessage(
+        language === "es"
+          ? "Todavía estamos preparando el idioma del registro. Prueba de nuevo en un instante."
+          : "We are still preparing the registration language. Please try again in a moment."
+      );
+      return;
+    }
+
+    if (!acceptTerms) {
+      setSignUpStatus("error");
+      setSignUpMessage(
+        language === "es"
+          ? "Para crear tu registro, necesitas aceptar los términos y condiciones."
+          : "To create your registration, you need to accept the terms and conditions."
+      );
+      return;
+    }
+
     if (password !== confirmPassword) {
       setSignUpStatus("error");
       setSignUpMessage(
@@ -75,6 +97,19 @@ export default function SignInPage() {
     setSignUpMessage("");
 
     const supabase = createClient();
+    const signUpMetadata = {
+      language: language,
+      name,
+      location,
+      discovery,
+      connection,
+      acceptTerms,
+      acceptedTermsAt: new Date().toISOString(),
+      receiveUpdates
+    };
+
+    console.log("SIGNUP LANGUAGE:", language);
+    console.log("SIGNUP METADATA:", signUpMetadata);
     const redirectTo =
       typeof window !== "undefined"
         ? `${window.location.origin}/auth/callback?next=/mi-recorrido`
@@ -85,12 +120,7 @@ export default function SignInPage() {
       password,
       options: {
         emailRedirectTo: redirectTo,
-        data: {
-          name,
-          location,
-          discovery,
-          connection
-        }
+        data: signUpMetadata
       }
     });
 
@@ -448,13 +478,48 @@ export default function SignInPage() {
                   </label>
                 </div>
 
+                <div className="grid gap-5 pt-2">
+                  <label className="flex items-start gap-4 text-sm leading-8 text-black/64 md:text-base md:leading-9">
+                    <input
+                      type="checkbox"
+                      required
+                      checked={acceptTerms}
+                      onChange={(event) => setAcceptTerms(event.target.checked)}
+                      className="mt-2 h-4 w-4 border border-black/16 accent-black"
+                    />
+                    <span>
+                      {language === "es"
+                        ? "Acepto los términos y condiciones."
+                        : "I accept the terms and conditions."}
+                    </span>
+                  </label>
+
+                  <label className="flex items-start gap-4 text-sm leading-8 text-black/64 md:text-base md:leading-9">
+                    <input
+                      type="checkbox"
+                      checked={receiveUpdates}
+                      onChange={(event) => setReceiveUpdates(event.target.checked)}
+                      className="mt-2 h-4 w-4 border border-black/16 accent-black"
+                    />
+                    <span>
+                      {language === "es"
+                        ? "Quiero seguir los avances del proyecto recibiendo novedades."
+                        : "I want to follow the project’s progress by receiving updates."}
+                    </span>
+                  </label>
+                </div>
+
                 <div className="pt-2">
                   <button
                     type="submit"
-                    disabled={signUpStatus === "sending"}
+                    disabled={signUpStatus === "sending" || !isHydrated}
                     className="inline-flex text-[12px] uppercase tracking-editorial text-black/82 transition-opacity duration-500 hover:opacity-72 disabled:cursor-wait disabled:opacity-40"
                   >
-                    {signUpStatus === "sending"
+                    {!isHydrated
+                      ? language === "es"
+                        ? "Preparando registro..."
+                        : "Preparing registration..."
+                      : signUpStatus === "sending"
                       ? language === "es"
                         ? "Creando registro..."
                         : "Creating registration..."

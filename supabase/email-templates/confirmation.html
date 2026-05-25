@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planeta Argentina</title>
+  </head>
+  <body style="margin:0; padding:0; background-color:#f4efe8; color:#171717; font-family:Georgia, 'Times New Roman', serif;">
+    <div
+      style="display:none; max-height:0; overflow:hidden; opacity:0; visibility:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#f4efe8;"
+    >
+      {{if eq .Data.language "en"}}
+      You are one step away from becoming part of Planeta Argentina.
+      {{else if eq .Data.language "pt"}}
+      Você está a um passo de fazer parte da Planeta Argentina.
+      {{else}}
+      Estás a un paso de formar parte de Planeta Argentina.
+      {{end}}
+      &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+      &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+    </div>
+
+    <table
+      role="presentation"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      style="width:100%; border-collapse:collapse; background-color:#f4efe8;"
+    >
+      <tr>
+        <td style="padding:48px 20px;">
+          <table
+            role="presentation"
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            style="width:100%; max-width:640px; margin:0 auto; border-collapse:collapse;"
+          >
+            <tr>
+              <td
+                style="padding-top:20px; border-top:1px solid rgba(23,23,23,0.10); font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1.4; letter-spacing:0.24em; text-transform:uppercase; color:rgba(23,23,23,0.45);"
+              >
+                Planeta Argentina
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-top:28px; font-size:18px; line-height:1.9; color:rgba(23,23,23,0.84);">
+                {{if eq .Data.language "en"}}
+                You are one step away from becoming part of Planeta Argentina.
+                <br /><br />
+                Click the button below to confirm your account and begin.
+                {{else if eq .Data.language "pt"}}
+                Você está a um passo de fazer parte da Planeta Argentina.
+                <br /><br />
+                Clique no botão abaixo para confirmar sua conta e começar.
+                {{else}}
+                Estás a un paso de formar parte de Planeta Argentina.
+                <br /><br />
+                Haz clic en el botón de abajo para confirmar tu cuenta y comenzar.
+                {{end}}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-top:32px;">
+                <a
+                  href="{{ .ConfirmationURL }}"
+                  style="display:inline-block; border:1px solid rgba(23,23,23,0.14); padding:14px 22px; color:#171717; text-decoration:none; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1; letter-spacing:0.24em; text-transform:uppercase;"
+                >
+                  {{if eq .Data.language "en"}}
+                  CONFIRM AND ENTER
+                  {{else if eq .Data.language "pt"}}
+                  CONFIRMAR E ENTRAR
+                  {{else}}
+                  CONFIRMAR Y ENTRAR
+                  {{end}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-top:36px; font-size:18px; line-height:1.9; color:rgba(23,23,23,0.84);">
+                {{if eq .Data.language "en"}}
+                See you on the other side.
+                {{else if eq .Data.language "pt"}}
+                Nos vemos do outro lado.
+                {{else}}
+                Nos vemos del otro lado.
+                {{end}}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-top:36px; font-size:18px; line-height:1.9; color:rgba(23,23,23,0.84);">
+                Planeta Argentina
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="padding-top:14px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1.4; letter-spacing:0.18em; text-transform:uppercase; color:rgba(23,23,23,0.42);"
+              >
+                <a href="mailto:hola@planetargentina.com" style="color:rgba(23,23,23,0.42); text-decoration:none;">
+                  hola@planetargentina.com
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
