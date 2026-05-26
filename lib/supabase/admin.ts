@@ -63,16 +63,23 @@ let adminClient: SupabaseClient<Database> | undefined;
 
 export function createAdminClient() {
   if (!adminClient) {
-    const supabaseUrl = requireEnv(
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
-      "NEXT_PUBLIC_SUPABASE_URL"
-    );
-    const supabaseServiceRoleKey = requireEnv(
-      process.env.SUPABASE_SERVICE_ROLE_KEY,
-      "SUPABASE_SERVICE_ROLE_KEY"
-    );
+    console.error("SERVICE ROLE PRESENT:", !!process.env.SUPABASE_SERVICE_ROLE_KEY);
 
-    adminClient = createClient<Database>(supabaseUrl, supabaseServiceRoleKey, {
+    if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      console.error("SUPABASE_SERVICE_ROLE_KEY is missing in runtime");
+    }
+
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+      console.error("NEXT_PUBLIC_SUPABASE_URL is missing in runtime");
+    }
+
+    requireEnv(process.env.NEXT_PUBLIC_SUPABASE_URL, "NEXT_PUBLIC_SUPABASE_URL");
+    requireEnv(process.env.SUPABASE_SERVICE_ROLE_KEY, "SUPABASE_SERVICE_ROLE_KEY");
+
+    adminClient = createClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
       auth: {
         autoRefreshToken: false,
         persistSession: false
