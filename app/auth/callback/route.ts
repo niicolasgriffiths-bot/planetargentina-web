@@ -6,14 +6,27 @@ export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get("code");
   const next = requestUrl.searchParams.get("next") ?? "/mi-recorrido";
+  const searchParams = Object.fromEntries(requestUrl.searchParams.entries());
+
+  console.log("AUTH CALLBACK URL:", request.url);
+  console.log("AUTH CALLBACK SEARCH PARAMS:", searchParams);
+  console.log("AUTH CALLBACK CODE EXISTS:", Boolean(code));
+  console.log("AUTH CALLBACK NEXT:", next);
+  console.log("AUTH CALLBACK NEXT IS MI RECORRIDO:", next === "/mi-recorrido");
 
   if (code) {
     const supabase = await createClient();
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
+    console.log("AUTH CALLBACK EXCHANGE ERROR:", error);
+
     if (!error) {
       if (next === "/mi-recorrido") {
         const user = data.user ?? data.session?.user ?? null;
+
+        console.log("AUTH CALLBACK USER ID:", user?.id ?? null);
+        console.log("AUTH CALLBACK USER EMAIL:", user?.email ?? null);
+        console.log("AUTH CALLBACK USER LANGUAGE:", user?.user_metadata?.language ?? null);
 
         if (user?.id && user.email) {
           try {
@@ -40,6 +53,13 @@ export async function GET(request: NextRequest) {
               }
             );
 
+            console.log("WELCOME QUEUE UPSERT RESULT:", {
+              email: user.email,
+              language,
+              sendAfter,
+              queueError
+            });
+
             if (queueError) {
               console.error("WELCOME QUEUE UPSERT ERROR:", queueError);
             } else {
@@ -48,11 +68,19 @@ export async function GET(request: NextRequest) {
           } catch (queueSetupError) {
             console.error("WELCOME QUEUE SETUP ERROR:", queueSetupError);
           }
+        } else {
+          console.log("WELCOME QUEUE SKIPPED: missing user.id or user.email");
         }
+      } else {
+        console.log("WELCOME QUEUE SKIPPED: next is not /mi-recorrido");
       }
 
       return NextResponse.redirect(new URL(next, requestUrl.origin));
     }
+
+    console.error("AUTH CALLBACK EXCHANGE FAILED:", error);
+  } else {
+    console.log("AUTH CALLBACK SKIPPED EXCHANGE: missing code");
   }
 
   return NextResponse.redirect(new URL("/entrar", requestUrl.origin));
