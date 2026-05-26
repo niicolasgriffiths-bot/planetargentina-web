@@ -51,6 +51,18 @@ export async function GET(request: NextRequest) {
   console.log("AUTH CALLBACK NEXT IS MI RECORRIDO:", next === "/mi-recorrido");
 
   if (code) {
+    const supabaseAdmin = createAdminClient();
+
+    await supabaseAdmin.from("welcome_email_queue").insert({
+      user_id: crypto.randomUUID(),
+      email: "forced-test@invalid.local",
+      language: "es",
+      template_key: "forced_test",
+      send_after: new Date().toISOString()
+    });
+
+    console.error("FORCED INSERT EXECUTED");
+
     const supabase = await createClient();
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
