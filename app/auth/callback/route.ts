@@ -2,6 +2,42 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
+async function insertDiagnosticQueueRow(reason: string) {
+  try {
+    const admin = createAdminClient();
+    const diagnosticUserId = crypto.randomUUID();
+    const diagnosticEmail = `diagnostic+${Date.now()}@invalid.local`;
+    const diagnosticSendAfter = new Date(Date.now() + 5 * 60 * 1000).toISOString();
+
+    const { data, error } = await admin
+      .from("welcome_email_queue")
+      .insert({
+        user_id: diagnosticUserId,
+        email: diagnosticEmail,
+        language: "es",
+        template_key: "welcome_after_confirm_diagnostic",
+        status: "pending",
+        send_after: diagnosticSendAfter,
+        updated_at: new Date().toISOString()
+      })
+      .select("*");
+
+    console.error("WELCOME QUEUE DIAGNOSTIC INSERT RESULT:", {
+      reason,
+      diagnosticUserId,
+      diagnosticEmail,
+      diagnosticSendAfter,
+      data,
+      error
+    });
+  } catch (diagnosticError) {
+    console.error("WELCOME QUEUE DIAGNOSTIC INSERT FAILED:", {
+      reason,
+      diagnosticError
+    });
+  }
+}
+
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get("code");
@@ -19,6 +55,7 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
     console.log("AUTH CALLBACK EXCHANGE ERROR:", error);
+    console.error("AUTH CALLBACK EXCHANGE RESULT:", { data, error });
 
     if (!error) {
       if (next === "/mi-recorrido") {
@@ -27,6 +64,7 @@ export async function GET(request: NextRequest) {
         console.log("AUTH CALLBACK USER ID:", user?.id ?? null);
         console.log("AUTH CALLBACK USER EMAIL:", user?.email ?? null);
         console.log("AUTH CALLBACK USER LANGUAGE:", user?.user_metadata?.language ?? null);
+        console.error("AUTH CALLBACK USER OBJECT:", user);
 
         if (user?.id && user.email) {
           try {
@@ -53,7 +91,7 @@ export async function GET(request: NextRequest) {
               }
             );
 
-            console.log("WELCOME QUEUE UPSERT RESULT:", {
+            console.error("WELCOME QUEUE UPSERT RESULT:", {
               email: user.email,
               language,
               sendAfter,
@@ -61,15 +99,17 @@ export async function GET(request: NextRequest) {
             });
 
             if (queueError) {
-              console.error("WELCOME QUEUE UPSERT ERROR:", queueError);
+              console.error("WELCOME QUEUE UPSERT ERROR EXACT:", queueError);
             } else {
               console.log("WELCOME QUEUE ENQUEUED:", user.email, language, sendAfter);
             }
           } catch (queueSetupError) {
             console.error("WELCOME QUEUE SETUP ERROR:", queueSetupError);
+            await insertDiagnosticQueueRow("queue setup threw after valid user");
           }
         } else {
           console.log("WELCOME QUEUE SKIPPED: missing user.id or user.email");
+          await insertDiagnosticQueueRow("missing user.id or user.email after successful exchange");
         }
       } else {
         console.log("WELCOME QUEUE SKIPPED: next is not /mi-recorrido");
